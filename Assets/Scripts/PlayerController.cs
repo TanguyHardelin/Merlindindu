@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public int stone = 20;
 
     protected EnvironnementGenerator _environnmentGenerator;
+    protected bool _environnementGeneratoInitialised = false;
 
 
     void Start()
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
         else animator.SetBool("Move", false);
 
         Vector3 mouvment = new Vector3(mouveHorizontal*speed, 0, mouveVertical*speed);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mouvment), 0.15F);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mouvment), 0.15F);
         //transform.Translate(mouvment);
         transform.Translate(mouvment * speed * Time.deltaTime, Space.World);
 
@@ -74,15 +75,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
-        //Nécéssaire au raffraichissement des chunks:
-        int x = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.x);
-        int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
+        if (_environnementGeneratoInitialised==false)
+        {
 
-        _environnmentGenerator.GenerateAroundPlayer(x, z);
+            _environnementGeneratoInitialised = true;
+        }
+        else
+        {
+            //Debug.Log("Initialisation finie");
+            //Nécéssaire au raffraichissement des chunks:
+            
+            int x = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.x);
+            int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
 
-        //Fin
-        
+
+            Debug.Log("x = " + x);
+            Debug.Log("z = " + z);
+            _environnmentGenerator.GenerateAroundPlayer(x, z);
+            
+            //Fin
+        }
+
+
+
     }
 
     void OnTriggerEnter(Collider other)

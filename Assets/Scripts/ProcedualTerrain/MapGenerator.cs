@@ -29,45 +29,57 @@ public class MapGenerator : MonoBehaviour {
     protected static List<GameObject> _allGameObjectEnvironnement=new List<GameObject>();
 
     public float [,] noiseMap;
+    public float[,] heightMap;
+    Color[] colorMap;
+
 
     public bool isInitialized = false;
 
     public void GenerateMap()
     {
-        noiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, scale,octaves,persistance,lacunarity, offset);
-
-        //We construct our heightMap
-        float[,] heightMap = new float[mapWidth, mapHeight];
-
-       
-        Color[] colorMap = new Color[mapHeight * mapWidth];
-        for(int y = 0; y < mapHeight; y++)
+        if (!isInitialized)
         {
-            for (int x=0; x < mapWidth; x++)
+            //Construct noiseMap
+            noiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, scale, octaves, persistance, lacunarity, offset);
+
+            //We construct our heightMap
+            heightMap = new float[mapWidth, mapHeight];
+
+            colorMap = new Color[mapHeight * mapWidth];
+            for (int y = 0; y < mapHeight; y++)
             {
-                float currentHeight = noiseMap[x, y];
-                /*
-                *      Generate Color Terrain 
-                */
-                for (int i=0;i< terrainType.Length; i++)
+                for (int x = 0; x < mapWidth; x++)
                 {
-                    if (currentHeight < terrainType[i].noiseHeight)
+                    float currentHeight = noiseMap[x, y];
+                    /*
+                    *      Generate Color Terrain 
+                    */
+                    for (int i = 0; i < terrainType.Length; i++)
                     {
-                        colorMap[y * mapWidth + x] = terrainType[i].color;
-                        if (i > 0)
+                        if (currentHeight < terrainType[i].noiseHeight)
                         {
-                            heightMap[x, y] = terrainType[i - 1].gameHeight;
+                            colorMap[y * mapWidth + x] = terrainType[i].color;
+                            if (i > 0)
+                            {
+                                heightMap[x, y] = terrainType[i - 1].gameHeight;
+                            }
+                            else
+                            {
+                                heightMap[x, y] = terrainType[i].gameHeight;
+                            }
+
+                            break;
                         }
-                        else
-                        {
-                            heightMap[x, y] = terrainType[0].gameHeight;
-                        }
-                        
-                        break;
                     }
                 }
             }
+
+            isInitialized = true;
         }
+       
+
+       
+        
 
         MapDisplay display = FindObjectOfType<MapDisplay>();
         if (drawMode == DrawMode.NoiseMap)
@@ -82,8 +94,7 @@ public class MapGenerator : MonoBehaviour {
         {
             display.DrawMesh(MeshGenerator.GenerateTerrainMesh(heightMap, meshHeightMultiplier, meshHeightCurve), TextureGenerator.TextureFromColorMap(colorMap, mapWidth, mapHeight));
         }
-
-        isInitialized = true;
+        //isInitialized = true;
     }
 
     public float evaluateHeight(float height)
@@ -93,23 +104,21 @@ public class MapGenerator : MonoBehaviour {
 
     void Start()
     {
+        isInitialized = false;
         GenerateMap();
     }
 
     void Update()
     {
-        if (countB < 4)
+        /*
+        count++;
+        if (count > 5)
         {
-            count++;
-            if (count > 5)
-            {
-                GenerateMap();
-                count = 0;
-                countB++;
-            }
+            GenerateMap();
+            count = 0;
         }
-        
-
+     
+        */
     }
 }
 

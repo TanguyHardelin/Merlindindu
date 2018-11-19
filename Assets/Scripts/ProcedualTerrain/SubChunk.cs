@@ -33,63 +33,59 @@ public class SubChunk{
         mapHeight = mapGenerator.mapHeight;
         noiseMap = mapGenerator.noiseMap;
 
-        Debug.Log(this.getSubChunkElement(x_center, y_center));
-
         if (!initialized)
         {
-            chunk_objects.Add(this.getSubChunkElement(x_center, y_center));
-
-            chunk_objects.Add(this.getSubChunkElement(x_center + 1, y_center + 1));
-            chunk_objects.Add(this.getSubChunkElement(x_center - 1, y_center + 1));
-            chunk_objects.Add(this.getSubChunkElement(x_center + 1, y_center - 1));
-            chunk_objects.Add(this.getSubChunkElement(x_center - 1, y_center - 1));
-
-            chunk_objects.Add(this.getSubChunkElement(x_center, y_center + 1));
-            chunk_objects.Add(this.getSubChunkElement(x_center, y_center - 1));
-            chunk_objects.Add(this.getSubChunkElement(x_center + 1, y_center));
-            chunk_objects.Add(this.getSubChunkElement(x_center - 1, y_center));
-
+          
             initialized = true;
         }
     }
     
     public void Instantiate()
     {
-        if (initialized == true)
+        if (initialized == true && instantiate == false)
         {
-            SpawnChunkObject(0, x_center, y_center);
-
-            SpawnChunkObject(1, x_center + 1, y_center + 1);
-            SpawnChunkObject(2, x_center - 1, y_center + 1);
-            SpawnChunkObject(3, x_center + 1, y_center - 1);
-            SpawnChunkObject(4, x_center - 1, y_center - 1);
-
-
-            SpawnChunkObject(5, x_center, y_center + 1);
-            SpawnChunkObject(6, x_center, y_center - 1);
-            SpawnChunkObject(7, x_center + 1, y_center);
-            SpawnChunkObject(8, x_center - 1, y_center);
+          
 
             instantiate = true;
+        }
+        else
+        {
+            int size = instantied_objects.Count;
+            for (int i = 0; i < size; i++)
+            {
+                instantied_objects[i].SetActive(true);
+            }
         }
     }
 
     public void Destroy()
     {
-        if (instantiate == true)
+        if (instantiate)
         {
-            for (int i = 0; i < instantied_objects.Count; i++)
+            int size = instantied_objects.Count;
+            for (int i = 0; i < size; i++)
             {
-                GameObject.Destroy(instantied_objects[i]);
+                /*
+                GameObject.Destroy(instantied_objects[0]);
+                instantied_objects.RemoveAt(0);
+                */
+                instantied_objects[i].SetActive(false);
             }
-            instantiate = false;
+
+            //instantiate = false;
         }
+        
+        
     }
 
     public void SpawnChunkObject(int index,int x,int y)
     {
-        Debug.Log("Instantiate to x= " + (x - mapWidth / 2.0f) * 5.0f + " y= " + (y - mapHeight / 2.0f) * 5.0f);
-        instantied_objects.Add(GameObject.Instantiate(chunk_objects[index].gameobject, new Vector3((x - mapWidth / 2.0f) * 5.0f, mapGenerator.evaluateHeight(chunk_objects[index].spawning_height), (y - mapHeight / 2.0f) * 5.0f), Quaternion.identity));
+        if (!instantiate)
+        {
+            
+            instantied_objects.Add(GameObject.Instantiate(chunk_objects[index].gameobject, new Vector3((x - mapWidth / 2.0f) * 5.0f, mapGenerator.evaluateHeight(chunk_objects[index].spawning_height), (y - mapHeight / 2.0f) * 5.0f), Quaternion.identity, chunk_objects[index].parent));
+
+        }
     }
 
     protected SubChunkElement getSubChunkElement(int x,int y)
@@ -99,20 +95,25 @@ public class SubChunk{
         SubChunkElement tmp=new SubChunkElement();
         for (int i = 0; i < environnement_type.Length; i++)
         {
-
-            if (currentHeight >= environnement_type[i].startingHeightOfTerrain && currentHeight < environnement_type[i].endingHeightOfTerrain && environnement_type[i].spawningObject.Length > 0)
+            if (currentHeight < environnement_type[i].endingHeightOfTerrain && environnement_type[i].spawningObject.Length > 0)
             { 
                 int indexOfSpawn = (int)UnityEngine.Random.Range(0.0f, environnement_type[i].spawningObject.Length - 1);
-                //Debug.Log("indexOfSpawn " + indexOfSpawn);
+                //Debug.Log("x = " + x + " y = " + y + "rX=" + (x - mapWidth / 2.0f) * 5.0f + " rY=" + (y - mapHeight / 2.0f) * 5.0f+ "currentHeight= "+ currentHeight+" Type =" + environnement_type[i].name);
                 tmp.gameobject= environnement_type[i].spawningObject[indexOfSpawn];
                 tmp.spawning_height = environnement_type[i].spawningHeight;
+                tmp.parent = environnement_type[i].parent;
                 return tmp;
+             
             }
 
         }
-        tmp.gameobject = null;
+        //Debug.Log("x = " + x + " y= " + y);
+       /// Debug.Log("currentHeight = " + currentHeight);
+     
+
+        tmp.gameobject = environnement_type[environnement_type.Length - 1].spawningObject[0];
         tmp.spawning_height = 0.0f;
-        Debug.Log("Default");
+        tmp.parent = environnement_type[environnement_type.Length - 1].parent;
         return tmp;
 
     }
@@ -130,4 +131,5 @@ public struct SubChunkElement
 {
     public GameObject gameobject;
     public float spawning_height;
+    public Transform parent;
 }

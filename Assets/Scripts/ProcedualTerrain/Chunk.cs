@@ -13,26 +13,13 @@ public class Chunk{
     public bool instantied = false;
     public bool initialized = false;
 
-    public Chunk(int xCenter, int yCenter, EvironnementType[] environnementType)
+    public Chunk(int xCenter, int yCenter, EvironnementType[] environnementType, int mapWidth,int mapHeight,float [,] noiseMap)
     {
         x_center = xCenter;
         y_center = yCenter;
         environnement_type = environnementType;
 
-        subChunks.Add(new SubChunk(x_center, y_center, environnement_type));
-
-        
-        subChunks.Add(new SubChunk(x_center + 3, y_center + 3, environnement_type));
-        subChunks.Add(new SubChunk(x_center - 3, y_center + 3, environnement_type));
-        subChunks.Add(new SubChunk(x_center + 3, y_center - 3, environnement_type));
-        subChunks.Add(new SubChunk(x_center - 3, y_center - 3, environnement_type));
-
-        subChunks.Add(new SubChunk(x_center, y_center + 3, environnement_type));
-        subChunks.Add(new SubChunk(x_center, y_center - 3, environnement_type));
-        subChunks.Add(new SubChunk(x_center + 3, y_center, environnement_type));
-        subChunks.Add(new SubChunk(x_center - 3, y_center, environnement_type));
-        
-
+      
         initialized = true;
         
     }
@@ -44,7 +31,11 @@ public class Chunk{
         {
             for (int i = 0; i < subChunks.Count; i++)
             {
-                subChunks[i].Instantiate();
+                if (subChunks[i].instantiate == false)
+                {
+                    subChunks[i].Instantiate();
+                }
+                
                 
             }
             instantied = true;
@@ -58,14 +49,14 @@ public class Chunk{
     
     public void DeleteObjectsInChunk()
     {
-        if (instantied == true)
+        int size = subChunks.Count;
+        for (int i = 0; i < size; i++)
         {
-            for (int i = 0; i < subChunks.Count; i++)
-            {
-                subChunks[i].Destroy();
-            }
-            instantied = false;
+            subChunks[0].Destroy();
+            subChunks.RemoveAt(0);
         }
+        instantied = false;
+        
     }
 
     
