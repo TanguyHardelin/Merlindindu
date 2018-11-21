@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4620385107356504}
   - component: {fileID: 33894920865756024}
   - component: {fileID: 23123290938661060}
+  - component: {fileID: 114401681305273414}
+  - component: {fileID: 64704864444769164}
   m_Layer: 0
-  m_Name: Mesh1_Group1_Model
-  m_TagString: Untagged
+  m_Name: SmallTree
+  m_TagString: Collect_wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +54,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4356172673503786}
-  - component: {fileID: 64886801078164490}
   m_Layer: 0
   m_Name: naturePack_072
   m_TagString: Untagged
@@ -127,8 +128,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583410281453862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -30.95, y: 0, z: -29.37}
+  m_LocalScale: {x: 1, y: 0.93124, z: 1}
   m_Children:
   - {fileID: 4356172673503786}
   - {fileID: 4221564958814586}
@@ -141,9 +142,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126767423151670}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.45, y: 0, z: -0.14}
+  m_LocalScale: {x: 0.81764, y: 0.81764, z: 0.81764}
   m_Children: []
   m_Father: {fileID: 4356172673503786}
   m_RootOrder: 0
@@ -262,12 +263,12 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 08daa7edb06e391469d13bca6a022398, type: 3}
---- !u!64 &64886801078164490
+--- !u!64 &64704864444769164
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338388125478834}
+  m_GameObject: {fileID: 1126767423151670}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -276,3 +277,19 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 911a051fdfb81024597385c921c2fb97, type: 3}
+--- !u!114 &114401681305273414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126767423151670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b28eded474cf541949a703e36f1f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableType: 
+  durationRepop: 0
+  ressourcePts: 0
+  maxRessourcePts: 0
+  isEmpty: 0

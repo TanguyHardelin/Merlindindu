@@ -9,11 +9,11 @@ public class Collectable : MonoBehaviour {
    public float ressourcePts = 0;
    public float maxRessourcePts = 0;
 
-   public PlayerController playerScript;
 
    private Vector3 initialPosition;
     private Quaternion initialRotation;
     private Quaternion targetRotation;
+    private PlayerController playerScript;
 
 
     [SerializeField] private bool isEmpty = false;
@@ -24,31 +24,33 @@ public class Collectable : MonoBehaviour {
         initialPosition = this.transform.position;
         initialRotation = transform.rotation;
 
+
+
         switch (collectableType) {
             case "BigGoldRock":
                 ressourcePts = 250;
                 maxRessourcePts = 250;
-                durationRepop = 100f;
+                durationRepop = 160f;
                 break;
             case "BigRock":
                 ressourcePts = 100;
                 maxRessourcePts = 100;
-                durationRepop = 120f;
+                durationRepop = 180f;
                 break;
             case "SmallRock":
                 ressourcePts = 20;
                 maxRessourcePts = 20;
-                durationRepop = 80f;
+                durationRepop = 120f;
                 break;
             case "BigTree":
-                ressourcePts = 150;
+                ressourcePts = 120;
                 maxRessourcePts = 150;
-                durationRepop = 90f;
+                durationRepop = 130f;
                 break;
             case "SmallTree":
-                ressourcePts = 50;
-                maxRessourcePts = 50;
-                durationRepop = 75f;
+                ressourcePts = 40;
+                maxRessourcePts = 40;
+                durationRepop = 125f;
                 break;
             default:
                 break;
@@ -64,12 +66,12 @@ public class Collectable : MonoBehaviour {
             {
                 case "BigGoldRock":
                     ressourcePts -= 50;
-                    this.transform.position += new Vector3(0, (float)-1.3, 0);
+                    this.transform.position += new Vector3(0, (float)-0.5, 0);
                     playerScript.setGold(playerScript.getGold() + 50);
                     break;
                 case "BigRock":
                     ressourcePts -= 25;
-                    this.transform.position += new Vector3(0, (float)-1.6, 0);
+                    this.transform.position += new Vector3(0, (float)-0.5, 0);
                     playerScript.setStone(playerScript.getStone() + 25);
                     break;
                 case "SmallRock":
@@ -80,13 +82,13 @@ public class Collectable : MonoBehaviour {
                 case "BigTree":
                     ressourcePts -= 30;
                     targetRotation = Quaternion.FromToRotation(initialRotation.eulerAngles, new Vector3(90,0,0));
-                    if (ressourcePts <= maxRessourcePts - 30) transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10);
+                    //if (ressourcePts <= maxRessourcePts - 30) transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10);
                     playerScript.setWood(playerScript.getWood() + 30);
                     break;
                 case "SmallTree":
                     ressourcePts -= 10;
                     targetRotation = Quaternion.FromToRotation(initialRotation.eulerAngles, new Vector3(90, 0, 0));
-                    if (ressourcePts <= maxRessourcePts - 30) transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10);
+                    //if (ressourcePts <= maxRessourcePts - 10) transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10);
                     playerScript.setWood(playerScript.getWood() + 10);
                     break;
             }
@@ -98,6 +100,7 @@ public class Collectable : MonoBehaviour {
     {
         float ratio = 0;
         float multiplier = 1 / durationRepop;
+        playerScript = (PlayerController)GameObject.FindGameObjectWithTag("Player").GetComponent((typeof(PlayerController)));
 
         switch (collectableType)
         {
