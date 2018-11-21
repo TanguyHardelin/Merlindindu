@@ -89,8 +89,8 @@ public class PlayerController : MonoBehaviour
             int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
 
 
-            Debug.Log("x = " + x);
-            Debug.Log("z = " + z);
+            //Debug.Log("x = " + x);
+            //Debug.Log("z = " + z);
             _environnmentGenerator.GenerateAroundPlayer(x, z);
             
             //Fin

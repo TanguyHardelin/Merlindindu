@@ -4,14 +4,14 @@ using UnityEngine;
 using System;
 
 public class EnvironnementGenerator : MonoBehaviour {
-    protected MapGenerator mapGenerator;
     [SerializeField]
-    protected List<Chunk> _chunks=new List<Chunk>();
-
-    [SerializeField]
-    protected List<Chunk> _instantied_chunks = new List<Chunk>();
+    protected Vector2 chunkSize;
     [SerializeField]
     protected EvironnementType[] environnementType;
+    [SerializeField]
+    protected InterestingElement[] allInterestingElement;
+
+    protected MapGenerator mapGenerator; 
 
     protected int mapWidth = 0;
     protected int mapHeight = 0;
@@ -32,61 +32,56 @@ public class EnvironnementGenerator : MonoBehaviour {
         mapGenerator = FindObjectOfType<MapGenerator>();
         mapWidth = mapGenerator.mapWidth;
         mapHeight = mapGenerator.mapHeight;
-        noiseMap = mapGenerator.noiseMap;
-        
-        
-        
-        
+        noiseMap = mapGenerator.noiseMap;       
     }
     
 	
 	// Update is called once per frame
 	void Update () {
-        if (mapGenerator.isInitialized == true && isInitialized ==false)
+        
+    }
+
+    public bool isInColliders(int x,int z)
+    {
+        /*
+        //On verifie que les 4 cotés du chunks ne sont pas dedans:
+        Vector2 pos0 = new Vector2((x + (int)chunkSize[0] / 2 - mapWidth / 2.0f) * 5.0f,  (z + (int)chunkSize[1] / 2 - mapHeight / 2.0f) * 5.0f);
+        Vector2 pos1 = new Vector2((x + (int)chunkSize[0] / 2 - mapWidth / 2.0f) * 5.0f,  (z - (int)chunkSize[1] / 2 - mapHeight / 2.0f) * 5.0f);
+        Vector2 pos2 = new Vector2((x - (int)chunkSize[0] / 2 - mapWidth / 2.0f) * 5.0f,  (z + (int)chunkSize[1] / 2 - mapHeight / 2.0f) * 5.0f);
+        Vector2 pos3 = new Vector2((x - (int)chunkSize[0] / 2 - mapWidth / 2.0f) * 5.0f,  (z - (int)chunkSize[1] / 2 - mapHeight / 2.0f) * 5.0f);
+
+        for (int i = 0; i < allInterestingElement.Length; i++)
         {
-            /*
-            noiseMap = mapGenerator.noiseMap;
-            Debug.Log(noiseMap);
-            Debug.Log(mapGenerator.isInitialized);
-
-            for (int y = 0; y < mapHeight; y++)
+            Debug.Log("Vector3.Distance(pos0, allInterestingElement[i].position): " + Vector2.Distance(pos0, allInterestingElement[i].position));
+            Debug.Log("Vector3.Distance(pos1, allInterestingElement[i].position): " + Vector2.Distance(pos1, allInterestingElement[i].position));
+            Debug.Log("Vector3.Distance(pos2, allInterestingElement[i].position): " + Vector2.Distance(pos2, allInterestingElement[i].position));
+            Debug.Log("Vector3.Distance(pos3, allInterestingElement[i].position): " + allInterestingElement[i].size);
+            if (Vector2.Distance(pos0, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos1, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos2, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos3, allInterestingElement[i].position) <= allInterestingElement[i].size)
             {
-                for (int x = 0; x < mapWidth; x++)
-                {
-                    float currentHeight = noiseMap[x, y];
-                    for (int i = 0; i < environnementType.Length; i++)
-                    {
-                        if (currentHeight < environnementType[i].endingHeightOfTerrain && environnementType[i].spawningObject.Length > 0)
-                        {
-                            int indexOfSpawn = (int)UnityEngine.Random.Range(0.0f, environnementType[i].spawningObject.Length - 1);
-                            //Debug.Log("x = " + x + " y = " + y + "rX=" + (x - mapWidth / 2.0f) * 5.0f + " rY=" + (y - mapHeight / 2.0f) * 5.0f+ "currentHeight= "+ currentHeight+" Type =" + environnement_type[i].name);
-                            Instantiate(environnementType[i].spawningObject[indexOfSpawn]);
-
-                        }
-
-                    }
-                }
+                Debug.Log("Impossible");
+                return true;
             }
-            isInitialized = true;
-            */
         }
+        */
+        return false;
     }
 
     public void GenerateAroundPlayer(int x, int z)
     {
         //On vérifie si on doit instancié un chunk
         List<ChunkNeeded> is_chunk_need = new List<ChunkNeeded>();
-        is_chunk_need.Add(isChunkNeeded(x + 6, z - 4 ));
-        is_chunk_need.Add(isChunkNeeded(x + 6, z + 4));
-        is_chunk_need.Add(isChunkNeeded(x - 6, z - 4));
-        is_chunk_need.Add(isChunkNeeded(x - 6, z + 4));
+        
+        if (!isInColliders(x+(int)chunkSize[0]/2,z-(int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z - (int)chunkSize[1]/2 ));
+        if (!isInColliders(x + (int)chunkSize[0]/2, z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z + (int)chunkSize[1]/2));
+        if (!isInColliders(x -(int)chunkSize[0]/2, z - (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z - (int)chunkSize[1]/2));
+        if (!isInColliders(x -(int)chunkSize[0]/2, z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z + (int)chunkSize[1]/2));
 
-        is_chunk_need.Add(isChunkNeeded(x + 6, z));
-        is_chunk_need.Add(isChunkNeeded(x, z + 4));
-        is_chunk_need.Add(isChunkNeeded(x - 6, z));
-        is_chunk_need.Add(isChunkNeeded(x, z + 4));
+        if (!isInColliders(x + (int)chunkSize[0]/2, z)) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z));
+        if (!isInColliders(x , z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
+        if (!isInColliders(x -(int)chunkSize[0]/2, z)) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z));
+        if (!isInColliders(x, z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
 
-        is_chunk_need.Add(isChunkNeeded(x, z));
+        if (!isInColliders(x, z)) is_chunk_need.Add(isChunkNeeded(x, z));
 
         bool chunk_instantied = false;
         for(int l = 0; l < is_chunk_need.Count; l++)
@@ -102,29 +97,26 @@ public class EnvironnementGenerator : MonoBehaviour {
 
 
                 noiseMap = mapGenerator.noiseMap;
-                for (int i = is_chunk_need[l].centerX - 6; i < is_chunk_need[l].centerX + 6; i++)
+                for (int i = is_chunk_need[l].centerX - (int)chunkSize[0]/2; i < is_chunk_need[l].centerX + (int)chunkSize[0]/2; i++)
                 {
-                    for (int j = is_chunk_need[l].centerZ - 4; j < is_chunk_need[l].centerZ + 4; j++)
+                    for (int j = is_chunk_need[l].centerZ - (int)chunkSize[1]/2; j < is_chunk_need[l].centerZ + (int)chunkSize[1]/2; j++)
                     {
-                        float currentHeight = noiseMap[x, z];
+                        
+                        float currentHeight = noiseMap[i, j];
+                        
                         for (int k = 0; k < environnementType.Length; k++)
                         {
-                            if (currentHeight < environnementType[k].endingHeightOfTerrain && environnementType[k].spawningObject.Length > 0)
+                            if (currentHeight > environnementType[k].startingHeightOfTerrain && currentHeight < environnementType[k].endingHeightOfTerrain && environnementType[k].spawningObject.Length > 0)
                             {
-                                int indexOfSpawn = (int)UnityEngine.Random.Range(0.0f, environnementType[k].spawningObject.Length - 1);
-                                //Debug.Log("x = " + x + " y = " + y + "rX=" + (x - mapWidth / 2.0f) * 5.0f + " rY=" + (y - mapHeight / 2.0f) * 5.0f+ "currentHeight= "+ currentHeight+" Type =" + environnement_type[i].name);
+                                int indexOfSpawn = (int)((currentHeight - environnementType[k].startingHeightOfTerrain)/(environnementType[k].endingHeightOfTerrain- environnementType[k].startingHeightOfTerrain)* environnementType[k].spawningObject.Length);
+
                                 new_chunk.obj.Add(Instantiate(environnementType[k].spawningObject[indexOfSpawn], new Vector3((i - mapWidth / 2.0f) * 5, mapGenerator.evaluateHeight(environnementType[k].spawningHeight), (j - mapHeight / 2.0f) * 5), Quaternion.identity, environnementType[k].parent));
-
+                                break;
                             }
-
                         }
                     }
                 }
-
                 instantiedChunk.Add(new_chunk);
-                Debug.Log("Instantiation d'un nouveau chunk a x=" + new_chunk.centerX + " z=" + new_chunk.centerZ);
-
-                
             }
         }
 
@@ -139,7 +131,7 @@ public class EnvironnementGenerator : MonoBehaviour {
                 distance[0] = x - instantiedChunk[i].centerX;
                 distance[1] = z - instantiedChunk[i].centerZ;
 
-                if (Mathf.Abs(distance[0]) > 2 * 6 || Mathf.Abs(distance[1]) > 2 * 4)
+                if (Mathf.Abs(distance[0]) > 2 * (int)chunkSize[0]/2 || Mathf.Abs(distance[1]) > 2 * (int)chunkSize[1]/2)
                 {
                     for (int j = 0; j < instantiedChunk[i].obj.Count; j++)
                     {
@@ -156,7 +148,7 @@ public class EnvironnementGenerator : MonoBehaviour {
     {
         for(int i = 0; i < instantiedChunk.Count; i++)
         {
-            if(x<=instantiedChunk[i].centerX+6 && x >= instantiedChunk[i].centerX - 6 && z <= instantiedChunk[i].centerZ + 4 && z >= instantiedChunk[i].centerZ - 4){
+            if(x<=instantiedChunk[i].centerX+(int)chunkSize[0]/2 && x >= instantiedChunk[i].centerX - (int)chunkSize[0]/2 && z <= instantiedChunk[i].centerZ + (int)chunkSize[1]/2 && z >= instantiedChunk[i].centerZ - (int)chunkSize[1]/2){
                 return true;
             }
         }
@@ -191,8 +183,6 @@ public class EnvironnementGenerator : MonoBehaviour {
 
             for (int i = 0; i < instantiedChunk.Count; i++)
             {
-                //Debug.Log("Distance x=" + (x - instantiedChunk[i].centerX));
-                //Debug.Log("Distance z=" + (z - instantiedChunk[i].centerZ));
                 Vector2 d = new Vector2(x - instantiedChunk[i].centerX, z - instantiedChunk[i].centerZ);
                 if (d.sqrMagnitude < distance.sqrMagnitude)
                 {
@@ -201,8 +191,6 @@ public class EnvironnementGenerator : MonoBehaviour {
                 }
             }
 
-            Debug.Log("Distance x=" + distance[0]);
-            Debug.Log("Distance z=" + distance[1]);
             if (instantiedChunk.Count == 0)
             {
                 c.centerX = x;
@@ -303,3 +291,10 @@ public struct ChunkNeeded
     public int centerX;
     public int centerZ;
 }
+
+[System.Serializable]
+public struct InterestingElement{
+    public string name;
+    public Vector2 position;
+    public int size;
+};
