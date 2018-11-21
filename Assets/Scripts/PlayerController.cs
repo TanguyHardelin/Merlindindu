@@ -5,181 +5,154 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 
-    public float speed = 0.5f;
-    public GameObject messagePanel;
+    public float moveSpeed = 8f;
+    public float walkSpeed = 4f;
+    public float speed = 8f;
+    public float rotateSpeed = 30f;
     public Camera mainCamera;
     public Camera manageCamera;
-    public Canvas UIExploration;
     public UIManager uiManager;
     public VillageManager villageManager;
+    public DisplaySystem dispSys;
+    protected EnvironnementGenerator _environnmentGenerator;
+    protected bool _environnementGeneratoInitialised = false;
 
 
     private bool canCollect = false;
     private bool manageMode = false;
     private Animator animator;
     private Vector3 villageCenter;
-    public float villageSize = 200;
 
-    public int maxGold = 1000;
-    public int maxWood = 800;
-    public int maxStone = 500;
+    private int maxGold = 1000;
+    private int maxWood = 800;
+    private int maxStone = 500;
     public int gold = 150;
     public int wood = 50;
     public int stone = 20;
-
-    protected EnvironnementGenerator _environnmentGenerator;
-    protected bool _environnementGeneratoInitialised = false;
+    public int ATK = 10;
+    public int DEF = 10;
 
 
     void Start()
     {
         //villageCenter = GameObject.FindGameObjectWithTag("village").transform.position;
         mainCamera.enabled = true;
-        manageCamera.enabled = false;
         animator = gameObject.GetComponent<Animator>();
 
         //Nécéssaire au raffraichissement des chunks:
         _environnmentGenerator = FindObjectOfType<EnvironnementGenerator>();
-        //Fin
-    }
-
-
-
-    void FixedUpdate()
-    {
         
-        Transform transform = GetComponent<Transform>();
-
-        float mouveHorizontal = Input.GetAxisRaw("Horizontal");
-        float mouveVertical = Input.GetAxisRaw("Vertical");
-
-        if (mouveHorizontal != 0 || mouveVertical != 0) animator.SetBool("Move", true);
-        else animator.SetBool("Move", false);
-
-        Vector3 mouvment = new Vector3(mouveHorizontal*speed, 0, mouveVertical*speed);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mouvment), 0.15F);
-        //transform.Translate(mouvment);
-        transform.Translate(mouvment * speed * Time.deltaTime, Space.World);
-
-        if (manageMode)
-        {
-;            if ((transform.position - villageCenter).magnitude >= villageSize)
-            {
-                OnManageMode(false);
-            }
-
-        }
-
-        
+        dispSys.UIManage(false);
+        Debug.Log(walkSpeed);
     }
 
     void Update()
     {
         if (_environnementGeneratoInitialised==false)
         {
-
             _environnementGeneratoInitialised = true;
         }
         else
         {
-            //Debug.Log("Initialisation finie");
             //Nécéssaire au raffraichissement des chunks:
-            
             int x = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.x);
             int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
 
-
-            //Debug.Log("x = " + x);
-            //Debug.Log("z = " + z);
             _environnmentGenerator.GenerateAroundPlayer(x, z);
-            
-            //Fin
         }
+    }
 
+    void FixedUpdate()
+    {
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
 
+        if (moveHorizontal != 0 || moveVertical != 0) {
+            animator.SetBool("isMoving", true);
+            movePlayer(moveHorizontal, moveVertical);
+        }
+        else {
+            animator.SetBool("isMoving", false);
+        }
+    }
 
+    void movePlayer(float moveHorizontal, float moveVertical) {
+        Vector3 forward = Vector3.ProjectOnPlane(mainCamera.transform.forward.normalized, Vector3.up);
+        Vector3 forwardOrthoPLanXZ = Vector3.Cross(Vector3.up, forward);
+        Vector3 direction = Vector3.zero;
+
+        if (manageMode) {
+            direction = new Vector3(moveHorizontal, 0, moveVertical).normalized;
+        }
+        else {
+            direction = forward.normalized * moveVertical + forwardOrthoPLanXZ.normalized * moveHorizontal;
+        }
+        Vector3 targetPosition = transform.position + direction;
+        Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)
-
     {
         if (other.tag == "Collect_gold" || other.tag == "Collect_wood" || other.tag == "Collect_stone")
         {
-                Collectable script = (Collectable)other.GetComponent(typeof(Collectable));
-                if (script.getIsEmpty()) OpenMessagePanel("-No more ressources-");
-                else OpenMessagePanel("-Press P to gather-");
-                canCollect = true;
+            Collectable script = (Collectable)other.GetComponent(typeof(Collectable));
+            if (script.getIsEmpty()) dispSys.OpenMessagePanel("-No more ressources-");
+            else dispSys.OpenMessagePanel("-Press P to gather-");
+            canCollect = true;
         }
         else if (other.tag == "village" && !manageMode)
         {
-            OpenMessagePanel("-Press M to manage-");
+            dispSys.OpenMessagePanel("-Press M to manage-");
         }
-
     }
 
     void OnTriggerStay(Collider other)
-
     {
         if (Input.GetKeyDown(KeyCode.P) && (other.tag == "Collect_gold" || other.tag == "Collect_wood" || other.tag == "Collect_stone"))
         {
             Collectable script = (Collectable)other.GetComponent(typeof(Collectable));
             script.PickRessources();
-            if (script.getIsEmpty()) OpenMessagePanel("-No more ressources-");
+            if (script.getIsEmpty()) dispSys.OpenMessagePanel("-No more ressources-");
             else
             {
-                CloseMessagePanel();
-                OpenMessagePanel("-Press P to gather-");
+                dispSys.CloseMessagePanel();
+                dispSys.OpenMessagePanel("-Press P to gather-");
             }
         }
         else if (Input.GetKeyDown(KeyCode.M) && (other.tag == "village"))
         {
-            CloseMessagePanel();
+            dispSys.CloseMessagePanel();
             OnManageMode(true);
         }
-
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Collect_gold" || other.tag == "Collect_wood" || other.tag == "Collect_stone")
         {
-            CloseMessagePanel();
+            dispSys.CloseMessagePanel();
             canCollect = false;
         }
         else if (other.tag == "village")
         {
-            CloseMessagePanel();
+            dispSys.CloseMessagePanel();
         }
-
     }
 
-    void OpenMessagePanel(string txt)
-    {
-        messagePanel.SetActive(true);
-        if (txt != null) messagePanel.transform.GetChild(0).GetComponent<Text>().text = txt;
-    }
-
-    void CloseMessagePanel()
-    {
-        messagePanel.SetActive(false);
-    }
-
-    void OnManageMode(bool mngMode)
+    public void OnManageMode(bool mngMode)
     {
         if (mngMode)
         {
             Debug.Log("ManageMode");
-            CloseMessagePanel();
+            dispSys.CloseMessagePanel();
 
             mainCamera.enabled = false;
             manageCamera.enabled = true;
 
-            UIExploration.transform.GetChild(0).GetComponent<Image>().enabled = false;
-            UIExploration.transform.GetChild(0).GetChild(0).GetComponent<Image>().enabled = false;
-            UIExploration.transform.GetChild(3).GetComponent<Image>().enabled = false;
-            UIExploration.transform.GetChild(3).GetChild(0).GetComponent<RawImage>().enabled = false;
-
-
+            dispSys.UIManage(true);
             manageMode = true;
             uiManager.setFreeze(true);
 
@@ -187,7 +160,6 @@ public class PlayerController : MonoBehaviour
             villageManager.setWood(villageManager.getWood() + wood);
             setStone(0);
             setWood(0);
-
         }
         else
         {
@@ -195,16 +167,10 @@ public class PlayerController : MonoBehaviour
             mainCamera.enabled = true;
             manageCamera.enabled = false;
 
-            UIExploration.transform.GetChild(0).GetComponent<Image>().enabled = true;
-            UIExploration.transform.GetChild(0).GetChild(0).GetComponent<Image>().enabled = true;
-            UIExploration.transform.GetChild(3).GetComponent<Image>().enabled = true;
-            UIExploration.transform.GetChild(3).GetChild(0).GetComponent<RawImage>().enabled = true;
-
+            dispSys.UIManage(false);
             manageMode = false;
             uiManager.setFreeze(false);
         }
-
-
     }
 
     //---------------//
@@ -233,6 +199,14 @@ public class PlayerController : MonoBehaviour
     public void setStone(int st)
     {
         if (st >= 0 && st <= maxStone) stone = st;
+    }
+    public void setATK(int atk)
+    {
+        if (atk >= 0) ATK = atk;
+    }
+    public void setDEF(int def)
+    {
+        if (def >= 0) DEF = def;
     }
 
 
@@ -267,4 +241,13 @@ public class PlayerController : MonoBehaviour
     {
         return manageMode;
     }
+    public int getATK()
+    {
+        return ATK;
+    }
+    public int getDEF()
+    {
+        return DEF;
+    }
+
 }

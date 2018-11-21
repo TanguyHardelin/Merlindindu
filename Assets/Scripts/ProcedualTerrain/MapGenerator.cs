@@ -54,7 +54,7 @@ public class MapGenerator : MonoBehaviour {
 
                     if (x == 100 && y == 100)
                     {
-                        Debug.LogWarning("100 100 height=" + noiseMap[x, y]);
+                        //Debug.LogWarning("100 100 height=" + noiseMap[x, y]);
                     }
 
                     /*
@@ -66,10 +66,10 @@ public class MapGenerator : MonoBehaviour {
                         {
                             if (x == 100 && y == 100)
                             {
-                                Debug.LogWarning("100 100 currentHeight=" + currentHeight);
-                                Debug.LogWarning("100 100 terrainType[i].noiseHeight=" + terrainType[i].noiseHeight);
-                                Debug.LogWarning("100 100 name= " + terrainType[i].name);
-                                Debug.LogWarning("y * mapWidth + x" + y * mapWidth + x);
+                                //Debug.LogWarning("100 100 currentHeight=" + currentHeight);
+                                //Debug.LogWarning("100 100 terrainType[i].noiseHeight=" + terrainType[i].noiseHeight);
+                                //Debug.LogWarning("100 100 name= " + terrainType[i].name);
+                                //Debug.LogWarning("y * mapWidth + x" + y * mapWidth + x);
                             }
                             colorMap[y * mapWidth + x] = terrainType[i].color;
                             if (i > 0)

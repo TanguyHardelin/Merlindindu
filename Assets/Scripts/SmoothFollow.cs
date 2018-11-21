@@ -6,30 +6,70 @@ namespace UnityStandardAssets.Utility
     {
 
         // The target we are following
-        [SerializeField]
-        private Transform target;
-        // the height we want the camera to be above the target
-        [SerializeField]
-        private float height = 30f;
-        public float maxHeight = 55f;
-        public float minHeight = 25f;
+        [SerializeField] Transform target;
+
+        public float distance = 5.0f;
+        public float xSpeed = 120.0f;
+        public float ySpeed = 120.0f;
+
+        public float yMinLimit = -20f;
+        public float yMaxLimit = 80f;
+
+        public float distanceMin = .5f;
+        public float distanceMax = 15f;
+        private Rigidbody rb;
+
+        float x = 50f;
+        float y = 0.0f;
 
         // Use this for initialization
-        void Start() { }
+        void Start()
+        {
+            rb = GetComponent<Rigidbody>();
 
+            // Make the rigid body not change rotation
+            if (rb != null)
+            {
+                rb.freezeRotation = true;
+            }
+        }
+        
         void LateUpdate()
         {
+            if (target)
+            {
+                x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
+                y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
-            Vector3 newPosition = target.position;
-            newPosition.y = height;
-            newPosition.z -= 7;
-            transform.position = newPosition;
+                y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-            if (height <= maxHeight && height >= minHeight) height -= 5*Input.GetAxis("Mouse ScrollWheel");
-            if (height <= minHeight) height = minHeight + (float)0.2;
-            if (height >= maxHeight) height = maxHeight - (float)0.2;
+                Quaternion rotation = Quaternion.Euler(y, x, 0);
+
+                distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+
+                // Pour faire que la camera traverse un objet lorsqu'il est entre le joueur et la camera
+                /* RaycastHit hit;
+                if (Physics.Linecast(target.position, transform.position, out hit))
+                {
+                    distance -= hit.distance;
+                }*/
+                Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+                Vector3 position = rotation * negDistance + target.position;
+                position.y += 1f;
+
+                transform.rotation = rotation;
+                transform.position = position;
+            }
         }
 
+        public static float ClampAngle(float angle, float min, float max)
+        {
+            if (angle < -360F)
+                angle += 360F;
+            if (angle > 360F)
+                angle -= 360F;
+            return Mathf.Clamp(angle, min, max);
+        }
 
     }
 }

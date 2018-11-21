@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour {
 
         if (spdCount >= spdTimer && !freeze)
         {
-            playerScript.setGold(playerScript.getGold() - 1);
+            playerScript.setGold(playerScript.getGold() - 2);
             spdCount = 0;
         }
         else if (freeze) spdCount = 0;

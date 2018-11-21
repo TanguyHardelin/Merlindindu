@@ -43,7 +43,6 @@ public class EnvironnementGenerator : MonoBehaviour {
 
     public bool isInColliders(int x,int z)
     {
-        /*
         //On verifie que les 4 cotés du chunks ne sont pas dedans:
         Vector2 pos0 = new Vector2((x + (int)chunkSize[0] / 2 - mapWidth / 2.0f) * 5.0f,  (z + (int)chunkSize[1] / 2 - mapHeight / 2.0f) * 5.0f);
         Vector2 pos1 = new Vector2((x + (int)chunkSize[0] / 2 - mapWidth / 2.0f) * 5.0f,  (z - (int)chunkSize[1] / 2 - mapHeight / 2.0f) * 5.0f);
@@ -52,17 +51,16 @@ public class EnvironnementGenerator : MonoBehaviour {
 
         for (int i = 0; i < allInterestingElement.Length; i++)
         {
-            Debug.Log("Vector3.Distance(pos0, allInterestingElement[i].position): " + Vector2.Distance(pos0, allInterestingElement[i].position));
-            Debug.Log("Vector3.Distance(pos1, allInterestingElement[i].position): " + Vector2.Distance(pos1, allInterestingElement[i].position));
-            Debug.Log("Vector3.Distance(pos2, allInterestingElement[i].position): " + Vector2.Distance(pos2, allInterestingElement[i].position));
-            Debug.Log("Vector3.Distance(pos3, allInterestingElement[i].position): " + allInterestingElement[i].size);
+            //Debug.Log("Vector3.Distance(pos0, allInterestingElement[i].position): " + Vector2.Distance(pos0, allInterestingElement[i].position));
+            //Debug.Log("Vector3.Distance(pos1, allInterestingElement[i].position): " + Vector2.Distance(pos1, allInterestingElement[i].position));
+            //Debug.Log("Vector3.Distance(pos2, allInterestingElement[i].position): " + Vector2.Distance(pos2, allInterestingElement[i].position));
+            //Debug.Log("Vector3.Distance(pos3, allInterestingElement[i].position): " + allInterestingElement[i].size);
             if (Vector2.Distance(pos0, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos1, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos2, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos3, allInterestingElement[i].position) <= allInterestingElement[i].size)
             {
-                Debug.Log("Impossible");
+                //Debug.Log("Impossible");
                 return true;
             }
         }
-        */
         return false;
     }
 
@@ -260,7 +258,7 @@ public class EnvironnementGenerator : MonoBehaviour {
     }
 
     public int getIndexFromCoordinate(float value)
-    {
+    {   
         return Mathf.CeilToInt(Mathf.Round(5 * 100 + value) / 5.0f);
     }
 }
