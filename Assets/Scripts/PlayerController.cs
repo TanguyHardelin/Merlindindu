@@ -60,6 +60,13 @@ public class PlayerController : MonoBehaviour
 
             _environnmentGenerator.GenerateAroundPlayer(x, z);
         }
+
+        if (Input.GetKeyDown("space")) {
+            animator.SetTrigger("isJumping");
+        }
+        if (Input.GetKeyDown("tab")) {
+            animator.SetTrigger("isDashing");
+        }
     }
 
     void FixedUpdate()
