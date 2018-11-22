@@ -166,9 +166,10 @@ GameObject:
   - component: {fileID: 33542516270820062}
   - component: {fileID: 23716946342332100}
   - component: {fileID: 64766563511326384}
+  - component: {fileID: 114112228287081248}
   m_Layer: 0
-  m_Name: Mesh1_Group1_Model
-  m_TagString: Untagged
+  m_Name: SmallRock
+  m_TagString: Collect_stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,3 +551,19 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: f7b695dfd15f29b4096ea4b832a74bc4, type: 3}
+--- !u!114 &114112228287081248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885938860112176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b28eded474cf541949a703e36f1f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableType: 
+  durationRepop: 0
+  ressourcePts: 0
+  maxRessourcePts: 0
+  isEmpty: 0
