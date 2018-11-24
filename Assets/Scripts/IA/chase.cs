@@ -6,7 +6,7 @@ public class chase : MonoBehaviour
 {
 
 	public Transform player;
-	static Animator anim;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start()
