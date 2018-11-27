@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public int stone = 20;
     public int ATK = 10;
     public int DEF = 10;
+    public int health = 100;
+    public int maxHealth = 100;
 
 
     void Start()
@@ -215,7 +217,10 @@ public class PlayerController : MonoBehaviour
     {
         if (def >= 0) DEF = def;
     }
-
+    public void setHealth(int hlt)
+    {
+        if (hlt > 0 && hlt < maxHealth) health = hlt;
+    }
 
     //---------------//
     //    GETTERS    //
@@ -255,6 +260,10 @@ public class PlayerController : MonoBehaviour
     public int getDEF()
     {
         return DEF;
+    }
+    public int getHealth()
+    {
+        return health;
     }
 
 }

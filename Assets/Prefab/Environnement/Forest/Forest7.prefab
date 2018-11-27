@@ -85,6 +85,8 @@ GameObject:
   - component: {fileID: 33323202038066020}
   - component: {fileID: 23923522605321348}
   - component: {fileID: 64059305791139982}
+  - component: {fileID: 114066142341669422}
+  - component: {fileID: 135471749380627642}
   m_Layer: 0
   m_Name: Mesh1_Group1_Model
   m_TagString: Untagged
@@ -362,3 +364,28 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 6a32bc483baa9a84da3c102ba475b3e4, type: 3}
+--- !u!114 &114066142341669422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1856159058050060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8f5039de5089547be9b45fd6cb5ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 12
+  instance: {fileID: 4969916827417902, guid: 1a3c08c0688040e468a58e0c500f3976, type: 2}
+--- !u!135 &135471749380627642
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1856159058050060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: -0.496579, y: 0.385, z: -0.5733962}

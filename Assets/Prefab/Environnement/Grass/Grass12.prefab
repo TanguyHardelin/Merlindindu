@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4110782832805948}
   - component: {fileID: 33251766746817468}
   - component: {fileID: 23526683221248420}
+  - component: {fileID: 114342768118267418}
+  - component: {fileID: 135559174090414680}
   m_Layer: 0
   m_Name: Mesh1_Plant_3_Model
   m_TagString: Untagged
@@ -170,3 +172,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1113837974428506}
   m_Mesh: {fileID: 4300000, guid: cf7c829dc45a5f04ba457e55092f2a8f, type: 3}
+--- !u!114 &114342768118267418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113837974428506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8f5039de5089547be9b45fd6cb5ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 12
+  instance: {fileID: 4049000925199772, guid: 6841f1b67f8f3904f9309c9917ab6465, type: 2}
+--- !u!135 &135559174090414680
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113837974428506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 45
+  m_Center: {x: -0.57486, y: 0.3480405, z: -0.54562527}
