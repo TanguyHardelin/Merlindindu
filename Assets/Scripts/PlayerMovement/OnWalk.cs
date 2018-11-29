@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnDash : StateMachineBehaviour {
+public class OnWalk : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		PlayerController player = FindObjectOfType<PlayerController>();
-		player.speed = 30f;
+		player.speed = player.walkSpeed;
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+		if (Input.GetKeyDown("left ctrl")) {
+            animator.SetBool("isWalking", false);
+        }
+		if (!animator.GetBool("isMoving")) {
+			animator.SetBool("isWalking", false);
+		}
+	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		//player.speed = player.moveSpeed;
+	//	
 	//}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

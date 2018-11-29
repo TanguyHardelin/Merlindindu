@@ -66,8 +66,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space")) {
             animator.SetTrigger("isJumping");
         }
-        if (Input.GetKeyDown("tab")) {
-            animator.SetTrigger("isDashing");
+
+        if (Input.GetMouseButtonDown(1)) {
+            animator.SetTrigger("isAttacking");
         }
     }
 
