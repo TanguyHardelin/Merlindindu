@@ -21,6 +21,7 @@ public class Monster : MonoBehaviour {
     private bool isFleeing = false;
     private bool isAttacked = false;
     private bool isDead = false;
+    private bool isKnight = false;
     private Vector3 direction;
     private float angle;
     private int timeNewDir = 0;
@@ -39,6 +40,16 @@ public class Monster : MonoBehaviour {
 
         switch (typeMonster)
         {
+            case "Knight":
+                damageAmount = 15;
+                health = 150;
+                healthMax = 150;
+                isAggressive = false;
+                isACoward = false;
+                moveRate = 5f;
+                amtGold = 50;
+                isKnight = true;
+                break;
             case "Rabbit1":
                 damageAmount = 4;
                 health = 20;
@@ -294,7 +305,7 @@ public class Monster : MonoBehaviour {
             deathCnt++;
         }
 
-        if (!isAttacking && !isFleeing && !isDead) RandomMove();
+        if (!isAttacking && !isFleeing && !isDead && !isKnight) RandomMove();
         else if ((isAttacking || isAttacked) && !isFleeing && !isDead) Attack();
         else if (isFleeing && isACoward && isAttacked && !isDead) Flee();
 

@@ -6,23 +6,26 @@ public class SpawnEnnemy : MonoBehaviour {
 
 
     public int spawnRate;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public int respawnTime = 2000;
 
     public Transform instance;
     private int count = 1950;
 
+    // Use this for initialization
+    void Start () {
+        if (instance.tag == "Knight") respawnTime = 20;
+	}
+
+
+
     void OnTriggerEnter(Collider other)
 
     {
-        if (other.tag == "Player" && count > 2000)
+        if (other.tag == "Player" && count > respawnTime)
         {
             if (Random.Range(0, 101) < spawnRate)
             {
-                Instantiate(instance, transform.position + new Vector3(10, 0, 10), transform.rotation, GameObject.FindGameObjectWithTag("Monster").transform);
+                Instantiate(instance, transform.position + new Vector3(0, 0, 0), transform.rotation, GameObject.FindGameObjectWithTag("Monster").transform);
                 count = 0;
             }
         }
