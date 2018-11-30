@@ -12,7 +12,8 @@ public class MiniMapCamera : MonoBehaviour {
 
         Vector3 newPosition = player.position;
         newPosition.y = transform.position.y;
-        transform.position = newPosition;
+		newPosition.z = transform.position.z;
+		transform.position = newPosition;
 
         //transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
 	}
