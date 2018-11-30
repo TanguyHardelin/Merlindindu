@@ -10,14 +10,20 @@ public class OnWalk : StateMachineBehaviour {
 		player.speed = player.walkSpeed;
 	}
 
-	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        PlayerController player = FindObjectOfType<PlayerController>();
+        player.speed = player.moveSpeed;
+    }
+
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		if (Input.GetKeyDown("left ctrl")) {
             animator.SetBool("isWalking", false);
         }
-		if (!animator.GetBool("isMoving")) {
-			animator.SetBool("isWalking", false);
-		}
+		//if (!animator.GetBool("isMoving")) {
+		//	animator.SetBool("isWalking", false);
+		//}
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
