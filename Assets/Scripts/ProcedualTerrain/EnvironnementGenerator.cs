@@ -27,15 +27,42 @@ public class EnvironnementGenerator : MonoBehaviour {
 
     protected List<InstantiedChunk> instantiedChunk = new List<InstantiedChunk>();
 
+    protected bool[,] canSpwan;
+
     // Use this for initialization
     void Start () {
         mapGenerator = FindObjectOfType<MapGenerator>();
         mapWidth = mapGenerator.mapWidth;
         mapHeight = mapGenerator.mapHeight;
-        noiseMap = mapGenerator.noiseMap;       
+        noiseMap = mapGenerator.noiseMap;
+
+        canSpwan = new bool[mapWidth, mapHeight];
+
+        //initialize canSpawn array
+        for(int i=0;i< mapWidth; i++)
+        {
+            for(int j=0;j< mapHeight; j++)
+            {
+                canSpwan[i, j] = true;
+            }
+        }
+        for (int l = 0; l < allInterestingElement.Length; l++)
+        {
+            
+            Vector2 center = allInterestingElement[l].position;
+            int size = allInterestingElement[l].size;
+
+            for (int i = Mathf.CeilToInt(center[0] - size / 2 + mapWidth/2); i < Mathf.CeilToInt(center[0] + size / 2 + mapWidth / 2) +1; i++)
+            {
+                for (int j = Mathf.CeilToInt(center[1] - size / 2 + mapHeight / 2); j < Mathf.CeilToInt(center[1] + size / 2 + mapHeight / 2) +1 ; j++)
+                {
+                    canSpwan[i, j] = false;
+                }
+            }
+        }
+        //Set interesting Point
     }
     
-	
 	// Update is called once per frame
 	void Update () {
         
@@ -51,10 +78,6 @@ public class EnvironnementGenerator : MonoBehaviour {
 
         for (int i = 0; i < allInterestingElement.Length; i++)
         {
-            //Debug.Log("Vector3.Distance(pos0, allInterestingElement[i].position): " + Vector2.Distance(pos0, allInterestingElement[i].position));
-            //Debug.Log("Vector3.Distance(pos1, allInterestingElement[i].position): " + Vector2.Distance(pos1, allInterestingElement[i].position));
-            //Debug.Log("Vector3.Distance(pos2, allInterestingElement[i].position): " + Vector2.Distance(pos2, allInterestingElement[i].position));
-            //Debug.Log("Vector3.Distance(pos3, allInterestingElement[i].position): " + allInterestingElement[i].size);
             if (Vector2.Distance(pos0, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos1, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos2, allInterestingElement[i].position) <= allInterestingElement[i].size || Vector2.Distance(pos3, allInterestingElement[i].position) <= allInterestingElement[i].size)
             {
                 //Debug.Log("Impossible");
@@ -69,17 +92,17 @@ public class EnvironnementGenerator : MonoBehaviour {
         //On vérifie si on doit instancié un chunk
         List<ChunkNeeded> is_chunk_need = new List<ChunkNeeded>();
         
-        if (!isInColliders(x+(int)chunkSize[0]/2,z-(int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z - (int)chunkSize[1]/2 ));
-        if (!isInColliders(x + (int)chunkSize[0]/2, z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z + (int)chunkSize[1]/2));
-        if (!isInColliders(x -(int)chunkSize[0]/2, z - (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z - (int)chunkSize[1]/2));
-        if (!isInColliders(x -(int)chunkSize[0]/2, z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z + (int)chunkSize[1]/2));
+        if (canSpwan[x + (int)chunkSize[0] / 2, z - (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z - (int)chunkSize[1]/2 ));
+        if (canSpwan[x + (int)chunkSize[0] / 2, z + (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z + (int)chunkSize[1]/2));
+        if (canSpwan[x - (int)chunkSize[0] / 2, z - (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z - (int)chunkSize[1]/2));
+        if (canSpwan[x - (int)chunkSize[0] / 2, z + (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z + (int)chunkSize[1]/2));
 
-        if (!isInColliders(x + (int)chunkSize[0]/2, z)) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z));
-        if (!isInColliders(x , z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
-        if (!isInColliders(x -(int)chunkSize[0]/2, z)) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z));
-        if (!isInColliders(x, z + (int)chunkSize[1]/2)) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
+        if (canSpwan[x + (int)chunkSize[0] / 2, z] == true) is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0]/2, z));
+        if (canSpwan[x, z + (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
+        if (canSpwan[x - (int)chunkSize[0] / 2, z] == true) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z));
+        if (canSpwan[x, z + (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
 
-        if (!isInColliders(x, z)) is_chunk_need.Add(isChunkNeeded(x, z));
+        if (canSpwan[x, z]) is_chunk_need.Add(isChunkNeeded(x, z));
 
         bool chunk_instantied = false;
         for(int l = 0; l < is_chunk_need.Count; l++)
@@ -93,25 +116,28 @@ public class EnvironnementGenerator : MonoBehaviour {
                 new_chunk.centerZ = is_chunk_need[l].centerZ;
                 new_chunk.obj = new List<GameObject>();
 
-
+                
                 noiseMap = mapGenerator.noiseMap;
+
                 for (int i = is_chunk_need[l].centerX - (int)chunkSize[0]/2; i < is_chunk_need[l].centerX + (int)chunkSize[0]/2; i++)
                 {
                     for (int j = is_chunk_need[l].centerZ - (int)chunkSize[1]/2; j < is_chunk_need[l].centerZ + (int)chunkSize[1]/2; j++)
                     {
-                        
-                        float currentHeight = noiseMap[i, j];
-                        
-                        for (int k = 0; k < environnementType.Length; k++)
+                        if (canSpwan[i, j] == true)
                         {
-                            if (currentHeight > environnementType[k].startingHeightOfTerrain && currentHeight < environnementType[k].endingHeightOfTerrain && environnementType[k].spawningObject.Length > 0)
+                            float currentHeight = noiseMap[i, j];
+                            for (int k = 0; k < environnementType.Length; k++)
                             {
-                                int indexOfSpawn = (int)((currentHeight - environnementType[k].startingHeightOfTerrain)/(environnementType[k].endingHeightOfTerrain- environnementType[k].startingHeightOfTerrain)* environnementType[k].spawningObject.Length);
-
-                                new_chunk.obj.Add(Instantiate(environnementType[k].spawningObject[indexOfSpawn], new Vector3((i - mapWidth / 2.0f) * 5, mapGenerator.evaluateHeight(environnementType[k].spawningHeight), (j - mapHeight / 2.0f) * 5), Quaternion.identity, environnementType[k].parent));
-                                break;
+                                if (currentHeight > environnementType[k].startingHeightOfTerrain && currentHeight < environnementType[k].endingHeightOfTerrain && environnementType[k].spawningObject.Length > 0)
+                                {
+                                    int indexOfSpawn = (int)((currentHeight - environnementType[k].startingHeightOfTerrain) / (environnementType[k].endingHeightOfTerrain - environnementType[k].startingHeightOfTerrain) * environnementType[k].spawningObject.Length);
+                                    
+                                    new_chunk.obj.Add(Instantiate(environnementType[k].spawningObject[indexOfSpawn], new Vector3((i - mapWidth / 2.0f) * 5, mapGenerator.evaluateHeight(environnementType[k].spawningHeight), (j - mapHeight / 2.0f) * 5), Quaternion.identity, environnementType[k].parent));
+                                    break;
+                                }
                             }
                         }
+                        
                     }
                 }
                 instantiedChunk.Add(new_chunk);
@@ -200,12 +226,12 @@ public class EnvironnementGenerator : MonoBehaviour {
                 {
                     if (distance[0] < 0)
                     {
-                        c.centerX = iC.centerX - 12;
+                        c.centerX = iC.centerX - (int)chunkSize[0] / 2;
                         c.centerZ = iC.centerZ;
                     }
                     else
                     {
-                        c.centerX = iC.centerX + 12;
+                        c.centerX = iC.centerX + (int)chunkSize[0] / 2;
                         c.centerZ = iC.centerZ;
                     }
                 }
@@ -214,35 +240,35 @@ public class EnvironnementGenerator : MonoBehaviour {
                     if (distance[1] < 0)
                     {
                         c.centerX = iC.centerX;
-                        c.centerZ = iC.centerZ - 8;
+                        c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
                     }
                     else
                     {
                         c.centerX = iC.centerX;
-                        c.centerZ = iC.centerZ + 8;
+                        c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
                     }
                 }
                 else
                 {
                     if (distance[0] < 0 && distance [1]>0)
                     {
-                        c.centerX = iC.centerX - 12;
-                        c.centerZ = iC.centerZ + 8;
+                        c.centerX = iC.centerX - (int)chunkSize[0] / 2;
+                        c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
                     }
                     else if (distance[0] < 0 && distance[1] < 0)
                     {
-                        c.centerX = iC.centerX - 12;
-                        c.centerZ = iC.centerZ - 8;
+                        c.centerX = iC.centerX - (int)chunkSize[0] / 2;
+                        c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
                     }
                     else if (distance[0] > 0 && distance[1] < 0)
                     {
-                        c.centerX = iC.centerX + 12;
-                        c.centerZ = iC.centerZ - 8;
+                        c.centerX = iC.centerX + (int)chunkSize[0] / 2;
+                        c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
                     }
                     else if (distance[0] > 0 && distance[1] > 0)
                     {
-                        c.centerX = iC.centerX + 12;
-                        c.centerZ = iC.centerZ + 8;
+                        c.centerX = iC.centerX + (int)chunkSize[0] / 2;
+                        c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
                     }
                 }
             }
@@ -258,8 +284,8 @@ public class EnvironnementGenerator : MonoBehaviour {
     }
 
     public int getIndexFromCoordinate(float value)
-    {   
-        return Mathf.CeilToInt(Mathf.Round(5 * 100 + value) / 5.0f);
+    {
+        return Mathf.CeilToInt(Mathf.Round((5 * 100 + value) / 5.0f));
     }
 }
 

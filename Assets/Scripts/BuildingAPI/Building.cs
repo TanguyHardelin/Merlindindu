@@ -7,10 +7,21 @@ using UnityEngine;
 
 
 public class Building : MonoBehaviour {
-    //Paramaters attributes:
+    [Header("Paramétrage de l'UI")]
     [SerializeField]
-    protected RessourceType ressourcesNeeded;
+    protected string _name;
 
+    [SerializeField]
+    protected string _description;
+
+    [SerializeField]
+    protected string _building_tag;
+
+    [SerializeField]
+    protected Texture _building_icon;
+
+
+    [Header("Informations sur le batiments")]
     [SerializeField]
     protected float constructionTime;
 
@@ -21,35 +32,64 @@ public class Building : MonoBehaviour {
     protected int startingIndex = 0;
 
     [SerializeField]
+    protected Vector2 size = new Vector2(1, 1);
+
+
+    [Header("Ressource nécéssaire pour construire batiments")]
+    [SerializeField]
+    protected RessourceType ressourcesNeeded;
+
+    [Header("Production du batiment")]
+    [SerializeField]
+    protected RessourceType ressourcesProduction;
+
+    [Header("Production du batiment (une seule fois à sa construction)")]
+    [SerializeField]
+    protected RessourceType ressourcesProductionOneShot;
+
+    [Header("Bonus apportés par le batriments sur les ressources")]
+    [SerializeField]
+    protected RessourceType ressourcesBonus;
+
+    
+
+    [Header("Parent dans le jeu")]
+    [SerializeField]
     protected Transform parent;
 
     //Internal attributes:
     protected GameObject current_obj;
-    //protected ParticleSystem particule_system;
     protected int current_index;
     protected float current_time = 0;
     protected bool construction_finish = false;
+    protected Quaternion currentRotation = Quaternion.identity;
+    protected bool isInitialized = false;
 
 
     void Start () {
+        
+    }
+    public void initialize(Quaternion q)
+    {
         //NB: la vérification des ressources nécéssaire n'est pas fait ici !
         //    Ce n'est pas le boulot de cet object.
         //    Cet object a juste pour role de faire l'instantié les différents models succéssif
 
-        //particule_system = GetComponentInChildren<ParticleSystem>();
-        current_obj = Instantiate(buildingEtapes[startingIndex.ToString()], transform.position, Quaternion.identity, parent);
-        //current_obj.transform.localScale = new Vector3(0.5f, 0.4f, 0.5f);
+        currentRotation = q;
+        current_obj = Instantiate(buildingEtapes[startingIndex.ToString()], transform.position, currentRotation, parent);
         current_index = startingIndex;
+        
+        isInitialized = true;
     }
 	
 	void Update () {
-        if (construction_finish == false)
+        if (construction_finish == false && isInitialized)
         {
             //On incrémente la valeur du temps:
             current_time += Time.deltaTime;
 
             //On vérifie si on ne doit pas update le model:
-            if(current_time> constructionTime / (buildingEtapes.Count - 1))
+            if (current_time> constructionTime / (buildingEtapes.Count))
             {
                 current_time = 0.0f;
                 upgradeModel();
@@ -64,6 +104,11 @@ public class Building : MonoBehaviour {
         }
         
 	}
+
+    public bool isFinish()
+    {
+        return construction_finish;
+    }
     
     void upgradeModel()
     {
@@ -72,11 +117,10 @@ public class Building : MonoBehaviour {
 
         //upgrade building models:
         current_index++;
-        if (startingIndex < buildingEtapes.Count)
+        if (current_index < buildingEtapes.Count)
         {
             Destroy(current_obj);
-            current_obj = Instantiate(buildingEtapes[startingIndex.ToString()], transform.position, Quaternion.identity,parent);
-            //current_obj.transform.localScale = new Vector3(0.5f, 0.4f, 0.5f);
+            current_obj = Instantiate(buildingEtapes[current_index.ToString()], transform.position, currentRotation, parent);
         }
         else
         {
@@ -87,16 +131,19 @@ public class Building : MonoBehaviour {
     void downgradeModel()
     {
         current_index--;
-        if (startingIndex < buildingEtapes.Count)
+        if (current_index > 0)
         {
             Destroy(current_obj);
-            current_obj = Instantiate(buildingEtapes[startingIndex.ToString()], transform.position, Quaternion.identity, parent);
-            //current_obj.transform.localScale = new Vector3(0.5f, 0.4f, 0.5f);
+            current_obj = Instantiate(buildingEtapes[current_index.ToString()], transform.position, currentRotation, parent);
         }
         else
         {
             current_index = 0;
         }
+    }
+    public GameObject getLastModelOfBuilding()
+    {
+        return buildingEtapes[(buildingEtapes.Count - 1).ToString()];
     }
     
 
@@ -104,5 +151,51 @@ public class Building : MonoBehaviour {
     {
         parent = t;
     }
+
+    public string getTag()
+    {
+        return _building_tag;
+    }
+
+    public string getName()
+    {
+        return _name;
+    }
+
+    public string getDescription()
+    {
+        return _description;
+    }
+
+    public Texture getIcon()
+    {
+        return _building_icon;
+    }
+
+    public RessourceType getRessourcesNeeded()
+    {
+        return ressourcesNeeded;
+    }
+
+    public RessourceType getRessourcesProduction()
+    {
+        return ressourcesProduction;
+    }
+
+    public RessourceType getRessourcesProductionOnShot()
+    {
+        return ressourcesProductionOneShot;
+    }
+
+    public RessourceType getRessourcesBonus()
+    {
+        return ressourcesBonus;
+    }
+
+    public Vector2 getSize()
+    {
+        return size;
+    }
+
     
 }

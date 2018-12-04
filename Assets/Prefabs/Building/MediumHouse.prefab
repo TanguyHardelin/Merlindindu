@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1511941968378092}
+  m_IsPrefabAsset: 1
+--- !u!1 &1511941968378092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4020210528137908}
+  - component: {fileID: 114011921230412904}
+  m_Layer: 0
+  m_Name: MediumHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4020210528137908
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511941968378092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 174.9596, y: 51.267017, z: -66.66769}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114011921230412904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511941968378092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef259c26d050e4648990a0f423dafc46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Maison moyenne
+  _building_tag: village
+  _building_icon: {fileID: 2800000, guid: 2256a23040f097d47b8c6970fc02d5c8, type: 3}
+  constructionTime: 10
+  buildingEtapes:
+    m_keys:
+    - 0
+    - 1
+    - 2
+    m_values:
+    - {fileID: 100004, guid: a5fe0b3aaa8eecb4bb0fac5f18d6cd3d, type: 3}
+    - {fileID: 100010, guid: e93dbde16cf323a459f0787daa3d079a, type: 3}
+    - {fileID: 100018, guid: 0b2a837d6f2297d418d01e4dd5b911b4, type: 3}
+  startingIndex: 0
+  size: {x: 2, y: 1}
+  ressourcesNeeded:
+    food: 0
+    wood: 150
+    stone: 100
+    gold: 180
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesProduction:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesProductionOneShot:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 10
+  ressourcesBonus:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  parent: {fileID: 0}

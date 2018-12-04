@@ -300,7 +300,7 @@ public class Monster : MonoBehaviour {
             anim.SetBool("isDead", true);
             isAttacking = false;
             isFleeing = false;
-            if (deathCnt == 1) player.GetComponent<PlayerController>().setGold(player.GetComponent<PlayerController>().getGold() + amtGold);
+            if (deathCnt == 1) player.GetComponent<RessourceType>().gold += amtGold;
             Destroy(this.gameObject,7);
             deathCnt++;
         }

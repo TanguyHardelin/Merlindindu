@@ -39,4 +39,23 @@ public class All3DObjects : MonoBehaviour {
     {
         return currentObject;
     }
+
+    public void setCurrentObjToNull()
+    {
+        currentObject = null;
+    }
+
+    public List<Building> getAllBuildingWithTag(string tag)
+    {
+        List<Building> all_building_with_tag = new List<Building>();
+
+        foreach(string keys in all3DObjects.Keys)
+        {
+            if (all3DObjects[keys].getTag() == tag)
+            {
+                all_building_with_tag.Add(all3DObjects[keys]);
+            }
+        }
+        return all_building_with_tag;
+    }
 }

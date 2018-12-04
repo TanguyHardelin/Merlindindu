@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour {
 
-   public string collectableType;
-   public float durationRepop = 0f;
-   public float ressourcePts = 0;
-   public float maxRessourcePts = 0;
+    public string collectableType;
+    public float durationRepop = 0f;
+    public float ressourcePts = 0;
+    public float maxRessourcePts = 0;
 
 
-   private Vector3 initialPosition;
-    private Quaternion initialRotation;
-    private Quaternion targetRotation;
-    private PlayerController playerScript;
-
-    private GameObject floatTextPrefab;
+    protected Vector3 initialPosition;
+    protected Quaternion initialRotation;
+    protected Quaternion targetRotation;
+    //protected Ressources playerRessources;
 
 
     [SerializeField] private bool isEmpty = false;
@@ -25,35 +23,34 @@ public class Collectable : MonoBehaviour {
         collectableType = this.gameObject.name;
         initialPosition = this.transform.position;
         initialRotation = transform.rotation;
-
-        floatTextPrefab = GameObject.FindGameObjectWithTag("floatTxt");
+        //playerRessources = (Ressources)GameObject.FindGameObjectWithTag("Player").GetComponent((typeof(Ressources)));
 
 
         switch (collectableType) {
             case "BigGoldRock":
-                ressourcePts = 200;
-                maxRessourcePts = 200;
-                durationRepop = 100f;
+                ressourcePts = 250;
+                maxRessourcePts = 250;
+                durationRepop = 160f;
                 break;
             case "BigRock":
                 ressourcePts = 100;
                 maxRessourcePts = 100;
-                durationRepop = 120f;
+                durationRepop = 180f;
                 break;
             case "SmallRock":
                 ressourcePts = 20;
                 maxRessourcePts = 20;
-                durationRepop = 80f;
+                durationRepop = 120f;
                 break;
             case "BigTree":
                 ressourcePts = 120;
                 maxRessourcePts = 150;
-                durationRepop = 90f;
+                durationRepop = 130f;
                 break;
             case "SmallTree":
                 ressourcePts = 40;
                 maxRessourcePts = 40;
-                durationRepop = 75f;
+                durationRepop = 125f;
                 break;
             default:
                 break;
@@ -63,41 +60,39 @@ public class Collectable : MonoBehaviour {
 	// Update is called once per frame
 	public void PickRessources() {
 
-        if (ressourcePts > 1 && !isEmpty)
+        if (ressourcePts > 0 && !isEmpty)
         {
             switch (collectableType)
             {
                 case "BigGoldRock":
                     ressourcePts -= 50;
                     this.transform.position += new Vector3(0, (float)-0.5, 0);
-                    playerScript.setGold(playerScript.getGold() + 50);
-                    showFloatTxtRessources("+50 G", new Color32(255, 254, 103,255));
+
+                    //playerRessources.addGold(50);
                     break;
                 case "BigRock":
                     ressourcePts -= 25;
                     this.transform.position += new Vector3(0, (float)-0.5, 0);
-                    playerScript.setStone(playerScript.getStone() + 25);
-                    showFloatTxtRessources("+25 S", new Color32(125, 126, 128, 255));
+
+                    //playerRessources.addStone(25);
                     break;
                 case "SmallRock":
                     ressourcePts -= 5;
                     this.transform.position += new Vector3(0, (float)-0.5, 0);
-                    playerScript.setStone(playerScript.getStone() + 5);
-                    showFloatTxtRessources("+5 S", new Color32(125, 126, 128, 255));
+
+                    //playerRessources.addStone(5);
                     break;
                 case "BigTree":
                     ressourcePts -= 30;
                     targetRotation = Quaternion.FromToRotation(initialRotation.eulerAngles, new Vector3(90,0,0));
-                    //if (ressourcePts <= maxRessourcePts - 30) transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10);
-                    playerScript.setWood(playerScript.getWood() + 30);
-                    showFloatTxtRessources("+30 W",  new Color32(232, 185, 151,255));
+
+                   // playerRessources.addWood(30);
                     break;
                 case "SmallTree":
                     ressourcePts -= 10;
                     targetRotation = Quaternion.FromToRotation(initialRotation.eulerAngles, new Vector3(90, 0, 0));
-                    //if (ressourcePts <= maxRessourcePts - 10) transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10);
-                    playerScript.setWood(playerScript.getWood() + 10);
-                    showFloatTxtRessources("+10 W", new Color32(232, 185, 151,255));
+
+                    //playerRessources.addWood(10);
                     break;
             }
         }
@@ -108,7 +103,7 @@ public class Collectable : MonoBehaviour {
     {
         float ratio = 0;
         float multiplier = 1 / durationRepop;
-        playerScript = (PlayerController)GameObject.FindGameObjectWithTag("Player").GetComponent((typeof(PlayerController)));
+        
 
         switch (collectableType)
         {
@@ -135,9 +130,11 @@ public class Collectable : MonoBehaviour {
                 break;
             case "BigTree":
             case "SmallTree":
-                if (isEmpty)
+                if (isEmpty && this.transform.rotation != initialRotation)
                 {
                     if (ressourcePts <= maxRessourcePts) ressourcePts += (float)0.025;
+                    if (ressourcePts >= maxRessourcePts) transform.rotation = Quaternion.Slerp(transform.rotation, initialRotation, (float)0.1);
+                    Debug.Log(this.transform.rotation == initialRotation);
                 }
 
                 else isEmpty = false;
@@ -146,15 +143,6 @@ public class Collectable : MonoBehaviour {
         }
 
     }
-
-    private void showFloatTxtRessources(string txt, Color color)
-    {
-        GameObject newTxtFloat = Instantiate(floatTextPrefab, floatTextPrefab.transform.position + new Vector3(0, 150,0), Quaternion.identity);
-        newTxtFloat.SetActive(true);
-        newTxtFloat.GetComponent<FloatTextController>().SetTextandMove(txt, color);
-        Destroy(newTxtFloat.gameObject, (float)0.6);
-    }
-
 
     public bool getIsEmpty()
     {
