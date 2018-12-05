@@ -8,6 +8,7 @@ public class Collectable : MonoBehaviour {
     public float durationRepop = 0f;
     public float ressourcePts = 0;
     public float maxRessourcePts = 0;
+    Player player;
 
 
     protected Vector3 initialPosition;
@@ -20,6 +21,8 @@ public class Collectable : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        player = FindObjectOfType<Player>();
+        
         collectableType = this.gameObject.name;
         initialPosition = this.transform.position;
         initialRotation = transform.rotation;
@@ -66,33 +69,28 @@ public class Collectable : MonoBehaviour {
             {
                 case "BigGoldRock":
                     ressourcePts -= 50;
+                    player.getRessources().gold += 50;
                     this.transform.position += new Vector3(0, (float)-0.5, 0);
-
-                    //playerRessources.addGold(50);
                     break;
                 case "BigRock":
                     ressourcePts -= 25;
-                    this.transform.position += new Vector3(0, (float)-0.5, 0);
-
-                    //playerRessources.addStone(25);
+                    player.getRessources().stone += 25;
+                    this.transform.position += new Vector3(0, (float)-0.25, 0);
                     break;
                 case "SmallRock":
                     ressourcePts -= 5;
+                    player.getRessources().stone += 5;
                     this.transform.position += new Vector3(0, (float)-0.5, 0);
-
-                    //playerRessources.addStone(5);
                     break;
                 case "BigTree":
                     ressourcePts -= 30;
+                    player.getRessources().wood += 30;
                     targetRotation = Quaternion.FromToRotation(initialRotation.eulerAngles, new Vector3(90,0,0));
-
-                   // playerRessources.addWood(30);
                     break;
                 case "SmallTree":
                     ressourcePts -= 10;
+                    player.getRessources().wood += 10;
                     targetRotation = Quaternion.FromToRotation(initialRotation.eulerAngles, new Vector3(90, 0, 0));
-
-                    //playerRessources.addWood(10);
                     break;
             }
         }

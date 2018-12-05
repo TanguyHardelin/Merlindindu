@@ -13,11 +13,8 @@ public class ExplorationUI : MonoBehaviour {
     protected Player _player;
 
     //Partie ressources:
-    public Text _food_text;
     public Text _stone_text;
     public Text _gold_text;
-    public Text _silver_text;
-    public Text _cold_text;
     public Text _wood_text;
 
     public Text _text_info;
@@ -57,7 +54,6 @@ public class ExplorationUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _player = GameObject.FindObjectOfType<Player>();
-        _panelTextInfo = GameObject.Find("PanelTextInfo");
     }
 
 	// Update is called once per frame
@@ -86,11 +82,8 @@ public class ExplorationUI : MonoBehaviour {
     void updateRessource()
     {
         RessourceType actual_ressource = _player.getRessources();
-        _food_text.text = actual_ressource.food.ToString();
         _stone_text.text = actual_ressource.stone.ToString();
         _gold_text.text = actual_ressource.gold.ToString();
-        _silver_text.text = actual_ressource.silver.ToString();
-        _cold_text.text = actual_ressource.cold.ToString();
         _wood_text.text = actual_ressource.wood.ToString();
     }
 
