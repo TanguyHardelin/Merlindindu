@@ -14,17 +14,14 @@ public class Monster : MonoBehaviour {
     public PlayerController player;
     public float level = 1;
     public string typeMonster;
-    public int timeBtwAtk = 50;
     public int amtGold;
 
     private bool isAttacking = false;
     private bool isFleeing = false;
-    private bool isAttacked = false;
     private bool isDead = false;
     private Vector3 direction;
     private float angle;
     private int timeNewDir = 0;
-    private int timeAtk = 0;
     private Vector3 moveDir;
     public bool hasAttacked;
     private int deathCnt = 0;
@@ -336,10 +333,6 @@ public class Monster : MonoBehaviour {
     public void setLevel(float lvl)
     {
         level = lvl;
-    }
-    public void setIsAttacked(bool isatk)
-    {
-        isAttacked = isatk;
     }
 
 
