@@ -103,8 +103,9 @@ public class PlayerController : MonoBehaviour
     }
     public void setHealth(int hlt)
     {
-        if (hlt >= 0 && hlt < maxHealth) health = hlt;
-        else if (hlt < 0) health = 0;
+        if (hlt >= maxHealth) health = maxHealth;
+        else if (hlt <= 0) health = 0;
+        else health = hlt;
     }
 
     public int getATK()

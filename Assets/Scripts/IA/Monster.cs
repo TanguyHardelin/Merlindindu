@@ -15,6 +15,7 @@ public class Monster : MonoBehaviour {
     public float level = 1;
     public string typeMonster;
     public int amtGold;
+    public float attDistance;
 
     private bool isAttacking = false;
     private bool isFleeing = false;
@@ -44,6 +45,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 3f;
                 amtGold = 10;
+                attDistance = 0.8f;
                 break;
             case "Rabbit2":
                 damageAmount = 8;
@@ -53,6 +55,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 3f;
                 amtGold = 16;
+                attDistance = 0.9f;
                 break;
             case "Rabbit3":
                 damageAmount = 12;
@@ -62,6 +65,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 4f;
                 amtGold = 24;
+                attDistance = 1f;
                 break;
             case "Bat1":
                 damageAmount = 6;
@@ -71,6 +75,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 4f;
                 amtGold = 12;
+                attDistance = 1f;
                 break;
             case "Bat2":
                 damageAmount = 12;
@@ -80,6 +85,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 4f;
                 amtGold = 18;
+                attDistance = 1f;
                 break;
             case "Bat3":
                 damageAmount = 16;
@@ -89,6 +95,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 5f;
                 amtGold = 25;
+                attDistance = 1f;
                 break;
             case "Blob1":
                 damageAmount = 2;
@@ -98,6 +105,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 2f;
                 amtGold = 11;
+                attDistance = 0.9f;
                 break;
             case "Blob2":
                 damageAmount = 4;
@@ -107,6 +115,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 2f;
                 amtGold = 17;
+                attDistance = 1f;
                 break;
             case "Blob3":
                 damageAmount = 8;
@@ -116,6 +125,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 3f;
                 amtGold = 26;
+                attDistance = 1.1f;
                 break;
             case "Ghost1":
                 damageAmount = 6;
@@ -125,6 +135,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 2f;
                 amtGold = 12;
+                attDistance = 1f;
                 break;
             case "Ghost2":
                 damageAmount = 9;
@@ -134,6 +145,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 2f;
                 amtGold = 20;
+                attDistance = 1f;
                 break;
             case "Ghost3":
                 damageAmount = 13;
@@ -143,6 +155,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 3f;
                 amtGold = 28;
+                attDistance = 1f;
                 break;
             case "Mushroom1":
                 damageAmount = 8;
@@ -152,6 +165,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 1f;
                 amtGold = 10;
+                attDistance = 1f;
                 break;
             case "Mushroom2":
                 damageAmount = 15;
@@ -161,6 +175,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 1f;
                 amtGold = 16;
+                attDistance = 1f;
                 break;
             case "Mushroom3":
                 damageAmount = 26;
@@ -169,6 +184,7 @@ public class Monster : MonoBehaviour {
                 isAggressive = true;
                 isACoward = false;
                 amtGold = 24;
+                attDistance = 1f;
                 break;
             case "Skeleton1":
                 damageAmount = 5;
@@ -178,6 +194,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 4f;
                 amtGold = 15;
+                attDistance = 1f;
                 break;
             case "Skeleton2":
                 damageAmount = 7;
@@ -187,6 +204,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 5f;
                 amtGold = 122;
+                attDistance = 1f;
                 break;
             case "Skeleton3":
                 damageAmount = 10;
@@ -196,6 +214,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 5f;
                 amtGold = 35;
+                attDistance = 1f;
                 break;
         }
     }
@@ -224,7 +243,7 @@ public class Monster : MonoBehaviour {
         direction.y = 0;
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), moveRate);
 
-        if (direction.magnitude > 1) // 1 => monstre à distance suffisante pour effectuer une attaque de mêlée
+        if (direction.magnitude > attDistance)
         {   
             anim.SetBool("isWalking", true);
             this.transform.Translate(0, 0, 0.02f * moveRate); 
@@ -327,8 +346,12 @@ public class Monster : MonoBehaviour {
     }
     public void setHealth(float hlth)
     {
-        if (hlth < 0) isDead = true;
-        else if (hlth <= healthMax) health = hlth;
+        if (hlth <= 0) {
+            isDead = true;
+            health = 0;
+        }
+        else if (hlth >= healthMax) health = healthMax;
+        else health = hlth;
     }
     public void setLevel(float lvl)
     {
