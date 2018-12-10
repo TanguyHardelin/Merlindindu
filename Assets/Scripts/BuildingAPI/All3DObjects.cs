@@ -12,15 +12,16 @@ public class All3DObjects : MonoBehaviour {
     [SerializeField]
     protected Building currentObject =null;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Awake()
+    {
+        Messenger.AddListener(GameEvent.SwitchToExplorationMode, setCurrentObjToNull);
+    }
+
+    private void OnDestroy()
+    {
+        
+        Messenger.RemoveListener(GameEvent.SwitchToExplorationMode, setCurrentObjToNull);
+    }
 
     public void setCurrentBuilding(string name)
     {

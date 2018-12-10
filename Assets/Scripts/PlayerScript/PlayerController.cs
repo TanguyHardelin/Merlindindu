@@ -4,8 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    protected Camera mainCamera;
+    [SerializeField] Camera mainCamera;
 
     public float moveSpeed = 8f;
     public float walkSpeed = 4f;
@@ -51,16 +50,18 @@ public class PlayerController : MonoBehaviour
             _environnmentGenerator.GenerateAroundPlayer(x, z);
         }
 
-        if (Input.GetKeyDown("space")) {
-            animator.SetTrigger("isJumping");
-        }
+        if (mainCamera.enabled == true) {
+            if (Input.GetKeyDown("space")) {
+                animator.SetTrigger("isJumping");
+            }
 
-        if (Input.GetMouseButtonDown(0)) {
-            animator.SetBool("isAttacking", true);
-        }
+            if (Input.GetMouseButtonDown(0)) {
+                animator.SetBool("isAttacking", true);
+            }
 
-        if (health <= 0) { 
-            animator.SetBool("isDead", true);
+            if (health <= 0) { 
+                animator.SetBool("isDead", true);
+            }
         }
     }
 
@@ -69,12 +70,14 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
 
-        if (moveHorizontal != 0 || moveVertical != 0) {
-            animator.SetBool("isMoving", true);
-            movePlayer(moveHorizontal, moveVertical);
-        }
-        else {
-            animator.SetBool("isMoving", false);
+        if (mainCamera.enabled == true) {
+            if (moveHorizontal != 0 || moveVertical != 0) {
+                animator.SetBool("isMoving", true);
+                movePlayer(moveHorizontal, moveVertical);
+            }
+            else {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 

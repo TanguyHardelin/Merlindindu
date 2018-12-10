@@ -16,11 +16,11 @@ public class UIManager : MonoBehaviour {
 	void Start () {
         currentGold = player.GetComponent<Player>().getRessources().gold * 100;
         maxGold = player.GetComponent<Player>().maxGold * 100;
-        UpdateHealthBar();
+        UpdateGoldBar();
     }
 	
 	// Update is called once per frame
-	void UpdateHealthBar() {
+	void UpdateGoldBar() {
 
         float ratio = currentGold / maxGold;
         current_gold.rectTransform.localScale = new Vector3(ratio, 1, 1);
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour {
     {   
         currentGold = player.GetComponent<Player>().getRessources().gold * 100;
         maxGold = player.GetComponent<Player>().maxGold * 100;
-        UpdateHealthBar();
+        UpdateGoldBar();
 	}
 
     public void setFreeze(bool frz)

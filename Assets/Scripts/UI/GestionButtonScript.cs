@@ -29,6 +29,10 @@ public class GestionButtonScript : MonoBehaviour {
         {
             _button.onClick.AddListener(() => switchToExploration());
         }
+        else if (_role == "switchToGestion")
+        {
+            _button.onClick.AddListener(() => switchToGestion());
+        }
     }
 	
 	// Update is called once per frame
@@ -51,5 +55,9 @@ public class GestionButtonScript : MonoBehaviour {
     void switchToExploration()
     {
         Messenger.Broadcast(GameEvent.SwitchToExplorationMode);
+    }
+
+    void switchToGestion() {
+        Messenger.Broadcast(GameEvent.SwitchToGestionMode);
     }
 }

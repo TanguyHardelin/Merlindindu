@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ExplorationUI : MonoBehaviour {
-    [SerializeField]
-    protected Camera _main_camera;
-    [SerializeField]
-    protected Camera _manage_camera;
+    [SerializeField] protected Camera _main_camera;
+    [SerializeField] protected Camera _manage_camera;
 
     //Player:
     protected Player _player;
@@ -27,6 +25,8 @@ public class ExplorationUI : MonoBehaviour {
     public int refresh_rate = 15;
     protected bool _panel_visibility = false;
     protected bool _panel_need_refresh = true;
+    public GameObject ExploButton;
+    public GameObject GestionButton;
 
     public void setInfoText(string text)
     {
@@ -54,6 +54,9 @@ public class ExplorationUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _player = GameObject.FindObjectOfType<Player>();
+
+        _main_camera.enabled = true;
+        _manage_camera.enabled = false;
     }
 
 	// Update is called once per frame
@@ -94,8 +97,9 @@ public class ExplorationUI : MonoBehaviour {
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = true;
-        Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
-        UIExploration.enabled = false;
+
+        ExploButton.SetActive(true);
+        GestionButton.SetActive(false);
     }
     
 }
