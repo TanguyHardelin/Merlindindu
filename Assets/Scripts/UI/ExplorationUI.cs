@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ExplorationUI : MonoBehaviour {
     [SerializeField] protected Camera _main_camera;
     [SerializeField] protected Camera _manage_camera;
+    Vector3 positionManageCamera;
 
     //Player:
     protected Player _player;
@@ -57,6 +58,7 @@ public class ExplorationUI : MonoBehaviour {
 
         _main_camera.enabled = true;
         _manage_camera.enabled = false;
+        positionManageCamera = _manage_camera.transform.position;
     }
 
 	// Update is called once per frame
@@ -94,6 +96,7 @@ public class ExplorationUI : MonoBehaviour {
     {
         _main_camera.enabled = false;
         _manage_camera.enabled = true;
+        _manage_camera.transform.position = positionManageCamera;
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = true;

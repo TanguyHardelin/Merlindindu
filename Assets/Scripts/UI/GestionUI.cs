@@ -37,6 +37,7 @@ public class GestionUI : MonoBehaviour {
     public GameObject ExploButton;
     public GameObject GestionButton;
 
+
     //Ressources:
     protected Village _village;
 
@@ -64,8 +65,6 @@ public class GestionUI : MonoBehaviour {
             updateUI();
             _refresh_count = 0;
         }
-
-        
     }
 
     private void Awake()
@@ -196,8 +195,7 @@ public class GestionUI : MonoBehaviour {
     {
         _main_camera.enabled = true;
         _manage_camera.enabled = false;
-
-        Debug.Log("here");
+        _panel.SetActive(false);
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = false;

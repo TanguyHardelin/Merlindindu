@@ -16,12 +16,6 @@ public class BuildingCameraSpawner : MonoBehaviour
     public float distanceMin = 10f;
     public float distanceMax = 100f;
 
-    protected Vector3 button_1_old_position = new Vector3(0, 0, 0);
-    protected Vector3 button_2_old_position = new Vector3(0, 0, 0);
-    protected float angleX = 360;
-
-    protected int levelOfZoom = 0;
-
     // Use this for initialization
     void Start()
     {
