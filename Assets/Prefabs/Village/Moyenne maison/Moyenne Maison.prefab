@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 773757223376317039}
   - component: {fileID: 6885756479530558877}
   m_Layer: 0
-  m_Name: MaisonMoyenne
+  m_Name: Moyenne Maison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5686106353425880747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -299.87, y: 19.577465, z: -382.83}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef259c26d050e4648990a0f423dafc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Maison Moyenne
-  _description: 
+  _name: Moyenne Maison
+  _description: Augmente le nombre de Villageois
   _building_tag: village
   _building_icon: {fileID: 2800000, guid: 2310d6f3887a90c4e943437f9761a81c, type: 3}
   constructionTime: 5
@@ -57,11 +57,11 @@ MonoBehaviour:
     - 4
     - 5
     m_values:
-    - {fileID: 1884871139271624, guid: 3901fdc4331228e4482f66ba9214613a, type: 3}
-    - {fileID: 1859359162929306, guid: 10e5c7d7cd4f03241b3c35c48f7a57c0, type: 3}
-    - {fileID: 1084973996498822, guid: 08e8085c23011fd4a904718345771b93, type: 3}
-    - {fileID: 1814735331121350, guid: d1bb2321bd2341b4f9799534c6b7da38, type: 3}
-    - {fileID: 1732216276247198, guid: 94edd989a252a3e459c0190b469e69c5, type: 3}
+    - {fileID: 1133908737961552, guid: cc53e92a6dfdc534099f3ae3f7c9ef1e, type: 3}
+    - {fileID: 1133908737961552, guid: c6ae5c9be22147540883acffae131342, type: 3}
+    - {fileID: 1133908737961552, guid: 2bf120b2a95c4ec4bb2ba6104593b766, type: 3}
+    - {fileID: 1133908737961552, guid: cad2876d3e5cf9f48b06ebaf87ac52c1, type: 3}
+    - {fileID: 1133908737961552, guid: a94ef45e1af2443409a88f733ea2a8ac, type: 3}
     - {fileID: 1133908737961552, guid: 731714fa9c46a6a44a61b6f032e82b67, type: 3}
   startingIndex: 0
   size: {x: 2, y: 1}

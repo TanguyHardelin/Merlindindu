@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4398979229963398048
+--- !u!1 &669233262
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7877216737771819200}
-  - component: {fileID: 2195274478302859716}
+  - component: {fileID: 669233264}
+  - component: {fileID: 669233263}
   m_Layer: 0
-  m_Name: PetiteMaison
+  m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7877216737771819200
+--- !u!4 &669233264
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4398979229963398048}
+  m_GameObject: {fileID: 669233262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 19.577465, z: -382.95157}
+  m_LocalPosition: {x: -299.87, y: 19.577465, z: -382.83}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2195274478302859716
+--- !u!114 &669233263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4398979229963398048}
+  m_GameObject: {fileID: 669233262}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef259c26d050e4648990a0f423dafc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Petite Maison
-  _description: Augmente un peu le nombre de Villageois.
-  _building_tag: village
-  _building_icon: {fileID: 2800000, guid: 29898a32fa7fae24cb4ede12b4104086, type: 3}
+  _name: Mine
+  _description: "R\xE9colte de la pierre automatiquement"
+  _building_tag: ressources
+  _building_icon: {fileID: 2800000, guid: c50786c4e9ca6ed4fad85c0764b5c44c, type: 3}
   constructionTime: 5
   buildingEtapes:
     m_keys:
@@ -57,22 +57,22 @@ MonoBehaviour:
     - 4
     - 5
     m_values:
-    - {fileID: 1667984703796746, guid: 032d07a53bb49d3419f39a716280de6b, type: 3}
-    - {fileID: 1416623559367504, guid: 6b89c78ca8892fd46853e0a350a1303e, type: 3}
-    - {fileID: 1514685436986730, guid: 60c90e55fa80eb841a9ad2360955860c, type: 3}
-    - {fileID: 1285881228323194, guid: 397bf21b77745ed4a8a47c80889624b6, type: 3}
-    - {fileID: 1675840949413842, guid: 8b9fd52426579324c92d9c6b0739c14e, type: 3}
-    - {fileID: 1967447665655306, guid: e5e9ec519cf759f4fbb28fefcbe180b5, type: 3}
+    - {fileID: 1405781317243284, guid: 2f6068047a5963643b8e31f2f62156d4, type: 3}
+    - {fileID: 1507010447551316, guid: dcb612de412851a40a30ba398da3cd40, type: 3}
+    - {fileID: 1096607641334172, guid: 589431909e97b4a4ca2a9e311546c371, type: 3}
+    - {fileID: 1646972431085624, guid: 8b25424fe9c7d7d46bdb0f17dd7c1fd2, type: 3}
+    - {fileID: 1411927157057982, guid: 0a0b255f6dc536f48aec7a69df9e00b8, type: 3}
+    - {fileID: 1940666217900504, guid: 2912a2684f0d5054480345d1ed1ee234, type: 3}
   startingIndex: 0
   size: {x: 1, y: 1}
   ressourcesNeeded:
     food: 0
-    wood: 60
-    stone: 30
-    gold: 100
+    wood: 300
+    stone: 250
+    gold: 320
     silver: 0
     cold: 0
-    citizen: 0
+    citizen: 40
   ressourcesProduction:
     food: 0
     wood: 0
@@ -80,5 +80,5 @@ MonoBehaviour:
     gold: 0
     silver: 0
     cold: 0
-    citizen: 5
+    citizen: 0
   parent: {fileID: 0}

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680055933208236212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -299.87, y: 19.577465, z: -382.83}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Forge
-  _description: 
+  _description: "Am\xE9liore l'arme du joueur. "
   _building_tag: millitary
   _building_icon: {fileID: 2800000, guid: e7c1be23ff671b34c8206a247ed8b2fc, type: 3}
   constructionTime: 5
@@ -55,13 +55,11 @@ MonoBehaviour:
     - 2
     - 3
     - 4
-    - 5
     m_values:
-    - {fileID: 1405541261754274, guid: fdef188ecf1eaf948b539193f9129e23, type: 3}
-    - {fileID: 1472643025736916, guid: 48f23a08f9b9f724eb49aba9b8e23bff, type: 3}
-    - {fileID: 1335159788263192, guid: 17e7933013a8dc043a6adf471ca94362, type: 3}
-    - {fileID: 1858891816447264, guid: a13cd4b8e1cdbe44993e1d2c013b9eeb, type: 3}
-    - {fileID: 1312024914925502, guid: cc416eac094e86741a621f74566556c3, type: 3}
+    - {fileID: 1502833244329328, guid: 48bd5b089d1f287418a616143da24dd2, type: 3}
+    - {fileID: 1502833244329328, guid: fc6d1607b54a09444b1ea875d540dfa7, type: 3}
+    - {fileID: 1502833244329328, guid: 68e7bc5fdcb545b4c9cbfccf2f88b668, type: 3}
+    - {fileID: 1502833244329328, guid: 1138d08091d005b4cb30f3f624ab3655, type: 3}
     - {fileID: 1502833244329328, guid: 6492000a47068a04ba1540326241da17, type: 3}
   startingIndex: 0
   size: {x: 2, y: 1}
