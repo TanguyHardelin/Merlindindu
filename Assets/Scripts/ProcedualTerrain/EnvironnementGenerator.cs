@@ -101,7 +101,7 @@ public class EnvironnementGenerator : MonoBehaviour {
         if (canSpwan[x - (int)chunkSize[0] / 2, z] == true) is_chunk_need.Add(isChunkNeeded(x - (int)chunkSize[0]/2, z));
         if (canSpwan[x, z + (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
         */
-        Debug.Log("x= " + x + " z= " + z);
+        //Debug.Log("x= " + x + " z= " + z);
         for(int i = x-3  ; i < x+3; i++)
         {
             for (int j = z - 3; j < z + 3; j++)
