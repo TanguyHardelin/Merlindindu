@@ -21,7 +21,7 @@ public class Building : MonoBehaviour {
     protected Texture _building_icon;
 
 
-    [Header("Informations sur le batiments")]
+    [Header("Informations sur le bâtiment")]
     [SerializeField]
     protected float constructionTime;
 
@@ -35,20 +35,20 @@ public class Building : MonoBehaviour {
     protected Vector2 size = new Vector2(1, 1);
 
 
-    [Header("Ressource nécéssaire pour construire batiments")]
+    [Header("Ressource nécéssaire pour construire bâtiments")]
     [SerializeField]
     protected RessourceType ressourcesNeeded;
 
-    [Header("Production du batiment")]
+    [Header("Production du bâtiment")]
     [SerializeField]
     protected RessourceType ressourcesProduction;
 
-    [Header("Production du batiment (une seule fois à sa construction)")]
-    [SerializeField]
+   // [Header("Production du bâtiment (une seule fois à sa construction)")]
+   // [SerializeField]
     protected RessourceType ressourcesProductionOneShot;
 
-    [Header("Bonus apportés par le batriments sur les ressources")]
-    [SerializeField]
+   // [Header("Bonus apportés par le bâtiment sur les ressources")]
+   // [SerializeField]
     protected RessourceType ressourcesBonus;
 
     
