@@ -75,22 +75,42 @@ public class Collectable : MonoBehaviour {
                 case "BigGoldRock":
                     ressourcePts -= 50;
                     player.getRessources().gold += 50;
+                    player.GetComponent<AudioSource>().volume = 1;
+                    var audioClip = Resources.Load<AudioClip>("Sounds/Player/collectStone");
+                    player.GetComponent<AudioSource>().clip = audioClip;
+                    player.GetComponent<AudioSource>().Play();
                     break;
                 case "BigRock":
                     ressourcePts -= 25;
                     player.getRessources().stone += 25;
+                    player.GetComponent<AudioSource>().volume = 1;
+                    var audioClip2 = Resources.Load<AudioClip>("Sounds/Player/collectStone");
+                    player.GetComponent<AudioSource>().clip = audioClip2;
+                    player.GetComponent<AudioSource>().Play();
                     break;
                 case "SmallRock":
                     ressourcePts -= 5;
                     player.getRessources().stone += 5;
+                    player.GetComponent<AudioSource>().volume = 1;
+                    var audioClip3 = Resources.Load<AudioClip>("Sounds/Player/collectStone");
+                    player.GetComponent<AudioSource>().clip = audioClip3;
+                    player.GetComponent<AudioSource>().Play();
                     break;
                 case "BigTree":
                     ressourcePts -= 30;
                     player.getRessources().wood += 30;
+                    player.GetComponent<AudioSource>().volume = 1;
+                    var audioClip4 = Resources.Load<AudioClip>("Sounds/Player/collectWoodMP3");
+                    player.GetComponent<AudioSource>().clip = audioClip4;
+                    player.GetComponent<AudioSource>().Play();
                     break;
                 case "SmallTree":
                     ressourcePts -= 10;
                     player.getRessources().wood += 10;
+                    player.GetComponent<AudioSource>().volume = 1;
+                    var audioClip5 = Resources.Load<AudioClip>("Sounds/Player/collectWoodMP3");
+                    player.GetComponent<AudioSource>().clip = audioClip5;
+                    player.GetComponent<AudioSource>().Play();
                     break;
             }
             if (ressourcePts <= 0) {

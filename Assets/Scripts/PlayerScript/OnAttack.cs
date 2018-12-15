@@ -5,9 +5,13 @@ using UnityEngine;
 public class OnAttack : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//	
-	//}
+	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = (float)0.25;
+        var audioClip = Resources.Load<AudioClip>("Sounds/Player/sword_slashMP3");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -18,7 +22,7 @@ public class OnAttack : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		animator.SetBool("isAttacking", false);
 		GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().hasAttacked = false;
-	}
+    }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

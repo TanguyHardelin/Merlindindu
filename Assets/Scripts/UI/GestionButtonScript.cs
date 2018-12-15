@@ -55,9 +55,15 @@ public class GestionButtonScript : MonoBehaviour {
     void switchToExploration()
     {
         Messenger.Broadcast(GameEvent.SwitchToExplorationMode);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = (float)0.2;
+        GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().volume = 0;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
     }
 
     void switchToGestion() {
         Messenger.Broadcast(GameEvent.SwitchToGestionMode);
+        GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().volume = (float)0.16;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = 0;
+        GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().Play();
     }
 }

@@ -7,7 +7,11 @@ public class OnDash : StateMachineBehaviour {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		PlayerController player = FindObjectOfType<PlayerController>();
-		player.speed = 30f;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = 1;
+        var audioClip = Resources.Load<AudioClip>("Sounds/Player/onDash");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();
+        player.speed = 30f;
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
