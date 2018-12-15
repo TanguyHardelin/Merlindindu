@@ -13,7 +13,6 @@ public class GestionUI : MonoBehaviour {
     protected bool _panel_need_refresh = true;
     protected string _current_batiment_type = "";
     protected GameObject _panel;
-    protected GameObject _panel_info_village;
 
     [SerializeField]
     protected string villageTag="PlayerSystem";
@@ -28,49 +27,34 @@ public class GestionUI : MonoBehaviour {
     [SerializeField]
     protected Transform _parent;
 
-    [SerializeField]
-    protected Camera _main_camera;
-    [SerializeField]
-    protected Camera _manage_camera;
+    [SerializeField] protected Camera _main_camera;
+    [SerializeField] protected Camera _manage_camera;
 
     protected List<GameObject> _instantied_prefab = new List<GameObject>();
     protected All3DObjects _all_objects;
 
     //Infos générales:
+    public GameObject ExploButton;
+    public GameObject GestionButton;
+
 
     //Ressources:
     protected Village _village;
 
-    public Text _food_text;
     public Text _stone_text;
     public Text _gold_text;
-    public Text _silver_text;
-    public Text _cold_text;
     public Text _wood_text;
 
     // Use this for initialization
     void Start () {
-
         _panel = GameObject.Find("PanelChoixBatiments");
-        _panel_info_village = GameObject.Find("VillageInfoPanel");
 
         //Ressource:
         _village = GameObject.FindGameObjectWithTag(villageTag).GetComponentInChildren<Village>();
         _all_objects = GameObject.FindGameObjectWithTag(villageTag).GetComponentInChildren<All3DObjects>();
 
-        /*
-        _food_text = GameObject.Find("BleText").GetComponent<Text>();
-        _stone_text = GameObject.Find("PierreText").GetComponent<Text>();
-        _gold_text = GameObject.Find("OrText").GetComponent<Text>();
-        _silver_text = GameObject.Find("FerText").GetComponent<Text>();
-        _cold_text = GameObject.Find("CharbonText").GetComponent<Text>();
-        _wood_text = GameObject.Find("BoisText").GetComponent<Text>();
-        */
-
-        Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
-        UIGestion.enabled = true ;
-        Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
-        UIExploration.enabled=false;
+        _main_camera.enabled = false;
+        _manage_camera.enabled = true;
     }
 	
 	// Update is called once per frame
@@ -105,7 +89,6 @@ public class GestionUI : MonoBehaviour {
         if (_panel_need_refresh)
         {
             _panel.gameObject.SetActive(_panel_visibility);
-            _panel_info_village.SetActive(!_panel_visibility);
 
             _panel_need_refresh = false;
         }
@@ -118,11 +101,8 @@ public class GestionUI : MonoBehaviour {
     {
         RessourceType actual_ressource = _village.getRessources();
         RessourceType limit_ressource = _village.getRessourcesLimit();
-        _food_text.text = actual_ressource.food.ToString()+"/"+ limit_ressource.food.ToString();
         _stone_text.text = actual_ressource.stone.ToString() + "/" + limit_ressource.stone.ToString();
         _gold_text.text = actual_ressource.gold.ToString() + "/" + limit_ressource.gold.ToString();
-        _silver_text.text = actual_ressource.silver.ToString() + "/" + limit_ressource.silver.ToString();
-        _cold_text.text = actual_ressource.cold.ToString() + "/" + limit_ressource.cold.ToString();
         _wood_text.text = actual_ressource.wood.ToString() + "/" + limit_ressource.wood.ToString();
     }
 
@@ -215,10 +195,12 @@ public class GestionUI : MonoBehaviour {
     {
         _main_camera.enabled = true;
         _manage_camera.enabled = false;
+        _panel.SetActive(false);
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = false;
-        Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
-        UIExploration.enabled = true;
+
+        ExploButton.SetActive(false);
+        GestionButton.SetActive(true);
     }
 }

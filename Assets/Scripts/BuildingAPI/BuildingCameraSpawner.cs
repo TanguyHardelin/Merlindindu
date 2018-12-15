@@ -11,12 +11,10 @@ public class BuildingCameraSpawner : MonoBehaviour
     protected BuidingAPI _buildingAPI;
 
     public float speed = 0.2f;
-
-    protected Vector3 button_1_old_position = new Vector3(0, 0, 0);
-    protected Vector3 button_2_old_position = new Vector3(0, 0, 0);
-    protected float angleX = 360;
-
-    protected int levelOfZoom = 0;
+    public float scrollSpeed = 2f;
+    public float moveSpeed = 0.5f;
+    public float distanceMin = 10f;
+    public float distanceMax = 100f;
 
     // Use this for initialization
     void Start()
@@ -82,71 +80,26 @@ public class BuildingCameraSpawner : MonoBehaviour
         }
 
         //Gestion orientation:
-        if (Input.GetMouseButtonUp(2))
-        {
-            button_1_old_position = new Vector3(0, 0, 0);
+        if (Input.GetAxis("Horizontal") !=0 || Input.GetAxis("Vertical") != 0) {
+            Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            this.transform.Translate(direction * speed, Space.World);
         }
-        if (Input.GetMouseButton(2))
-        {
-            Vector3 diff = Input.mousePosition - button_1_old_position;
-            if (button_1_old_position.x != 0)
-            {
-                diff.x *= speed;
-                angleX += diff.x;
-                if (angleX > 0)
-                {
-                    angleX = 0;
-                }
-                if (angleX < -45)
-                {
-                    angleX = -45;
-                }
-                transform.localEulerAngles = new Vector3(315 + angleX, 0, 0);
-            }
 
-            button_1_old_position = Input.mousePosition;
-        }
         //Gestion zoom / dezoom
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform != null)
-                {
-                    Vector3 speed = transform.position - hit.point;
-                    transform.position += -1.0f * (speed * Time.deltaTime);
-
-                }
+        if (Input.GetAxis("Mouse ScrollWheel") != 0) {
+            Vector3 direction = this.transform.forward;
+            float sens = Input.GetAxis("Mouse ScrollWheel");
+            Vector3 newPosition = this.transform.position + sens * direction * scrollSpeed;
+            Vector3 CameraPositionToTheGround = Vector3.zero;
+            CameraPositionToTheGround.x = newPosition.x;
+            CameraPositionToTheGround.z = newPosition.z;
+            float DistanceToTheGround = Vector3.Distance(newPosition, CameraPositionToTheGround);
+            if (DistanceToTheGround > distanceMin && DistanceToTheGround < distanceMax) {
+                this.transform.position = newPosition;
             }
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform != null)
-                {
-                    Vector3 speed = transform.position - hit.point;
-                    transform.position += (speed * Time.deltaTime);
-
-                }
-            }
-        }
-
-        //Gestion des touches:
-        if (Input.GetKey(KeyCode.R))
-        {
-            applyRotation();
-        }
-
     }
-    protected void applyRotation()
-    {
-        _buildingAPI.apply90RotationDegree();
-    }
+        
     protected void stopBuilding()
     {
         _buildingAPI.stopBuilding();

@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4398979229963398048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7877216737771819200}
+  - component: {fileID: 2195274478302859716}
+  m_Layer: 0
+  m_Name: PetiteMaison
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7877216737771819200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398979229963398048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -296.8105, y: 19.577465, z: -382.95157}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2195274478302859716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398979229963398048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef259c26d050e4648990a0f423dafc46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Petite Maison
+  _description: 
+  _building_tag: village
+  _building_icon: {fileID: 2800000, guid: 29898a32fa7fae24cb4ede12b4104086, type: 3}
+  constructionTime: 5
+  buildingEtapes:
+    m_keys:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    m_values:
+    - {fileID: 1667984703796746, guid: 032d07a53bb49d3419f39a716280de6b, type: 3}
+    - {fileID: 1416623559367504, guid: 6b89c78ca8892fd46853e0a350a1303e, type: 3}
+    - {fileID: 1514685436986730, guid: 60c90e55fa80eb841a9ad2360955860c, type: 3}
+    - {fileID: 1285881228323194, guid: 397bf21b77745ed4a8a47c80889624b6, type: 3}
+    - {fileID: 1675840949413842, guid: 8b9fd52426579324c92d9c6b0739c14e, type: 3}
+    - {fileID: 1967447665655306, guid: e5e9ec519cf759f4fbb28fefcbe180b5, type: 3}
+  startingIndex: 0
+  size: {x: 1, y: 1}
+  ressourcesNeeded:
+    food: 0
+    wood: 60
+    stone: 30
+    gold: 100
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesProduction:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 5
+  ressourcesProductionOneShot:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesBonus:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  parent: {fileID: 0}

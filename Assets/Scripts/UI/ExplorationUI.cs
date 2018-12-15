@@ -4,20 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ExplorationUI : MonoBehaviour {
-    [SerializeField]
-    protected Camera _main_camera;
-    [SerializeField]
-    protected Camera _manage_camera;
+    [SerializeField] protected Camera _main_camera;
+    [SerializeField] protected Camera _manage_camera;
+    Vector3 positionManageCamera;
 
     //Player:
     protected Player _player;
 
     //Partie ressources:
-    public Text _food_text;
     public Text _stone_text;
     public Text _gold_text;
-    public Text _silver_text;
-    public Text _cold_text;
     public Text _wood_text;
 
     public Text _text_info;
@@ -30,6 +26,8 @@ public class ExplorationUI : MonoBehaviour {
     public int refresh_rate = 15;
     protected bool _panel_visibility = false;
     protected bool _panel_need_refresh = true;
+    public GameObject ExploButton;
+    public GameObject GestionButton;
 
     public void setInfoText(string text)
     {
@@ -57,7 +55,10 @@ public class ExplorationUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _player = GameObject.FindObjectOfType<Player>();
-        _panelTextInfo = GameObject.Find("PanelTextInfo");
+
+        _main_camera.enabled = true;
+        _manage_camera.enabled = false;
+        positionManageCamera = _manage_camera.transform.position;
     }
 
 	// Update is called once per frame
@@ -86,11 +87,8 @@ public class ExplorationUI : MonoBehaviour {
     void updateRessource()
     {
         RessourceType actual_ressource = _player.getRessources();
-        _food_text.text = actual_ressource.food.ToString();
         _stone_text.text = actual_ressource.stone.ToString();
         _gold_text.text = actual_ressource.gold.ToString();
-        _silver_text.text = actual_ressource.silver.ToString();
-        _cold_text.text = actual_ressource.cold.ToString();
         _wood_text.text = actual_ressource.wood.ToString();
     }
 
@@ -98,11 +96,13 @@ public class ExplorationUI : MonoBehaviour {
     {
         _main_camera.enabled = false;
         _manage_camera.enabled = true;
+        _manage_camera.transform.position = positionManageCamera;
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = true;
-        Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
-        UIExploration.enabled = false;
+
+        ExploButton.SetActive(true);
+        GestionButton.SetActive(false);
     }
     
 }

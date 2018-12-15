@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2368434631926723428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5951252926472110835}
+  - component: {fileID: 4045994646302942274}
+  m_Layer: 0
+  m_Name: Auberge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5951252926472110835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368434631926723428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -299.87, y: 19.577465, z: -382.83}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4045994646302942274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368434631926723428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef259c26d050e4648990a0f423dafc46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Auberge
+  _description: 
+  _building_tag: village
+  _building_icon: {fileID: 2800000, guid: c31a398489de3a24a9fffe40ffb67459, type: 3}
+  constructionTime: 5
+  buildingEtapes:
+    m_keys:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    m_values:
+    - {fileID: 1337001270970778, guid: 08125065a39aa1d429a14b94c29249b9, type: 3}
+    - {fileID: 1672112131550592, guid: 82d70a885b1e10b4b99833c2ebddc637, type: 3}
+    - {fileID: 1757121964172338, guid: 3dd64d951dadb3a4da0aa521909891fa, type: 3}
+    - {fileID: 1072072074040706, guid: 26a9acb366198414db3c6071cfd9a8e5, type: 3}
+    - {fileID: 1703496436695592, guid: 381ccd582d9df6242987959f418771ba, type: 3}
+    - {fileID: 1888211738949954, guid: a34b078d7b47bfc4b9d177d7fd901a56, type: 3}
+  startingIndex: 0
+  size: {x: 1, y: 1}
+  ressourcesNeeded:
+    food: 0
+    wood: 100
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesProduction:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 2
+  parent: {fileID: 0}
