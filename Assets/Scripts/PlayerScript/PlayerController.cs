@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
         //Nécéssaire au raffraichissement des chunks:
         _environnmentGenerator = FindObjectOfType<EnvironnementGenerator>();
+        gameObject.GetComponent<AudioSource>().volume = 0;
        
     }
 
