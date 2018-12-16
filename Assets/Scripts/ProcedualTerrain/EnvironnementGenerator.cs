@@ -58,7 +58,6 @@ public class EnvironnementGenerator : MonoBehaviour {
                 {
                     int X = getIndexFromCoordinate(i);
                     int Z = getIndexFromCoordinate(j);
-                    Debug.Log("X= "+X+" Z= "+Z);
                     canSpwan[X, Z] = false;
                 }
             }
