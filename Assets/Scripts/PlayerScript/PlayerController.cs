@@ -69,9 +69,21 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0) { 
                 animator.SetBool("isDead", true);
+
                 countRegen = -300;
+                StartCoroutine(Death());
             }
         }
+    }
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(5);
+        GameObject respawnPoint = GameObject.FindGameObjectWithTag("respawn");
+        gameObject.transform.position = respawnPoint.transform.position;
+        animator.SetBool("isDead", false);
+        setHealth(maxHealth / 2);
+        GameObject.FindObjectOfType<Player>().getRessources().gold = GameObject.FindObjectOfType<Player>().getMaxGold()/4;
+
     }
 
     void FixedUpdate()

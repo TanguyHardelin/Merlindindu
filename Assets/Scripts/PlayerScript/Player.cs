@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
     [SerializeField] protected RessourceType _ressources;
 	public float spdTimer = 240;
-    public float maxGold = 1000;
+    public int maxGold = 1000;
 	float spdCount = 0;
 
     public RessourceType getRessources()
@@ -36,4 +36,7 @@ public class Player : MonoBehaviour {
             spdCount = 0;
         }
 	}
+
+    public int getMaxGold() { return maxGold; }
+    public void setMaxGold(int gold) { maxGold = gold; }
 }
