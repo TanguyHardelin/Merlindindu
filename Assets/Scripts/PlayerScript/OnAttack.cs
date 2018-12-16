@@ -7,7 +7,7 @@ public class OnAttack : StateMachineBehaviour {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = (float)0.25;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = (float)0.2;
         var audioClip = Resources.Load<AudioClip>("Sounds/Player/sword_slashMP3");
         GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().clip = audioClip;
         GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();

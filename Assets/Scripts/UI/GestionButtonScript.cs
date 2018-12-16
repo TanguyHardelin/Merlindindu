@@ -43,27 +43,47 @@ public class GestionButtonScript : MonoBehaviour {
     void OpenVillage()
     {
         Messenger.Broadcast(GameEvent.VillageNeedOpen);
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().volume = 1;
+        var audioClip = Resources.Load<AudioClip>("Sounds/click");
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().Play();
     }
     void OpenMillitary()
     {
         Messenger.Broadcast(GameEvent.MillitaryNeedOpen);
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().volume = 1;
+        var audioClip = Resources.Load<AudioClip>("Sounds/click");
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().Play();
     }
     void OpenRessources()
     {
         Messenger.Broadcast(GameEvent.RessourcesNeedOpen);
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().volume = 1;
+        var audioClip = Resources.Load<AudioClip>("Sounds/click");
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().Play();
     }
     void switchToExploration()
     {
         Messenger.Broadcast(GameEvent.SwitchToExplorationMode);
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = (float)0.2;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = (float)0.15;
         GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().volume = 0;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().volume = 1;
+        var audioClip = Resources.Load<AudioClip>("Sounds/click");
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().Play();
     }
 
     void switchToGestion() {
         Messenger.Broadcast(GameEvent.SwitchToGestionMode);
-        GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().volume = (float)0.16;
+        GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().volume = (float)0.12;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().volume = 0;
         GameObject.FindGameObjectWithTag("ManageCamera").GetComponent<AudioSource>().Play();
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().volume = 1;
+        var audioClip = Resources.Load<AudioClip>("Sounds/click");
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().clip = audioClip;
+        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().Play();
     }
 }

@@ -26,6 +26,8 @@ public class Monster : MonoBehaviour {
     private Vector3 moveDir;
     public bool hasAttacked;
     private int deathCnt = 0;
+    private bool isKnight = false;
+    public float correcSpeed = 0.3f;
 
     public void Start()
     {
@@ -43,7 +45,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 20;
                 isAggressive = false;
                 isACoward = true;
-                moveRate = 3f;
+                moveRate = 3f * correcSpeed;
                 amtGold = 10;
                 attDistance = 0.8f;
                 break;
@@ -53,7 +55,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 50;
                 isAggressive = false;
                 isACoward = true;
-                moveRate = 3f;
+                moveRate = 3f * correcSpeed;
                 amtGold = 16;
                 attDistance = 0.9f;
                 break;
@@ -63,7 +65,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 110;
                 isAggressive = false;
                 isACoward = true;
-                moveRate = 4f;
+                moveRate = 4f * correcSpeed;
                 amtGold = 24;
                 attDistance = 1f;
                 break;
@@ -73,7 +75,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 25;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 4f;
+                moveRate = 4f * correcSpeed;
                 amtGold = 12;
                 attDistance = 1f;
                 break;
@@ -83,7 +85,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 60;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 4f;
+                moveRate = 4f * correcSpeed;
                 amtGold = 18;
                 attDistance = 1f;
                 break;
@@ -93,7 +95,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 120;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 5f;
+                moveRate = 5f * correcSpeed;
                 amtGold = 25;
                 attDistance = 1f;
                 break;
@@ -103,7 +105,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 40;
                 isAggressive = false;
                 isACoward = true;
-                moveRate = 2f;
+                moveRate = 2f * correcSpeed;
                 amtGold = 11;
                 attDistance = 0.9f;
                 break;
@@ -113,7 +115,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 85;
                 isAggressive = false;
                 isACoward = false;
-                moveRate = 2f;
+                moveRate = 2f * correcSpeed;
                 amtGold = 17;
                 attDistance = 1f;
                 break;
@@ -123,7 +125,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 180;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 3f;
+                moveRate = 3f * correcSpeed;
                 amtGold = 26;
                 attDistance = 1.1f;
                 break;
@@ -133,7 +135,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 35;
                 isAggressive = false;
                 isACoward = true;
-                moveRate = 2f;
+                moveRate = 2f * correcSpeed;
                 amtGold = 12;
                 attDistance = 1f;
                 break;
@@ -143,7 +145,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 80;
                 isAggressive = true;
                 isACoward = true;
-                moveRate = 2f;
+                moveRate = 2f * correcSpeed;
                 amtGold = 20;
                 attDistance = 1f;
                 break;
@@ -153,7 +155,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 170;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 3f;
+                moveRate = 3f * correcSpeed;
                 amtGold = 28;
                 attDistance = 1f;
                 break;
@@ -163,7 +165,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 20;
                 isAggressive = true;
                 isACoward = true;
-                moveRate = 1f;
+                moveRate = 1f * correcSpeed;
                 amtGold = 10;
                 attDistance = 1f;
                 break;
@@ -173,7 +175,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 45;
                 isAggressive = true;
                 isACoward = true;
-                moveRate = 1f;
+                moveRate = 1f * correcSpeed;
                 amtGold = 16;
                 attDistance = 1f;
                 break;
@@ -183,6 +185,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 90;
                 isAggressive = true;
                 isACoward = false;
+                moveRate = 2f * correcSpeed;
                 amtGold = 24;
                 attDistance = 1f;
                 break;
@@ -192,7 +195,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 50;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 4f;
+                moveRate = 4f * correcSpeed;
                 amtGold = 15;
                 attDistance = 1f;
                 break;
@@ -202,7 +205,7 @@ public class Monster : MonoBehaviour {
                 healthMax = 90;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 5f;
+                moveRate = 5f * correcSpeed; ;
                 amtGold = 122;
                 attDistance = 1f;
                 break;
@@ -212,9 +215,19 @@ public class Monster : MonoBehaviour {
                 healthMax = 150;
                 isAggressive = true;
                 isACoward = false;
-                moveRate = 5f;
+                moveRate = 5f * correcSpeed;
                 amtGold = 35;
                 attDistance = 1f;
+                break;
+            case "Knight":
+                damageAmount = 15;
+                health = 150;
+                healthMax = 150;
+                isAggressive = false;
+                isACoward = false;
+                moveRate = 5f * correcSpeed;
+                amtGold = 50;
+                isKnight = true;
                 break;
         }
     }
@@ -322,7 +335,7 @@ public class Monster : MonoBehaviour {
     void updateActions() {
         if (isAttacking) Attack();
         else if (isFleeing) Flee();
-        else RandomMove();
+        else if (!isKnight) RandomMove();
     }
 
      /*************/

@@ -16,7 +16,7 @@ public class checkHitMonster : MonoBehaviour {
 			PlayerController player = other.gameObject.GetComponent<PlayerController>();
 			player.setHealth(player.getHealth() - monster.GetComponent<Monster>().damageAmount);
             GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = 1;
-            var audioClip = Resources.Load<AudioClip>("Sounds/Player/onDash");
+            var audioClip = Resources.Load<AudioClip>("Sounds/Player/onHit");
             GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().clip = audioClip;
             GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();
         }

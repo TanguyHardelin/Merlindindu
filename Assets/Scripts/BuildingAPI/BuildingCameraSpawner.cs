@@ -38,6 +38,10 @@ public class BuildingCameraSpawner : MonoBehaviour
                     {
                         Vector3 position = hit.point;
                         addBuildingToScene(position);
+                        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().volume = (float)0.7;
+                        var audioClip = Resources.Load<AudioClip>("Sounds/constructBuildMP3");
+                        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().clip = audioClip;
+                        GameObject.FindGameObjectWithTag("UISound").GetComponent<AudioSource>().Play();
                     }
                 }
             }
