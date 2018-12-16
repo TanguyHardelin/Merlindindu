@@ -17,6 +17,7 @@ public class Collectable : MonoBehaviour {
     protected Vector3 notAvailablePosition;
     protected Quaternion initialRotation;
     protected Quaternion targetRotation;
+    private GameObject floatTextPrefab;
     //protected Ressources playerRessources;
 
 
@@ -27,7 +28,7 @@ public class Collectable : MonoBehaviour {
         collectableType = this.gameObject.name;
         initialPosition = this.transform.position;
         initialRotation = transform.rotation;
-
+        floatTextPrefab = GameObject.FindGameObjectWithTag("floatTxt");
 
         switch (collectableType) {
             case "BigGoldRock":
@@ -47,6 +48,7 @@ public class Collectable : MonoBehaviour {
                 maxRessourcePts = 20;
                 durationRepop = 1500;
                 notAvailablePosition = Vector3.MoveTowards(transform.position, transform.position - new Vector3(0, 0.5f, 0), 10f);
+
                 break;
             case "BigTree":
                 ressourcePts = 120;
@@ -79,6 +81,7 @@ public class Collectable : MonoBehaviour {
                     var audioClip = Resources.Load<AudioClip>("Sounds/Player/collectStone");
                     player.GetComponent<AudioSource>().clip = audioClip;
                     player.GetComponent<AudioSource>().Play();
+                    showFloatTxtRessources("+50 G", new Color32(255, 254, 103, 255));
                     break;
                 case "BigRock":
                     ressourcePts -= 25;
@@ -87,6 +90,7 @@ public class Collectable : MonoBehaviour {
                     var audioClip2 = Resources.Load<AudioClip>("Sounds/Player/collectStone");
                     player.GetComponent<AudioSource>().clip = audioClip2;
                     player.GetComponent<AudioSource>().Play();
+                    showFloatTxtRessources("+25 S", new Color32(125, 126, 128, 255));
                     break;
                 case "SmallRock":
                     ressourcePts -= 5;
@@ -95,6 +99,7 @@ public class Collectable : MonoBehaviour {
                     var audioClip3 = Resources.Load<AudioClip>("Sounds/Player/collectStone");
                     player.GetComponent<AudioSource>().clip = audioClip3;
                     player.GetComponent<AudioSource>().Play();
+                    showFloatTxtRessources("+5 S", new Color32(125, 126, 128, 255));
                     break;
                 case "BigTree":
                     ressourcePts -= 30;
@@ -103,6 +108,7 @@ public class Collectable : MonoBehaviour {
                     var audioClip4 = Resources.Load<AudioClip>("Sounds/Player/collectWoodMP3");
                     player.GetComponent<AudioSource>().clip = audioClip4;
                     player.GetComponent<AudioSource>().Play();
+                    showFloatTxtRessources("+30 W", new Color32(232, 185, 151, 255));
                     break;
                 case "SmallTree":
                     ressourcePts -= 10;
@@ -111,6 +117,7 @@ public class Collectable : MonoBehaviour {
                     var audioClip5 = Resources.Load<AudioClip>("Sounds/Player/collectWoodMP3");
                     player.GetComponent<AudioSource>().clip = audioClip5;
                     player.GetComponent<AudioSource>().Play();
+                    showFloatTxtRessources("+10 W", new Color32(232, 185, 151, 255));
                     break;
             }
             if (ressourcePts <= 0) {
@@ -128,6 +135,14 @@ public class Collectable : MonoBehaviour {
             this.transform.position = initialPosition;
             isEmpty = false;
         }
+    }
+
+    private void showFloatTxtRessources(string txt, Color color)
+    {
+        GameObject newTxtFloat = Instantiate(floatTextPrefab, floatTextPrefab.transform.position + new Vector3(0, 150, 0), Quaternion.identity);
+        newTxtFloat.SetActive(true);
+        newTxtFloat.GetComponent<FloatTextController>().SetTextandMove(txt, color);
+        Destroy(newTxtFloat.gameObject, (float)0.6);
     }
 
     public bool getIsEmpty() {
