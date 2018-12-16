@@ -37,8 +37,8 @@ public class MapGenerator : MonoBehaviour {
 
     public void GenerateMap()
     {
-        if (!isInitialized)
-        {
+        //if (!isInitialized)
+        //{
             //Construct noiseMap
             noiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, scale, octaves, persistance, lacunarity, offset);
 
@@ -78,7 +78,7 @@ public class MapGenerator : MonoBehaviour {
                         }
                     }
                 }
-            }
+            //}
 
             isInitialized = true;
         }

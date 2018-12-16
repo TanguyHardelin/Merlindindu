@@ -56,7 +56,10 @@ public class EnvironnementGenerator : MonoBehaviour {
             {
                 for (int j = Mathf.CeilToInt((center[1]) - size / 2 + mapHeight / 2); j < Mathf.CeilToInt((center[1]) + size / 2 + mapHeight / 2); j++)
                 {
-                    canSpwan[i, j] = false;
+                    int X = getIndexFromCoordinate(i);
+                    int Z = getIndexFromCoordinate(j);
+                    Debug.Log("X= "+X+" Z= "+Z);
+                    canSpwan[X, Z] = false;
                 }
             }
         }
@@ -102,13 +105,24 @@ public class EnvironnementGenerator : MonoBehaviour {
         if (canSpwan[x, z + (int)chunkSize[1] / 2] == true) is_chunk_need.Add(isChunkNeeded(x, z + (int)chunkSize[1]/2));
         */
         //Debug.Log("x= " + x + " z= " + z);
-        for(int i = x-3  ; i < x+3; i++)
+
+
+        if (!isInitialized)
         {
-            for (int j = z - 3; j < z + 3; j++)
+            for (int i = 5; i < 200; i += (int)chunkSize[0])
             {
-                if (canSpwan[i, j]) is_chunk_need.Add(isChunkNeeded(i, j));
+                for (int j = 5; j < 200; j += (int)chunkSize[1])
+                {
+                    if (canSpwan[i, j]) is_chunk_need.Add(isChunkNeeded(i, j));
+                }
             }
         }
+        
+        
+
+        //if (canSpwan[x, z]) is_chunk_need.Add(isChunkNeeded(x, z));
+        //is_chunk_need.Add(isChunkNeeded(x + (int)chunkSize[0] -1, z ));
+
         noiseMap = mapGenerator.noiseMap;        
 
         bool chunk_instantied = false;
@@ -125,15 +139,18 @@ public class EnvironnementGenerator : MonoBehaviour {
                 new_chunk.centerZ = is_chunk_need[l].centerZ;
                 new_chunk.obj = new List<GameObject>();
 
-       
+                //Debug.Log("is_chunk_need[l].centerX= " + is_chunk_need[l].centerX + " is_chunk_need[l].centerZ= " + is_chunk_need[l].centerZ);
+
                 for (int i = is_chunk_need[l].centerX - (int)chunkSize[0]/2; i < is_chunk_need[l].centerX + (int)chunkSize[0]/2; i++)
                 {
                     for (int j = is_chunk_need[l].centerZ - (int)chunkSize[1]/2; j < is_chunk_need[l].centerZ + (int)chunkSize[1]/2; j++)
                     {
-                        if (canSpwan[i, j] == true)
+                        //Debug.Log("i= " + i + " j= " + j);
+                        if (canSpwan[i, j] == true && !chunkAlreadyInstantied(i,j))
                         {
                             float currentHeight = noiseMap[i, j];
                             //Debug.Log("i= " + i + " j= " + j + " currentHeight " + currentHeight);
+                            bool NotError = true;
                             for (int k = 0; k < environnementType.Length; k++)
                             {
                                 //Debug.Log("name " + name);
@@ -142,10 +159,15 @@ public class EnvironnementGenerator : MonoBehaviour {
                                 if (currentHeight > environnementType[k].startingHeightOfTerrain && currentHeight < environnementType[k].endingHeightOfTerrain && environnementType[k].spawningObject.Length > 0)
                                 {
                                     int indexOfSpawn = (int)((currentHeight - environnementType[k].startingHeightOfTerrain) / (environnementType[k].endingHeightOfTerrain - environnementType[k].startingHeightOfTerrain) * environnementType[k].spawningObject.Length);
-                                    //Debug.Log("indexOfSpawn= " + indexOfSpawn);
                                     new_chunk.obj.Add(Instantiate(environnementType[k].spawningObject[indexOfSpawn], new Vector3((i - mapHeight / 2.0f) * 5, mapGenerator.evaluateHeight(environnementType[k].spawningHeight), (j - mapWidth / 2.0f) * -5.0f), Quaternion.identity, environnementType[k].parent));
+                                    NotError = false;
                                     break;
                                 }
+                                
+                            }
+                            if (!NotError)
+                            {
+                                //Debug.Log("i= " + i + " j= " + j + " currentHeight " + currentHeight);
                             }
                         }
                         
@@ -154,7 +176,7 @@ public class EnvironnementGenerator : MonoBehaviour {
                 instantiedChunk.Add(new_chunk);
             }
         }
-
+        /*
         if (chunk_instantied == true)
         {
             //Et on supprime tous les autres chunks inutiles:
@@ -163,20 +185,20 @@ public class EnvironnementGenerator : MonoBehaviour {
             {
                 Vector2 distance = new Vector2();
 
-                distance[0] = x - instantiedChunk[i].centerX;
-                distance[1] = z - instantiedChunk[i].centerZ;
+                distance[0] = x - instantiedChunk[0].centerX;
+                distance[1] = z - instantiedChunk[0].centerZ;
 
-                if (Mathf.Abs(distance[0]) > 4 * (int)chunkSize[0]/2 || Mathf.Abs(distance[1]) > 4 * (int)chunkSize[1]/2)
+                if (Mathf.Abs(distance[0]) > 6 * (int)chunkSize[0]/2 || Mathf.Abs(distance[1]) > 6 * (int)chunkSize[1]/2)
                 {
-                    for (int j = 0; j < instantiedChunk[i].obj.Count; j++)
+                    for (int j = 0; j < instantiedChunk[0].obj.Count; j++)
                     {
-                        Destroy(instantiedChunk[i].obj[j]);
+                        Destroy(instantiedChunk[0].obj[j]);
                     }
-                    instantiedChunk.RemoveAt(i);
+                    instantiedChunk.RemoveAt(0);
                 }
             }
         }
-        
+        */
     }
     public bool isPlayerIsInChunk(int x,int z)
     {
@@ -203,93 +225,103 @@ public class EnvironnementGenerator : MonoBehaviour {
 
         return distance;
     }
+    public bool chunkAlreadyInstantied(int x, int z)
+    {
+        for (int i = 0; i < instantiedChunk.Count; i++)
+        {
+            if (x== instantiedChunk[i].centerX && z== instantiedChunk[i].centerZ)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public ChunkNeeded isChunkNeeded(int x, int z)
     {
         ChunkNeeded c = new ChunkNeeded();
-
-        //On détermine si un nouveau chunk est nécéssaire:
-        if (isPlayerIsInChunk(x, z)==false)
-        {
-            c.needed = true;
-            //Si oui on regarde quelle est le chunk le plus proche:
-            Vector2 distance = new Vector2(10000,10000);
-            InstantiedChunk iC = new InstantiedChunk();
-
-            for (int i = 0; i < instantiedChunk.Count; i++)
+       
+            //On détermine si un nouveau chunk est nécéssaire:
+            if (isPlayerIsInChunk(x, z) == false)
             {
-                Vector2 d = new Vector2(x - instantiedChunk[i].centerX, z - instantiedChunk[i].centerZ);
-                if (d.sqrMagnitude < distance.sqrMagnitude)
+                c.needed = true;
+                //Si oui on regarde quelle est le chunk le plus proche:
+                Vector2 distance = new Vector2(10000, 10000);
+                InstantiedChunk iC = new InstantiedChunk();
+
+                for (int i = 0; i < instantiedChunk.Count; i++)
                 {
-                    distance = d;
-                    iC = instantiedChunk[i];
-                }
-            }
-
-            if (instantiedChunk.Count == 0)
-            {
-                c.centerX = x;
-                c.centerZ = z;
-            }
-            else
-            {
-                if (Mathf.Abs(distance[0]) > Mathf.Abs(distance[1]))
-                {
-                    if (distance[0] < 0)
+                    Vector2 d = new Vector2(x - instantiedChunk[i].centerX, z - instantiedChunk[i].centerZ);
+                    if (d.sqrMagnitude < distance.sqrMagnitude)
                     {
-                        c.centerX = iC.centerX - (int)chunkSize[0] / 2;
-                        c.centerZ = iC.centerZ;
-                    }
-                    else
-                    {
-                        c.centerX = iC.centerX + (int)chunkSize[0] / 2;
-                        c.centerZ = iC.centerZ;
+                        distance = d;
+                        iC = instantiedChunk[i];
                     }
                 }
-                else if (Mathf.Abs(distance[0]) < Mathf.Abs(distance[1]))
+
+                if (instantiedChunk.Count == 0)
                 {
-                    if (distance[1] < 0)
-                    {
-                        c.centerX = iC.centerX;
-                        c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
-                    }
-                    else
-                    {
-                        c.centerX = iC.centerX;
-                        c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
-                    }
+                    c.centerX = x;
+                    c.centerZ = z;
                 }
                 else
                 {
-                    if (distance[0] < 0 && distance [1]>0)
+                    if (Mathf.Abs(distance[0]) > Mathf.Abs(distance[1]))
                     {
-                        c.centerX = iC.centerX - (int)chunkSize[0] / 2;
-                        c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
+                        if (distance[0] < 0)
+                        {
+                            c.centerX = iC.centerX - (int)chunkSize[0] / 2;
+                            c.centerZ = iC.centerZ;
+                        }
+                        else
+                        {
+                            c.centerX = iC.centerX + (int)chunkSize[0] / 2;
+                            c.centerZ = iC.centerZ;
+                        }
                     }
-                    else if (distance[0] < 0 && distance[1] < 0)
+                    else if (Mathf.Abs(distance[0]) < Mathf.Abs(distance[1]))
                     {
-                        c.centerX = iC.centerX - (int)chunkSize[0] / 2;
-                        c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
+                        if (distance[1] < 0)
+                        {
+                            c.centerX = iC.centerX;
+                            c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
+                        }
+                        else
+                        {
+                            c.centerX = iC.centerX;
+                            c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
+                        }
                     }
-                    else if (distance[0] > 0 && distance[1] < 0)
+                    else
                     {
-                        c.centerX = iC.centerX + (int)chunkSize[0] / 2;
-                        c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
-                    }
-                    else if (distance[0] > 0 && distance[1] > 0)
-                    {
-                        c.centerX = iC.centerX + (int)chunkSize[0] / 2;
-                        c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
+                        if (distance[0] < 0 && distance[1] > 0)
+                        {
+                            c.centerX = iC.centerX - (int)chunkSize[0] / 2;
+                            c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
+                        }
+                        else if (distance[0] < 0 && distance[1] < 0)
+                        {
+                            c.centerX = iC.centerX - (int)chunkSize[0] / 2;
+                            c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
+                        }
+                        else if (distance[0] > 0 && distance[1] < 0)
+                        {
+                            c.centerX = iC.centerX + (int)chunkSize[0] / 2;
+                            c.centerZ = iC.centerZ - (int)chunkSize[1] / 2;
+                        }
+                        else if (distance[0] > 0 && distance[1] > 0)
+                        {
+                            c.centerX = iC.centerX + (int)chunkSize[0] / 2;
+                            c.centerZ = iC.centerZ + (int)chunkSize[1] / 2;
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            c.needed = false;
-        }
-
-
-
+            else
+            {
+                c.needed = false;
+            }
+            
+        
         return c;
     }
 
