@@ -33,6 +33,8 @@ public class GestionUI : MonoBehaviour {
     protected List<GameObject> _instantied_prefab = new List<GameObject>();
     protected All3DObjects _all_objects;
 
+
+
     //Infos générales:
     public GameObject ExploButton;
     public GameObject GestionButton;
@@ -52,7 +54,6 @@ public class GestionUI : MonoBehaviour {
         //Ressource:
         _village = GameObject.FindGameObjectWithTag(villageTag).GetComponentInChildren<Village>();
         _all_objects = GameObject.FindGameObjectWithTag(villageTag).GetComponentInChildren<All3DObjects>();
-
         _main_camera.enabled = false;
         _manage_camera.enabled = true;
     }
@@ -187,7 +188,7 @@ public class GestionUI : MonoBehaviour {
             p.description = l[i].getDescription();
             p.ressourcesNeeded = l[i].getRessourcesNeeded();
             p.curentRessources = _village.getRessources();
-
+            
             _instantied_prefab.Add(obj);
         }
     }
