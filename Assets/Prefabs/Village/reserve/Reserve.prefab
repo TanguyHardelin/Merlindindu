@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4990587697764844054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 19.577465, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Reserve
-  _description: 
+  _description: Augmente le nombre maximum de ressources
   _building_tag: ressources
   _building_icon: {fileID: 2800000, guid: 75aefe89822a9e84d8134f917256b23e, type: 3}
   constructionTime: 5
@@ -55,9 +55,9 @@ MonoBehaviour:
     - 2
     - 3
     m_values:
-    - {fileID: 1778557737948474, guid: eb13bf4ceb977684d926ebdc64813ffb, type: 3}
-    - {fileID: 1929342540354716, guid: 214c1ad89fb757f45b0695ab563e33a3, type: 3}
-    - {fileID: 1846489409886978, guid: e0a0d709be887b04ab9515fba76a74b5, type: 3}
+    - {fileID: 1770444355706680, guid: 742b02277e7d65a448824628992b9b77, type: 3}
+    - {fileID: 1770444355706680, guid: db2c97067f72d9d4d9805d69967e0c59, type: 3}
+    - {fileID: 1770444355706680, guid: 412587aca04138f49b382a837dca1973, type: 3}
     - {fileID: 1770444355706680, guid: 3e2c7cf222f083e4ab3c30215e5b07ba, type: 3}
   startingIndex: 0
   size: {x: 1, y: 1}

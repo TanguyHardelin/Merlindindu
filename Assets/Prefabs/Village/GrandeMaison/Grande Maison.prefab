@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5389898775102292616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -299.87, y: 19.577465, z: -382.83}
+  m_LocalPosition: {x: -295.66, y: 19.577465, z: -382.17}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Grande Maison
-  _description: 
+  _description: Augmente grandement le nombre de villageois du village
   _building_tag: village
   _building_icon: {fileID: 2800000, guid: cfde1d919cfa0094596bf475dc11aa2b, type: 3}
   constructionTime: 4
@@ -57,11 +57,11 @@ MonoBehaviour:
     - 4
     - 5
     m_values:
-    - {fileID: 1200019314188672, guid: 021cd65a181fceb47b54ea9edf50d736, type: 3}
-    - {fileID: 1882734444082350, guid: 6ce9ac5cb0a9f5043a277e69fab5b24e, type: 3}
-    - {fileID: 1132790978572136, guid: fcc9cecd648ae614bb3d937c018c1d74, type: 3}
-    - {fileID: 1911500087019778, guid: df4357d7ef422874eb671b0e18475474, type: 3}
-    - {fileID: 1876942123368732, guid: 8789fd9f8cd03e949bbe230d48c3070c, type: 3}
+    - {fileID: 1314766038675912, guid: 1fd75a8c9c559a44f9f3eefb88dc0cea, type: 3}
+    - {fileID: 1314766038675912, guid: 4014507cc50142e439d3220c8227081c, type: 3}
+    - {fileID: 1314766038675912, guid: 2edd4bcf6a5a852498739d19d92a2bfd, type: 3}
+    - {fileID: 1314766038675912, guid: cd4cbd35aaf647e49943f4655e6bb58d, type: 3}
+    - {fileID: 1314766038675912, guid: 1e4b31c662ae4b542bc84725ff6ba0f8, type: 3}
     - {fileID: 1314766038675912, guid: db8b498fe522960499ffb54d4c14a484, type: 3}
   startingIndex: 0
   size: {x: 2, y: 2}

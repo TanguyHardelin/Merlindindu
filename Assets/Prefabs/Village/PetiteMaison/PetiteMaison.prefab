@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398979229963398048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -296.8105, y: 19.577465, z: -382.95157}
+  m_LocalPosition: {x: 0, y: 19.577465, z: -382.95157}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Petite Maison
-  _description: 
+  _description: Augmente un peu le nombre de Villageois.
   _building_tag: village
   _building_icon: {fileID: 2800000, guid: 29898a32fa7fae24cb4ede12b4104086, type: 3}
   constructionTime: 5
@@ -81,20 +81,4 @@ MonoBehaviour:
     silver: 0
     cold: 0
     citizen: 5
-  ressourcesProductionOneShot:
-    food: 0
-    wood: 0
-    stone: 0
-    gold: 0
-    silver: 0
-    cold: 0
-    citizen: 0
-  ressourcesBonus:
-    food: 0
-    wood: 0
-    stone: 0
-    gold: 0
-    silver: 0
-    cold: 0
-    citizen: 0
   parent: {fileID: 0}

@@ -110,10 +110,16 @@ public class BuildingCameraSpawner : MonoBehaviour
     }
     protected void addGhostBuildingToScene(Vector3 position)
     {
+        Vector3 old = position;
+        position.x = - old.x -5;
+        position.z =  -1*(old.z+5);
         _buildingAPI.spawnGhostBuilding(position);
     }
     protected void addBuildingToScene(Vector3 position)
     {
+        Vector3 old = position;
+        position.x = - old.x -5;
+        position.z = -1 * (old.z +5 );
         _buildingAPI.spawnBuilding(position);
     }
 }

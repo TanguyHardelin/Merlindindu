@@ -16,9 +16,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_ressources.gold = 5000;
-        _ressources.wood = 5000;
-        _ressources.stone = 5000;
+		_ressources.gold = 500;
     }
 	
 	// Update is called once per frame

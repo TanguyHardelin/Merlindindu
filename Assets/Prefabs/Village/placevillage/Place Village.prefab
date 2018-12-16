@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Place Village
-  _description: 
+  _description: 'Booste '
   _building_tag: village
   _building_icon: {fileID: 2800000, guid: 456ee6db5bcc4aa46afd1e510ba6769b, type: 3}
   constructionTime: 4
@@ -62,7 +62,7 @@ MonoBehaviour:
     - {fileID: 1828779488345792, guid: e58697b23e6a3f64fa27534e84169057, type: 3}
     - {fileID: 1439208999891250, guid: 324280533cbd6294ea65563b1f980229, type: 3}
   startingIndex: 0
-  size: {x: 2, y: 2}
+  size: {x: 1, y: 1}
   ressourcesNeeded:
     food: 0
     wood: 350
