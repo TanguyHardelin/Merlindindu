@@ -29,6 +29,8 @@ public class ExplorationUI : MonoBehaviour {
     public GameObject ExploButton;
     public GameObject GestionButton;
 
+    public Village village;
+
     public void setInfoText(string text)
     {
         _info_text = text;
@@ -105,6 +107,13 @@ public class ExplorationUI : MonoBehaviour {
 
         ExploButton.SetActive(true);
         GestionButton.SetActive(false);
+
+        //Ajout des ressources du joeur au village
+        RessourceType playerRessources = GameObject.Find("Player").GetComponent<Player>().getRessources();
+        
+
+        village.addRessources(playerRessources);
+        GameObject.Find("Player").GetComponent<Player>().RAZRessources();
+        Debug.Log("Ressources added");
     }
-    
 }

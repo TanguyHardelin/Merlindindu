@@ -1,0 +1,520 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9148760862041383287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3903232831150591742, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9148760862965305362}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9148760862041383284}
+  - component: {fileID: 9148760862041383285}
+  m_Layer: 0
+  m_Name: EnvironnementGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9148760862041383284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9148760862965305362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148760862041383287}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9148760862041383285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9148760862965305362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148760862041383287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569dd8935cfb809469324c2ad1337305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkSize: {x: 10, y: 10}
+  environnementType:
+  - name: Marais
+    startingHeightOfTerrain: 0.2
+    endingHeightOfTerrain: 0.47
+    spawningHeight: 0.42
+    spawningObject:
+    - {fileID: 1696798026111696, guid: 84dfaa32322227b4c9d2f508aea6d166, type: 3}
+    parent: {fileID: 0}
+  - name: Land
+    startingHeightOfTerrain: 0.47
+    endingHeightOfTerrain: 0.5
+    spawningHeight: 0.42
+    spawningObject:
+    - {fileID: 1240401051131508, guid: 8d6a00e88c3affd41a0f539209d8df7f, type: 3}
+    - {fileID: 1857386789753268, guid: 41d751213bb38204da8f1485a291cd4f, type: 3}
+    - {fileID: 1862113642491356, guid: 82fd89f53d29f6041944b4f3bdae1df3, type: 3}
+    - {fileID: 1571514774769214, guid: afcc464c91f5b6b4a932c512048302a0, type: 3}
+    - {fileID: 1239375123530310, guid: 01bbb5a5dd77b8c4d8e9841fc2718107, type: 3}
+    - {fileID: 1053132243913008, guid: 1d2f354da2561f4488a3f1aade02212a, type: 3}
+    - {fileID: 1533611244362990, guid: ff681ca6c90ec384c9f620af5def6375, type: 3}
+    - {fileID: 1987543518731642, guid: 2ec912cbac4cbd042bf01bb206f0e3a3, type: 3}
+    - {fileID: 1652939809434894, guid: 1753fd53acb7f274eb3ab54af5aa3b4f, type: 3}
+    - {fileID: 1721507981578526, guid: f5144e7607680c84d8705b4bf912c167, type: 3}
+    - {fileID: 1536579974701992, guid: 6604b79596d052a42bcc4510d8e5797b, type: 3}
+    - {fileID: 1677206858403354, guid: 0e88a3dde639afd4ebfd5de4df723d01, type: 3}
+    - {fileID: 1274422490076418, guid: 0079e887a8a600f44a009355c9e8b80f, type: 3}
+    parent: {fileID: 0}
+  - name: Forest
+    startingHeightOfTerrain: 0.5
+    endingHeightOfTerrain: 0.55
+    spawningHeight: 0.42
+    spawningObject:
+    - {fileID: 1751720555082122, guid: 86178fc91ed5f5941825fe15120779a6, type: 3}
+    - {fileID: 1133586434685778, guid: bee2c851e769fa94c8af1de90f0a585c, type: 3}
+    - {fileID: 1367376775423944, guid: 62ceaae0662e9bb478f59b939aebaf43, type: 3}
+    - {fileID: 1806395636889280, guid: 351e0fa42a53d6748b353fe6f59a4a05, type: 3}
+    - {fileID: 1318420469087842, guid: a9291a07cac48b548bfc7d233a77e3eb, type: 3}
+    - {fileID: 1432507407467934, guid: 4c152f47764a30b4bb63ce834ffc879a, type: 3}
+    - {fileID: 1583410281453862, guid: abc7b360565c6834b9e5f6dd418d2079, type: 3}
+    - {fileID: 1037173252131426, guid: 71a3f9ad41dfa604992d75a06a49cca4, type: 3}
+    - {fileID: 1033831864622326, guid: 6bf0648033de7fc4bbbcb8fcad06798e, type: 3}
+    - {fileID: 1905309988361804, guid: 526b8fa3cd1e1e74db88d9624a4123ed, type: 3}
+    parent: {fileID: 0}
+  - name: DarkForest
+    startingHeightOfTerrain: 0.55
+    endingHeightOfTerrain: 0.65
+    spawningHeight: 0.42
+    spawningObject:
+    - {fileID: 1918872077549826, guid: 40812f174641ae442849dc2c2b7e46c9, type: 3}
+    - {fileID: 1218930450200114, guid: 1ca9f72a4bfb09647ac42c6b9871695e, type: 3}
+    - {fileID: 1462428477707568, guid: 03dc838580bc277429064c4c9674c685, type: 3}
+    - {fileID: 1208397175333196, guid: 1b42d6793847ed5468ec8c3f2746d971, type: 3}
+    - {fileID: 1190969590166684, guid: 185f674b55665064aae7ec7f6b0f9846, type: 3}
+    - {fileID: 1470214629028038, guid: 021718b65e696ea478f552e33d027d98, type: 3}
+    - {fileID: 1010331109270640, guid: f1f55fd998719344fa9ebecdf1c69165, type: 3}
+    - {fileID: 1823567127734546, guid: 6b2d8e9190078ca4eb78c4161b3fe0a1, type: 3}
+    - {fileID: 1854380850153406, guid: 8d42bdd734a146c4fab80b9b48c0aee6, type: 3}
+    - {fileID: 1919563687898448, guid: 32b09138ed39922439bac60efa503a13, type: 3}
+    - {fileID: 1919563687898448, guid: 3a07d1c39a481d24da3489ef9196cdb5, type: 3}
+    - {fileID: 1918872077549826, guid: a22892279c5500c4f8356a26fda4e084, type: 3}
+    - {fileID: 1218930450200114, guid: 26fb01b2f4f0381439b851a449ce0607, type: 3}
+    - {fileID: 1462428477707568, guid: 94a4a6ad0794b64489589e9625062e69, type: 3}
+    - {fileID: 1208397175333196, guid: df030e479bf53074497885de8cdf9140, type: 3}
+    - {fileID: 1190969590166684, guid: 8823eb426d2ebf34d99d9bd7c5663672, type: 3}
+    - {fileID: 1470214629028038, guid: a0eb99afd31ac8c408eb3b1e3e7c1477, type: 3}
+    - {fileID: 1010331109270640, guid: 1360792434363d340827fce38477da76, type: 3}
+    - {fileID: 1823567127734546, guid: 77bb30740f9c57641bc14ddd05dcfd2a, type: 3}
+    - {fileID: 1854380850153406, guid: 764950177d114ee4ca192981ff7af848, type: 3}
+    - {fileID: 1764749652128116, guid: b1d31bc4c201cfc439878f052c655e9b, type: 3}
+    parent: {fileID: 0}
+  - name: Mountain
+    startingHeightOfTerrain: 0.65
+    endingHeightOfTerrain: 1
+    spawningHeight: 0.42
+    spawningObject:
+    - {fileID: 1945183075296678, guid: 2f111cda493b17542b1551285cf12dbd, type: 3}
+    - {fileID: 1915669202102856, guid: ddd3e02fe88485e46a9f927922ad58f0, type: 3}
+    - {fileID: 1794978273300970, guid: 16b3845d15d53c247ada28d77e9feb0d, type: 3}
+    - {fileID: 1311745126343198, guid: ca1a53f7d06500149a1954cde848178f, type: 3}
+    - {fileID: 1327703192203862, guid: 32f35eea9a381684ebdd6acffc3042c9, type: 3}
+    - {fileID: 1100438438720358, guid: c9b2c4db1417eff46a28958b9101bf2c, type: 3}
+    - {fileID: 1525921922977870, guid: f43d6573183e3a941877cc5c318d2ea5, type: 3}
+    - {fileID: 1383818485651544, guid: 175be2ddd6cb1d0498616a8199a1a779, type: 3}
+    - {fileID: 1241619772862470, guid: d8196cbdf9b7f4845ac123f9a70d91b0, type: 3}
+    - {fileID: 1869770879002674, guid: fc0735c6607287b4d9d61925692a7a21, type: 3}
+    - {fileID: 1206589389537042, guid: 11bf3e9bcc162794a9cc36f538ec34aa, type: 3}
+    - {fileID: 1557916687738344, guid: 398d1e00b5978d8469092e2af44e074a, type: 3}
+    - {fileID: 1915795031384106, guid: 3a85b74c7bff6ad4ba19f41164ed7fa3, type: 3}
+    - {fileID: 1085676087217944, guid: b3528ce58e98abe4a8f8978da1bd4a3e, type: 3}
+    - {fileID: 1206650833818948, guid: cb8169ff6e1bd0a41b435abde841ced4, type: 3}
+    - {fileID: 1036747538088636, guid: fadad43a2f862b64aa53563d094dfc4e, type: 3}
+    - {fileID: 1674537861986082, guid: 98a0bff246bab5242831e9ea74e5ce86, type: 3}
+    - {fileID: 1747257797589474, guid: 62efaaaaa6dbf9844b7248452c5662de, type: 3}
+    - {fileID: 1314303521101616, guid: 77f3b95c0c1df784aa4ac7693850fcc8, type: 3}
+    - {fileID: 1904397691222980, guid: d049290560b4770478fae395694585e0, type: 3}
+    - {fileID: 1738902759367982, guid: a9ef55323455f9b4798487d4d03c4825, type: 3}
+    - {fileID: 1556579392086902, guid: 688cb8dbd2517e54abcb35f000c4e146, type: 3}
+    - {fileID: 1243063788220010, guid: fc6afaacee1b85b41bfa5e09905b9ede, type: 3}
+    - {fileID: 1353901584829196, guid: 2e05cac32caf2764fad50668515d3bec, type: 3}
+    - {fileID: 1748598443723172, guid: 4eff4e4d06d787942ae698fafaaa0c35, type: 3}
+    - {fileID: 1948101159584618, guid: 90b26d50983555444a5c9fbd2b8ec623, type: 3}
+    - {fileID: 1887386894351360, guid: de23de9e3aa52aa48a69732f7399009d, type: 3}
+    parent: {fileID: 0}
+  allInterestingElement:
+  - name: Village
+    position: {x: 0, y: 0}
+    size: 100
+  - name: Camp
+    position: {x: 35, y: -30}
+    size: 10
+  - name: Camp
+    position: {x: 90, y: -250}
+    size: 5
+  - name: Obbelisk
+    position: {x: 45, y: 5}
+    size: 5
+  - name: City
+    position: {x: -220, y: -320}
+    size: 160
+  - name: Rock
+    position: {x: -35, y: 15}
+    size: 5
+--- !u!1001 &9148760862965305362
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3903232831150591742, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_Name
+      value: EnvironnementGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591743, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[0].spawningObject.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[1].spawningObject.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[2].spawningObject.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[3].spawningObject.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[4].spawningObject.Array.size
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[0].name
+      value: Village
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[0].size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[1].name
+      value: Camp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[1].position.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[1].position.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[1].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[2].name
+      value: Camp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[2].position.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[2].position.y
+      value: -250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[2].size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[3].name
+      value: Obbelisk
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[3].position.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[3].position.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[3].size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[4].name
+      value: City
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[4].position.x
+      value: -220
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[4].position.y
+      value: -320
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[4].size
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[5].name
+      value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[5].position.x
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[5].position.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[5].size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[0].position.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[0].position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[0].size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[0].size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[1].size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[1].size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[2].size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[2].size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[3].size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[3].size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[4].size.x
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[4].size.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[5].size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: allInterestingElement.Array.data[5].size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[0].name
+      value: Marais
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[1].name
+      value: Land
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[2].name
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[3].name
+      value: DarkForest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[0].startingHeightOfTerrain
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[0].endingHeightOfTerrain
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[1].startingHeightOfTerrain
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[1].endingHeightOfTerrain
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[2].startingHeightOfTerrain
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[2].endingHeightOfTerrain
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[3].startingHeightOfTerrain
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[3].endingHeightOfTerrain
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903232831150591736, guid: b31e6f1b20fc17847baa4f7c025d6ed8,
+        type: 3}
+      propertyPath: environnementType.Array.data[4].startingHeightOfTerrain
+      value: 0.65
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b31e6f1b20fc17847baa4f7c025d6ed8, type: 3}

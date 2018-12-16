@@ -31,7 +31,7 @@ public class Monster : MonoBehaviour {
 
     public void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
         typeMonster = this.tag;
 
