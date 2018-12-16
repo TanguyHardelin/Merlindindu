@@ -199,6 +199,8 @@ public class GestionUI : MonoBehaviour {
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = false;
+        Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
+        UIExploration.enabled = true;
 
         ExploButton.SetActive(false);
         GestionButton.SetActive(true);

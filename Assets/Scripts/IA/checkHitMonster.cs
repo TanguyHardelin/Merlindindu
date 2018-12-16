@@ -19,6 +19,7 @@ public class checkHitMonster : MonoBehaviour {
             var audioClip = Resources.Load<AudioClip>("Sounds/Player/onHit");
             GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().clip = audioClip;
             GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();
+            player.setCountRegen(-250);
         }
 	}
 }

@@ -300,6 +300,7 @@ public class Monster : MonoBehaviour {
             // Si le monstre est agressif, il attaque
             if (isAggressive && !isDead) {
                 isAttacking = true;
+                player.setCountRegen(-250);
             }
 
             // S'il est coward et low life, il fuit
