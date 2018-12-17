@@ -50,7 +50,7 @@ public class Village : MonoBehaviour {
         ressources.gold = r.gold;
         ressources.stone += r.stone;
         ressources.wood += r.wood;
-        //ressources.setToMax(maxRessources);
+        ressources.setToMax(maxRessources);
     }
 
     // Use this for initialization
@@ -83,9 +83,9 @@ public class Village : MonoBehaviour {
                     bonus += villageBuilding[i].getRessourcesBonus();
             }
             ressourcesProduction *= bonus;
-            //ressources += ressourcesProduction;
+            ressources += ressourcesProduction;
 
-            //ressources.setToMax(maxRessources);
+            ressources.setToMax(maxRessources);
 
             current_Time = 0.0f;
         }
@@ -93,12 +93,14 @@ public class Village : MonoBehaviour {
 
     public void addBuilding(Building b)
     {
+        ressources.citizen += b.getRessourcesProductionOnShot().citizen;
+        Debug.Log("Ajout de "+ b.getRessourcesProductionOnShot().citizen+" citoyens");
         villageBuilding.Add(b);
     }
 
     public void setRessources(RessourceType new_ressources)
     {
-        //ressources = new_ressources;
+        ressources = new_ressources;
     }
 
     public void setRessourcesLimit(RessourceType new_ressources)

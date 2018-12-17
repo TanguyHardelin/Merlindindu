@@ -175,8 +175,8 @@ public class GestionUI : MonoBehaviour {
         for (int i = 0; i < l.Count; i++)
         {
             Vector3 new_position = _starting_position;
-            new_position[0] += i / 1.3f * (_building_UI_prefab.GetComponent<RectTransform>().rect.width + 10.0f * _building_UI_prefab.GetComponent<RectTransform>().rect.width / 100.0f);
-
+            new_position[0] += i / 1.3f * (_building_UI_prefab.GetComponent<RectTransform>().rect.width + 50.0f * _building_UI_prefab.GetComponent<RectTransform>().rect.width / 100.0f);
+            new_position[1] += _height/1000*50.0f;
             GameObject obj = Instantiate(_building_UI_prefab, new_position, Quaternion.identity, _parent) as GameObject;
 
             BuildingElementScript s = obj.GetComponent<BuildingElementScript>();

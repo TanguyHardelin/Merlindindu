@@ -68,7 +68,7 @@ MonoBehaviour:
     gold: 350
     silver: 0
     cold: 0
-    citizen: 30
+    citizen: 0
   ressourcesProduction:
     food: 250
     wood: 800
@@ -77,4 +77,20 @@ MonoBehaviour:
     silver: 0
     cold: 0
     citizen: 2
+  ressourcesProductionOneShot:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesBonus:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
   parent: {fileID: 0}
