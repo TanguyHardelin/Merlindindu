@@ -17,6 +17,8 @@ public class BlastLauncher : MonoBehaviour
     void Start()
     {
         bossBlast = GameObject.Find("BossBlast").GetComponent<ParticleSystem>();
+        mouth = GameObject.Find("CATRigHub003Bone001");
+        boss = GameObject.Find("Boss");
     }
 
     // Update is called once per frame

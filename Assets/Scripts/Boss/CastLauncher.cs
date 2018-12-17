@@ -29,7 +29,7 @@ public class CastLauncher : MonoBehaviour
     {
         if (!isCasted) {
             Vector3 blastPosition = rArm.transform.position;
-            blastPosition.z += 0.7f;
+            blastPosition.z -= 0.7f;
 
 
             bossCast.transform.position = blastPosition;

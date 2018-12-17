@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         else if (hlt <= 0) health = 0;
         else health = hlt;
     }
-    public void setMaxHealth(int hlt)
+    public void setMaxHealth(float hlt)
     {
         maxHealth = hlt;
     }
