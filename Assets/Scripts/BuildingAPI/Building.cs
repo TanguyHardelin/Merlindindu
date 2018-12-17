@@ -94,7 +94,6 @@ public class Building : MonoBehaviour {
         {
             //On incrémente la valeur du temps:
             current_time += Time.deltaTime;
-
             //On vérifie si on ne doit pas update le model:
             if (current_time> constructionTime / (buildingEtapes.Count))
             {

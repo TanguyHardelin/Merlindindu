@@ -147,10 +147,11 @@ public class BuidingAPI : MonoBehaviour {
                     //On instantie le batiment
                     building_position = caseToCoordonnate(building_position);
                     new_building.setParent(buildingParents);
-                    villageReference.addBuilding(new_building);
+                    
 
                     Building tmp=Instantiate(new_building, building_position, Quaternion.identity, buildingParents);
                     tmp.initialize(currentRotation);
+                    villageReference.addBuilding(tmp);
 
                     //On update les ressources
                     villageReference.setRessources(villageReference.getRessources() - new_building.getRessourcesNeeded());
@@ -159,7 +160,7 @@ public class BuidingAPI : MonoBehaviour {
                     //On update les stats du joueur:
                     player.setATK(new_building.getAttack() + player.getATK());
                     player.setDEF(new_building.getDeffense() + player.getDEF());
-                    player.setATK(new_building.getPV() + player.getMaxHealth());
+                    player.setMaxHealth(new_building.getPV() + player.getMaxHealth());
                 }
                 else
                 {
