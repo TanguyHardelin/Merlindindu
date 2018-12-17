@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
 
     public GameObject player;
+    [SerializeField] GameObject pauseScreen;
 
     public float currentGold;
     public Image current_gold;
@@ -14,9 +15,12 @@ public class UIManager : MonoBehaviour {
     private float maxGold = 100000;
     private float maxLife = 100;
     private bool freeze = false;
+    bool isPaused = false;
 
 	// Use this for initialization
 	void Start () {
+        player = GameObject.Find("Player");
+
         currentGold = player.GetComponent<Player>().getRessources().gold * 100;
         currentLife = player.GetComponent<PlayerController>().getHealth();
         maxGold = player.GetComponent<Player>().maxGold * 100;
@@ -46,10 +50,29 @@ public class UIManager : MonoBehaviour {
         currentLife = player.GetComponent<PlayerController>().getHealth();
         maxLife = player.GetComponent<PlayerController>().getMaxHealth();
         UpdateLifeBar();
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (isPaused) {
+                Time.timeScale = 1;
+                isPaused = false;
+                freeze = false;
+                pauseScreen.SetActive(false);
+            }
+            else {
+                Time.timeScale = 0;
+                isPaused = true;
+                freeze = true;
+                pauseScreen.SetActive(true);
+            }
+        }
     }
 
     public void setFreeze(bool frz)
     {
         freeze = frz;
+    }
+
+    public bool getFreeze() {
+        return freeze;
     }
 }
