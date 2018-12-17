@@ -16,9 +16,12 @@ public class Player : MonoBehaviour {
 
     public void RAZRessources()
     {
-        _ressources.gold = 0;
         _ressources.wood = 0;
         _ressources.stone = 0;
+    }
+
+    public void updateGold(int gold) {
+        _ressources.gold = gold;
     }
 
 	// Use this for initialization

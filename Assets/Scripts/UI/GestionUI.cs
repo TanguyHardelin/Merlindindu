@@ -157,7 +157,7 @@ public class GestionUI : MonoBehaviour {
     }
     void instantiateBuildingUI(List<Building> l)
     {
-        //On enelève les prefab déjà instantié
+        //On enlève les prefab déjà instantié
         for(int i=0;i< _instantied_prefab.Count; i++)
         {
             Destroy(_instantied_prefab[i]);
@@ -197,6 +197,11 @@ public class GestionUI : MonoBehaviour {
         _main_camera.enabled = true;
         _manage_camera.enabled = false;
         _panel.SetActive(false);
+
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+        Village village = GameObject.Find("Village").GetComponent<Village>();
+        Debug.Log(village.getRessources().gold);
+        //player.updateGold(village.getRessources().gold);
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = false;
