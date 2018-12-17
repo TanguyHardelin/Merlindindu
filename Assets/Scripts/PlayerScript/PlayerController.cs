@@ -131,6 +131,10 @@ public class PlayerController : MonoBehaviour
         else if (hlt <= 0) health = 0;
         else health = hlt;
     }
+    public void setMaxHealth(int hlt)
+    {
+        maxHealth = hlt;
+    }
     public void setCountRegen(int count)
     {
         countRegen = count;

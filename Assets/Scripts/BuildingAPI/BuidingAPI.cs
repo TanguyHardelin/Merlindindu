@@ -17,6 +17,9 @@ public class BuidingAPI : MonoBehaviour {
     [SerializeField]
     protected Material material_bad;
 
+    [SerializeField]
+    protected PlayerController player;
+
 
     protected All3DObjects all3DObjectsScript;
     protected EnvironnementGenerator environnementGenerator;
@@ -152,6 +155,11 @@ public class BuidingAPI : MonoBehaviour {
                     //On update les ressources
                     villageReference.setRessources(villageReference.getRessources() - new_building.getRessourcesNeeded());
                     Messenger.Broadcast(GameEvent.BuildingSpawn);
+
+                    //On update les stats du joueur:
+                    player.setATK(new_building.getAttack() + player.getATK());
+                    player.setDEF(new_building.getDeffense() + player.getDEF());
+                    player.setATK(new_building.getPV() + player.getMaxHealth());
                 }
                 else
                 {

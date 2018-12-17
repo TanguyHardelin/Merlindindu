@@ -51,7 +51,14 @@ public class Building : MonoBehaviour {
     [SerializeField]
     protected RessourceType ressourcesBonus;
 
-    
+    [Header("Bonus apporté au joueur")]
+    [SerializeField]
+    protected int attack=0;
+    [SerializeField]
+    protected int deffense=0;
+    [SerializeField]
+    protected int pv=0;
+
 
     [Header("Parent dans le jeu")]
     [SerializeField]
@@ -197,5 +204,19 @@ public class Building : MonoBehaviour {
         return size;
     }
 
+
+    public int getAttack()
+    {
+        return attack;
+    }
     
+    public int getDeffense()
+    {
+        return deffense;
+    }
+
+    public int getPV()
+    {
+        return pv;
+    }
 }
