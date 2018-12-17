@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Forge
-  _description: "Am\xE9liore l'arme du joueur. "
+  _description: 'Ameliore l''arme du heros. '
   _building_tag: millitary
   _building_icon: {fileID: 2800000, guid: e7c1be23ff671b34c8206a247ed8b2fc, type: 3}
   constructionTime: 5
@@ -70,7 +70,7 @@ MonoBehaviour:
     gold: 320
     silver: 0
     cold: 0
-    citizen: 0
+    citizen: 40
   ressourcesProduction:
     food: 0
     wood: 0

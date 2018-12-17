@@ -157,6 +157,7 @@ public class BuidingAPI : MonoBehaviour {
                     villageReference.setRessources(villageReference.getRessources() - new_building.getRessourcesNeeded());
                     Messenger.Broadcast(GameEvent.BuildingSpawn);
 
+
                     //On update les stats du joueur:
                     player.setATK(new_building.getAttack() + player.getATK());
                     player.setDEF(new_building.getDeffense() + player.getDEF());

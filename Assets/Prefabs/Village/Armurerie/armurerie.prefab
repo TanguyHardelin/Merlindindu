@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Armurerie
-  _description: "Am\xE9liore l'armure du joueur"
+  _description: Ameliore l'armure du heros.
   _building_tag: millitary
   _building_icon: {fileID: 2800000, guid: dce5c1e665ffcc541bf4d04ab99ea9de, type: 3}
   constructionTime: 5
@@ -68,6 +68,22 @@ MonoBehaviour:
     cold: 0
     citizen: 40
   ressourcesProduction:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesProductionOneShot:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesBonus:
     food: 0
     wood: 0
     stone: 0

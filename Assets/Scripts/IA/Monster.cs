@@ -292,7 +292,13 @@ public class Monster : MonoBehaviour {
         
         ifDead();
 
-        updateActions();
+        if (GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+            anim.SetBool("isIdle", true);
+        }
+        else {
+            updateActions();
+        }
+        
 
         // On le détruit si plus dans le champs de vision
         if (Vector3.Distance(player.transform.position, this.transform.position) > 40) Destroy(this.gameObject);

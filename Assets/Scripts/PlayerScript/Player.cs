@@ -31,12 +31,14 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		spdCount += 1;
+        if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+            spdCount += 1;
 
-        if (spdCount >= spdTimer)
-        {
-            _ressources.gold --;
-            spdCount = 0;
+            if (spdCount >= spdTimer)
+            {
+                _ressources.gold --;
+                spdCount = 0;
+            }
         }
 	}
 

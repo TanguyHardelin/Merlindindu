@@ -38,40 +38,42 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        countRegen++;
-        if (countRegen >= 200)
-        {
-            setHealth(health + 1);
-            countRegen = 0;
-        }
-        if (_environnementGeneratoInitialised==false)
-        {
-            _environnementGeneratoInitialised = true;
-        }
-        else
-        {
-            //Nécéssaire au raffraichissement des chunks:
-            int x = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.x);
-            int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
+    {   
+        if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+            countRegen++;
+            if (countRegen >= 200)
+            {
+                setHealth(health + 1);
+                countRegen = 0;
+            }
+            if (_environnementGeneratoInitialised==false)
+            {
+                _environnementGeneratoInitialised = true;
+            }
+            else
+            {
+                //Nécéssaire au raffraichissement des chunks:
+                int x = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.x);
+                int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
 
-            _environnmentGenerator.GenerateAroundPlayer(x, z);
-        }
-
-        if (mainCamera.enabled == true) {
-            if (Input.GetKeyDown("space")) {
-                animator.SetTrigger("isJumping");
+                _environnmentGenerator.GenerateAroundPlayer(x, z);
             }
 
-            if (Input.GetMouseButtonDown(0)) {
-                animator.SetBool("isAttacking", true);
-            }
+            if (mainCamera.enabled == true) {
+                if (Input.GetKeyDown("space")) {
+                    animator.SetTrigger("isJumping");
+                }
 
-            if (health <= 0) { 
-                animator.SetBool("isDead", true);
+                if (Input.GetMouseButtonDown(0)) {
+                    animator.SetBool("isAttacking", true);
+                }
 
-                countRegen = -300;
-                StartCoroutine(Death());
+                if (health <= 0) { 
+                    animator.SetBool("isDead", true);
+
+                    countRegen = -300;
+                    StartCoroutine(Death());
+                }
             }
         }
     }
@@ -87,17 +89,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveVertical = Input.GetAxisRaw("Vertical");
+    {   
+        if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+            float moveVertical = Input.GetAxisRaw("Vertical");
 
-        if (mainCamera.enabled == true) {
-            if (moveHorizontal != 0 || moveVertical != 0) {
-                animator.SetBool("isMoving", true);
-                movePlayer(moveHorizontal, moveVertical);
-            }
-            else {
-                animator.SetBool("isMoving", false);
+            if (mainCamera.enabled == true) {
+                if (moveHorizontal != 0 || moveVertical != 0) {
+                    animator.SetBool("isMoving", true);
+                    movePlayer(moveHorizontal, moveVertical);
+                }
+                else {
+                    animator.SetBool("isMoving", false);
+                }
             }
         }
     }
