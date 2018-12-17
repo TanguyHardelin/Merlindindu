@@ -5,19 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public string sceneName = "Main"; // Change the scene name inside the Unity UI
+    public Scene mainScene;
 
     void OnTriggerEnter(Collider other)
-    {
+    { 
         if (other.gameObject.tag == "Player")
-            SceneManager.LoadScene("IAtestScene");
+            SceneManager.LoadScene(sceneName);
     }
 }

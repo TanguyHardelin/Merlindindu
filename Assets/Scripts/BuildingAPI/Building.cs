@@ -57,6 +57,15 @@ public class Building : MonoBehaviour {
     [SerializeField]
     protected Transform parent;
 
+    [SerializeField]
+    protected int ATQ;
+
+    [SerializeField]
+    protected int DEF;
+
+    [SerializeField]
+    protected int PV;
+
     //Internal attributes:
     protected GameObject current_obj;
     protected int current_index;
@@ -87,7 +96,6 @@ public class Building : MonoBehaviour {
         {
             //On incrémente la valeur du temps:
             current_time += Time.deltaTime;
-
             //On vérifie si on ne doit pas update le model:
             if (current_time> constructionTime / (buildingEtapes.Count))
             {
@@ -197,5 +205,19 @@ public class Building : MonoBehaviour {
         return size;
     }
 
-    
+    public int getAttack()
+    {
+        return ATQ;
+    }
+
+    public int getDeffense()
+    {
+        return DEF;
+    }
+    public int getPV()
+    {
+        return PV;
+    }
+
+
 }

@@ -72,11 +72,14 @@ public class Village : MonoBehaviour {
             RessourceType ressourcesProduction = new RessourceType(0, 0, 0, 0, 0, 0,0);
             for (int i=0; i < villageBuilding.Count; i++)
             {
-                if(villageBuilding[i].isFinish())
+                if (villageBuilding[i].isFinish())
+                {
                     ressourcesProduction += villageBuilding[i].getRessourcesProduction();
+                }
+                    
             }
             //Application des bonus
-            RessourceType bonus=new RessourceType(0,0,0,0,0,0,0);
+            RessourceType bonus=new RessourceType(1,1,1,1,1,1,1);
             for (int i = 0; i < villageBuilding.Count; i++)
             {
                 if (villageBuilding[i].isFinish())

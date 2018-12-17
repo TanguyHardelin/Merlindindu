@@ -82,7 +82,7 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
             orText.fontStyle = FontStyle.Bold;
         }
 
-        orText.text = ressourcesNeeded.stone.ToString();
+        orText.text = ressourcesNeeded.gold.ToString();
     }
     public void OnPointerExit(PointerEventData eventData)
     {

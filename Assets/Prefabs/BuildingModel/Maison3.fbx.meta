@@ -423,6 +423,88 @@ ModelImporter:
     4300158: roof_cornerDiagonal_582
     4300160: structure_pole_583
     4300162: debris_bricks_584
+    6400000: battlement_cornerRound%_573
+    6400002: battlement_cornerRound%_574
+    6400004: battlement_cornerRound%_575
+    6400006: block_491
+    6400008: block_494
+    6400010: block_509
+    6400012: block_527
+    6400014: block_529
+    6400016: block_530
+    6400018: block_columns_485
+    6400020: block_columns_486
+    6400022: block_columns_487
+    6400024: block_columns_488
+    6400026: block_columns_489
+    6400028: block_columns_490
+    6400030: block_columns_492
+    6400032: block_columns_498
+    6400034: block_columns_515
+    6400036: block_columns_516
+    6400038: debris_bricks_584
+    6400040: detail_chimneyShaft_513
+    6400042: door_rounded_495
+    6400044: door_rounded_497
+    6400046: door_rounded_517
+    6400048: door_rounded_518
+    6400050: door_rounded_524
+    6400052: door_rounded_526
+    6400054: door_rounded_531
+    6400056: door_rounded_532
+    6400058: door_rounded_545
+    6400060: door_rounded_546
+    6400062: door_rounded_547
+    6400064: door_rounded_554
+    6400066: door_rounded_557
+    6400068: door_rounded_558
+    6400070: fence_wood_533
+    6400072: fence_wood_534
+    6400074: fence_wood_536
+    6400076: fence_wood_538
+    6400078: fence_wood_560
+    6400080: floor_corner_569
+    6400082: floor_curve%_566
+    6400084: floor_curve%_567
+    6400086: floor_curve%_568
+    6400088: roof_520
+    6400090: roof_barn_500
+    6400092: roof_barn_507
+    6400094: roof_canvas_577
+    6400096: roof_cornerDiagonal_578
+    6400098: roof_cornerDiagonal_579
+    6400100: roof_cornerDiagonal_580
+    6400102: roof_cornerDiagonal_581
+    6400104: roof_cornerDiagonal_582
+    6400106: roof_flat_largeCenter_521
+    6400108: roof_flat_largeCenter_528
+    6400110: roof_half_496
+    6400112: roof_half_extra_541
+    6400114: roof_half_large_542
+    6400116: stairs_wood_508
+    6400118: structure_column_570
+    6400120: structure_pole_504
+    6400122: structure_pole_505
+    6400124: structure_pole_539
+    6400126: structure_pole_583
+    6400128: wall_archwaySingle_565
+    6400130: wall_cornerDiagonal_576
+    6400132: wall_cornerRound%_561
+    6400134: wall_cornerRound%_562
+    6400136: wall_cornerRound%_563
+    6400138: wall_cornerRound%_571
+    6400140: window_round_detail_522
+    6400142: window_rounded_499
+    6400144: window_rounded_525
+    6400146: window_rounded_543
+    6400148: window_rounded_544
+    6400150: window_rounded_549
+    6400152: window_rounded_550
+    6400154: window_rounded_551
+    6400156: window_rounded_552
+    6400158: window_rounded_553
+    6400160: window_rounded_556
+    6400162: window_rounded_559
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -456,7 +538,8 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.15
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -481,6 +564,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
