@@ -38,26 +38,7 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         Text desciptionName = GameObject.Find("DescriptionText").GetComponent<Text>();
         desciptionName.text = description;
-
-        Text bleText = GameObject.Find("PopupBleText").GetComponent<Text>();
-
-        if(curentRessources.food< ressourcesNeeded.food)
-        {
-            bleText.color = Color.red;
-            bleText.fontStyle = FontStyle.Bold;
-        }
-
-        bleText.text = ressourcesNeeded.food.ToString();
-
-        Text ferText = GameObject.Find("PopupFerText").GetComponent<Text>();
-
-        if (curentRessources.silver < ressourcesNeeded.silver)
-        {
-            ferText.color = Color.red;
-            ferText.fontStyle = FontStyle.Bold;
-        }
-
-        ferText.text = ressourcesNeeded.silver.ToString();
+        
 
         Text pierreText = GameObject.Find("PopupPierreText").GetComponent<Text>();
 
@@ -88,16 +69,6 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
         }
 
         orText.text = ressourcesNeeded.stone.ToString();
-
-        Text charbonText = GameObject.Find("PopupCharbonText").GetComponent<Text>();
-
-        if (curentRessources.cold < ressourcesNeeded.cold)
-        {
-            charbonText.color = Color.red;
-            charbonText.fontStyle = FontStyle.Bold;
-        }
-
-        charbonText.text = ressourcesNeeded.cold.ToString();
     }
     public void OnPointerExit(PointerEventData eventData)
     {
