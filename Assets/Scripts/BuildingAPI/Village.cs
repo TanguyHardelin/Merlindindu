@@ -94,7 +94,7 @@ public class Village : MonoBehaviour {
     public void addBuilding(Building b)
     {
         ressources.citizen += b.getRessourcesProductionOnShot().citizen;
-        Debug.Log("Ajout de "+ b.getRessourcesProductionOnShot().citizen+" citoyens");
+        maxRessources.citizen += b.getRessourcesProductionOnShot().citizen;
         villageBuilding.Add(b);
     }
 

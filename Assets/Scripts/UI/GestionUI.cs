@@ -59,7 +59,7 @@ public class GestionUI : MonoBehaviour {
 
         _width = Screen.width;
         _height = Screen.height;
-        _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 16f, 0);
+        _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 13f, 0);
     }
 	
 	// Update is called once per frame
@@ -175,8 +175,8 @@ public class GestionUI : MonoBehaviour {
         for (int i = 0; i < l.Count; i++)
         {
             Vector3 new_position = _starting_position;
-            new_position[0] += i / 1.3f * (_building_UI_prefab.GetComponent<RectTransform>().rect.width + 50.0f * _building_UI_prefab.GetComponent<RectTransform>().rect.width / 100.0f);
-            new_position[1] += _height/1000*50.0f;
+            new_position[0] += i / 1.3f * (_building_UI_prefab.GetComponent<RectTransform>().rect.width + 5.0f * _width / 100.0f);
+            
             GameObject obj = Instantiate(_building_UI_prefab, new_position, Quaternion.identity, _parent) as GameObject;
 
             BuildingElementScript s = obj.GetComponent<BuildingElementScript>();
@@ -187,7 +187,7 @@ public class GestionUI : MonoBehaviour {
             popupInfoBuilding p = obj.GetComponent<popupInfoBuilding>();
             p.position = new_position;
             p.position.x += _width / 100 * 8.0f;
-            p.position.y += _height / 100 * 33.0f;
+            p.position.y =0;
             p.parent = GameObject.Find("UIGestion").transform;
             p.nom = l[i].getName();
             p.description = l[i].getDescription();
