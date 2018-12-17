@@ -36,16 +36,22 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
-            spdCount += 1;
+            spdCount += Time.deltaTime;
 
             if (spdCount >= spdTimer)
             {
                 _ressources.gold --;
                 spdCount = 0;
-            if(_ressources.gold <= 0)
+            
+                if(_ressources.gold <= 0)
                 {
-                SceneManager.LoadScene("Loose");
+                    SceneManager.LoadScene("Loose");
                 }
+            }
+            if (_ressources.gold >= maxGold-10)
+            {
+            _ressources.gold = (int)(maxGold / 4.0f*3.0f);
+            spdTimer /= 2;
             }
         //}
 	}
