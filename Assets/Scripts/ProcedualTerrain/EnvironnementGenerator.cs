@@ -52,13 +52,18 @@ public class EnvironnementGenerator : MonoBehaviour {
             Vector2 center = allInterestingElement[l].position;
             int size = allInterestingElement[l].size;
 
-            for (int i = Mathf.CeilToInt((center[0]) - size / 2 + mapWidth/2); i < Mathf.CeilToInt((center[0]) + size / 2 + mapWidth / 2); i++)
+            if (allInterestingElement[l].name == "Village")
             {
-                for (int j = Mathf.CeilToInt((center[1]) - size / 2 + mapHeight / 2); j < Mathf.CeilToInt((center[1]) + size / 2 + mapHeight / 2); j++)
+               
+            }
+            
+            for (int i = getIndexFromCoordinate(-center[0] + size / 2); i < getIndexFromCoordinate(-center[0] - size / 2)+1; i++)
+            {
+                for (int j = getIndexFromCoordinate(center[1] + size / 2); j < getIndexFromCoordinate(center[1] - size / 2)+1; j++)
                 {
-                    int X = getIndexFromCoordinate(i);
-                    int Z = getIndexFromCoordinate(j);
-                    canSpwan[X, Z] = false;
+                    
+                    if(i>0 && j>0 && i<mapWidth && j<mapHeight)
+                    canSpwan[i, j] = false;
                 }
             }
         }
@@ -115,6 +120,8 @@ public class EnvironnementGenerator : MonoBehaviour {
                     if (canSpwan[i, j]) is_chunk_need.Add(isChunkNeeded(i, j));
                 }
             }
+            isInitialized = true;
+            
         }
         
         
@@ -198,6 +205,7 @@ public class EnvironnementGenerator : MonoBehaviour {
             }
         }
         */
+
     }
     public bool isPlayerIsInChunk(int x,int z)
     {

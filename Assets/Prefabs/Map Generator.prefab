@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6728041809053986268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5347783860352880794, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6728041808784123950}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6728041809053986269}
+  - component: {fileID: 6728041809053986271}
+  - component: {fileID: 6728041809053986270}
+  m_Layer: 0
+  m_Name: Map Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6728041809053986269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6728041808784123950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728041809053986268}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.16611296, y: 0.54347825, z: 0.16474465}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6728041809053986271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5347783860352880795, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6728041808784123950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728041809053986268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30ddad2f5daab143b2670ad0493b893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawMode: 2
+  meshHeightMultiplier: 50
+  meshHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.191
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.191
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  mapWidth: 200
+  mapHeight: 200
+  scale: 200000000
+  octaves: 28
+  persistance: 0.7
+  lacunarity: 2
+  seed: 150
+  offset: {x: 0, y: 0}
+  autoUpdate: 0
+  terrainType:
+  - name: Eau dans les marais
+    noiseHeight: 0.2
+    gameHeight: 0.2
+    color: {r: 0.55428976, g: 0.6792453, b: 0.6486439, a: 0}
+  - name: Sable bitumineux
+    noiseHeight: 0.25
+    gameHeight: 0.25
+    color: {r: 0.6792453, g: 0.6177727, b: 0.3492346, a: 0}
+  - name: Herbe marais
+    noiseHeight: 0.35
+    gameHeight: 0.35
+    color: {r: 0.44749627, g: 0.735849, b: 0.2950338, a: 0}
+  - name: Terre marais
+    noiseHeight: 0.45
+    gameHeight: 0.45
+    color: {r: 0.5566038, g: 0.4474387, b: 0.34919012, a: 0}
+  - name: Transition avec marais
+    noiseHeight: 0.47
+    gameHeight: 0.47
+    color: {r: 0.5198435, g: 0.6603774, b: 0.44544324, a: 0}
+  - name: Herbe
+    noiseHeight: 0.5
+    gameHeight: 0.5
+    color: {r: 0.37994394, g: 0.6886792, b: 0.3216002, a: 0}
+  - name: Foret
+    noiseHeight: 0.55
+    gameHeight: 0.55
+    color: {r: 0.28324133, g: 0.6320754, b: 0.31402084, a: 0}
+  - name: Foret profonde
+    noiseHeight: 0.6
+    gameHeight: 0.6
+    color: {r: 0.069686726, g: 0.5471698, b: 0.23303615, a: 0}
+  - name: Foret profonde
+    noiseHeight: 0.65
+    gameHeight: 0.65
+    color: {r: 0.0465023, g: 0.5188679, b: 0.2052481, a: 0}
+  - name: Transition avec plaine
+    noiseHeight: 0.67
+    gameHeight: 0.67
+    color: {r: 0.4745906, g: 0.745283, b: 0.53564906, a: 0}
+  - name: Montagne
+    noiseHeight: 0.7
+    gameHeight: 0.7
+    color: {r: 0.6415094, g: 0.6384834, b: 0.6384834, a: 0}
+  - name: Montagne
+    noiseHeight: 0.75
+    gameHeight: 0.75
+    color: {r: 0.4339623, g: 0.4278213, b: 0.4278213, a: 0}
+  - name: Montagne
+    noiseHeight: 0.8
+    gameHeight: 0.8
+    color: {r: 0.2924528, g: 0.29107332, b: 0.29107332, a: 0}
+  - name: Montagne
+    noiseHeight: 0.9
+    gameHeight: 0.9
+    color: {r: 0.2264151, g: 0.22107512, b: 0.22107512, a: 0}
+  - name: Montagne
+    noiseHeight: 1
+    gameHeight: 1
+    color: {r: 0.26415092, g: 0.2629049, b: 0.2629049, a: 0}
+  isInitialized: 1
+--- !u!114 &6728041809053986270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5347783860352880797, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6728041808784123950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728041809053986268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd19a2b16139514b8e321d52c1abe1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureRender: {fileID: 0}
+  meshFilter: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  meshCollider: {fileID: 0}
+--- !u!1001 &6728041808784123950
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5347783860352880794, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_Name
+      value: Map Generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880796, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880795, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: autoUpdate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880795, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: seed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880795, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347783860352880795, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a,
+        type: 3}
+      propertyPath: offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2052a9e4ed3ad6c4b888ec3c9cc7c86a, type: 3}
