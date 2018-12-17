@@ -46,7 +46,6 @@ public class ManageColliders : MonoBehaviour {
                 Collectable script = (Collectable)other.GetComponent(typeof(Collectable));
                 script.PickRessources();
                 hasPicked = true;
-                Debug.Log("pickingRessources");
                 if (script.getIsEmpty()) {
                     _explorationUI.setInfoText("-No more ressources-");
                 }

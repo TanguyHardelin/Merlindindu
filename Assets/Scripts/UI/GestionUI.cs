@@ -205,8 +205,7 @@ public class GestionUI : MonoBehaviour {
 
         Player player = GameObject.Find("Player").GetComponent<Player>();
         Village village = GameObject.Find("Village").GetComponent<Village>();
-        Debug.Log(village.getRessources().gold);
-        //player.updateGold(village.getRessources().gold);
+        player.updateGold(village.getRessources().gold);
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = false;
