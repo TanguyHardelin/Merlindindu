@@ -88,7 +88,7 @@ MonoBehaviour:
     gold: 0
     silver: 0
     cold: 0
-    citizen: 0
+    citizen: 5
   ressourcesBonus:
     food: 0
     wood: 0
@@ -97,4 +97,15 @@ MonoBehaviour:
     silver: 0
     cold: 0
     citizen: 0
+  ressourceMax:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
   parent: {fileID: 0}
+  ATQ: 0
+  DEF: 0
+  PV: 0

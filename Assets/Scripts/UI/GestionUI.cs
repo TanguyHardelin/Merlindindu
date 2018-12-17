@@ -46,6 +46,7 @@ public class GestionUI : MonoBehaviour {
     public Text _stone_text;
     public Text _gold_text;
     public Text _wood_text;
+    public Text _people_text;
 
     // Use this for initialization
     void Start () {
@@ -112,6 +113,7 @@ public class GestionUI : MonoBehaviour {
         _stone_text.text = actual_ressource.stone.ToString() + "/" + limit_ressource.stone.ToString();
         _gold_text.text = actual_ressource.gold.ToString() + "/" + limit_ressource.gold.ToString();
         _wood_text.text = actual_ressource.wood.ToString() + "/" + limit_ressource.wood.ToString();
+        _people_text.text = actual_ressource.citizen.ToString() + "/" + limit_ressource.citizen.ToString();
     }
 
     //Reactions aux evennements des boutons:
