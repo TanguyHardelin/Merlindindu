@@ -46,7 +46,9 @@ public class PlayerController : MonoBehaviour
                 setHealth(health + 1f);
                 countRegen = 0;
             }
-            /*if (_environnementGeneratoInitialised==false)
+
+
+            if (_environnementGeneratoInitialised==false)
             {
                 _environnementGeneratoInitialised = true;
             }
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
                 int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
 
                 _environnmentGenerator.GenerateAroundPlayer(x, z);
-            }*/
+            }
 
             if (mainCamera.enabled == true) {
                 if (Input.GetKeyDown("space")) {

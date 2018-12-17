@@ -90,6 +90,10 @@ public class ManageColliders : MonoBehaviour {
                 }
             }
         }
+        else if (other.tag == "village" && mode == "exploration")
+        {
+            _buttonSwitchMode.SetActive(true);
+        }
     }
 
     void OnTriggerExit(Collider other)
