@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class Monster : MonoBehaviour {
     public string typeMonster;
     public int amtGold;
     public float attDistance;
+    public float correcSpeed = 0.6f;
+    public bool hasAttacked;
 
     private bool isAttacking = false;
     private bool isFleeing = false;
@@ -24,16 +27,18 @@ public class Monster : MonoBehaviour {
     private float angle;
     private int timeNewDir = 0;
     private Vector3 moveDir;
-    public bool hasAttacked;
     private int deathCnt = 0;
     private bool isKnight = false;
-    public float correcSpeed = 0.3f;
+    private Canvas UIMonster;
+
 
     public void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
         typeMonster = this.tag;
+        UIMonster = gameObject.GetComponentInChildren<Canvas>();
+        UpdateLifeBar();
 
         moveDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
 
@@ -281,6 +286,7 @@ public class Monster : MonoBehaviour {
     {
         direction = player.transform.position - this.transform.position;
         angle = Vector3.Angle(direction, this.transform.forward);
+        UpdateLifeBar();
 
         updateStatus();
         
@@ -338,10 +344,16 @@ public class Monster : MonoBehaviour {
         else if (isFleeing) Flee();
         else if (!isKnight) RandomMove();
     }
+    void UpdateLifeBar()
+    {
 
-     /*************/
+        float ratio2 = health / healthMax;
+        UIMonster.transform.GetChild(0).GetChild(0).GetComponent<Image>().rectTransform.localScale = new Vector3(ratio2, 1, 1);
+    }
+
+    /*************/
     /** Setters **/
-   /*************/
+    /*************/
     public void setAggressive(bool isaggressive)
     {
         isAggressive = isaggressive;
