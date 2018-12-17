@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	public float spdTimer = 240;
     public int maxGold = 1000;
 	float spdCount = 0;
+    public GameObject prefab;
 
     public RessourceType getRessources()
     {
@@ -27,11 +28,13 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_ressources.gold = 500;
+
+        //Instantiate(prefab, new, Quaternion.identity);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+        //if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
             spdCount += 1;
 
             if (spdCount >= spdTimer)
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour {
                 _ressources.gold --;
                 spdCount = 0;
             }
-        }
+        //}
 	}
 
     public int getMaxGold() { return maxGold; }

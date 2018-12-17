@@ -315,8 +315,8 @@ public class Monster : MonoBehaviour {
                 player.setCountRegen(-250);
             }
 
-            // S'il est coward et low life, il fuit
-            if (health <= 0.2 * healthMax && isACoward && !isDead) {
+            // S'il est coward ou low life, il fuit
+            if ((health <= 0.2 * healthMax || isACoward) && !isDead) {
                 isAttacking = false;
                 isFleeing = true;
             }

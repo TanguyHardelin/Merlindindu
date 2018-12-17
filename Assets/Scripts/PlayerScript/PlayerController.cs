@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed = 30f;
     public int ATK = 10;
     public int DEF = 10;
-    public int health = 100;
-    public int maxHealth = 100;
+    public float health = 100f;
+    public float maxHealth = 100f;
     public bool hasAttacked = false;
     
     
@@ -39,14 +39,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {   
-        if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+        //if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
             countRegen++;
             if (countRegen >= 200)
             {
-                setHealth(health + 1);
+                setHealth(health + 1f);
                 countRegen = 0;
             }
-            if (_environnementGeneratoInitialised==false)
+            /*if (_environnementGeneratoInitialised==false)
             {
                 _environnementGeneratoInitialised = true;
             }
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
                 int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
 
                 _environnmentGenerator.GenerateAroundPlayer(x, z);
-            }
+            }*/
 
             if (mainCamera.enabled == true) {
                 if (Input.GetKeyDown("space")) {
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(Death());
                 }
             }
-        }
+        //}
     }
     IEnumerator Death()
     {
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {   
-        if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
+        //if (!GameObject.Find("UIExploration").GetComponent<UIManager>().getFreeze()) {
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");
 
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("isMoving", false);
                 }
             }
-        }
+        //}
     }
 
     void movePlayer(float moveHorizontal, float moveVertical) {
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
     {
         if (def >= 0) DEF = def;
     }
-    public void setHealth(int hlt)
+    public void setHealth(float hlt)
     {
         if (hlt >= maxHealth) health = maxHealth;
         else if (hlt <= 0) health = 0;
@@ -148,11 +148,11 @@ public class PlayerController : MonoBehaviour
     {
         return DEF;
     }
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
-    public int getMaxHealth()
+    public float getMaxHealth()
     {
         return maxHealth;
     }
