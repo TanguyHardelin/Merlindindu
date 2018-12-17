@@ -60,6 +60,9 @@ public class GestionUI : MonoBehaviour {
         _width = Screen.width;
         _height = Screen.height;
         _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 13f, 0);
+
+        Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
+        UIExploration.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -187,7 +190,7 @@ public class GestionUI : MonoBehaviour {
             popupInfoBuilding p = obj.GetComponent<popupInfoBuilding>();
             p.position = new_position;
             p.position.x += _width / 100 * 8.0f;
-            p.position.y =0;
+            p.position.y = _height /100 * 45.0f;
             p.parent = GameObject.Find("UIGestion").transform;
             p.nom = l[i].getName();
             p.description = l[i].getDescription();
