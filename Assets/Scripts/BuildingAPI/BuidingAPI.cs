@@ -151,7 +151,7 @@ public class BuidingAPI : MonoBehaviour {
 
                     //On update les ressources
                     villageReference.setRessources(villageReference.getRessources() - new_building.getRessourcesNeeded());
-                    
+                    Messenger.Broadcast(GameEvent.BuildingSpawn);
                 }
                 else
                 {

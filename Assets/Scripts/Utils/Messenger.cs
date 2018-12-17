@@ -15,6 +15,7 @@ public static class GameEvent
     public const string Day = "Day";
     public const string SwitchToGestionMode = "SwitchToGestionMode";
     public const string SwitchToExplorationMode = "SwitchToExplorationMode";
+    public const string BuildingSpawn = "BuildingSpawn";
 }
 public enum MessengerMode
 {

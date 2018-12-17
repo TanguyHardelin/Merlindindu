@@ -13,7 +13,7 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public string nom;
     public string description;
     public RessourceType ressourcesNeeded;
-    public RessourceType curentRessources;
+    public RessourceType currentRessources;
 
     public Text textName;
     public Text textDescription;
@@ -30,6 +30,20 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
         _instantied_obj = Instantiate(_popup, position, Quaternion.identity, parent) as GameObject;
         actualizeText();
     }
+    private void Awake()
+    {
+        Messenger.AddListener(GameEvent.BuildingSpawn, actualizeRessources);
+    }
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.BuildingSpawn, actualizeRessources);
+    }
+
+
+    public void actualizeRessources()
+    {
+        currentRessources = GameObject.Find("Village").GetComponent<Village>().getRessources();
+    }
 
     public void actualizeText()
     {
@@ -42,7 +56,7 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         Text pierreText = GameObject.Find("PopupPierreText").GetComponent<Text>();
 
-        if (curentRessources.stone < ressourcesNeeded.stone)
+        if (currentRessources.stone < ressourcesNeeded.stone)
         {
             pierreText.color = Color.red;
             pierreText.fontStyle = FontStyle.Bold;
@@ -52,7 +66,7 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         Text boisText = GameObject.Find("PopupBoisText").GetComponent<Text>();
 
-        if (curentRessources.wood < ressourcesNeeded.wood)
+        if (currentRessources.wood < ressourcesNeeded.wood)
         {
             boisText.color = Color.red;
             boisText.fontStyle = FontStyle.Bold;
@@ -62,7 +76,7 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         Text orText = GameObject.Find("PopupOrText").GetComponent<Text>();
 
-        if (curentRessources.stone < ressourcesNeeded.stone)
+        if (currentRessources.gold < ressourcesNeeded.gold)
         {
             orText.color = Color.red;
             orText.fontStyle = FontStyle.Bold;
