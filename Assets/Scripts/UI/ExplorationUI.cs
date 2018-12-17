@@ -114,6 +114,5 @@ public class ExplorationUI : MonoBehaviour {
 
         village.addRessources(playerRessources);
         GameObject.Find("Player").GetComponent<Player>().RAZRessources();
-        Debug.Log("Ressources added");
     }
 }

@@ -37,11 +37,6 @@ public class ManageColliders : MonoBehaviour {
                 Debug.Log("pickingRessources");
             }
         }
-        else if (other.tag == "village")
-        {
-            _explorationUI.setInfoPanelVisibility(true);
-            _explorationUI.setInfoText("-Press M to manage-");
-        }
     }
 
     void OnTriggerStay(Collider other)
@@ -61,11 +56,6 @@ public class ManageColliders : MonoBehaviour {
                     _explorationUI.setInfoText("-Press P to gather-");
                 }
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.M) && (other.tag == "village"))
-        {
-            _explorationUI.setInfoPanelVisibility(true);
-            Messenger.Broadcast(GameEvent.SwitchToGestionMode);
         }
     }
 

@@ -504,8 +504,8 @@ GameObject:
   - component: {fileID: 4204708813984744}
   - component: {fileID: 95438756481185426}
   - component: {fileID: 54376452939694644}
-  - component: {fileID: 65339183785551096}
   - component: {fileID: 114895216943280312}
+  - component: {fileID: 49726152424726833}
   m_Layer: 0
   m_Name: Rabbit1
   m_TagString: Rabbit1
@@ -522,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 1625455591398482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.2978036, y: 19.099998, z: 4.1175613}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4840010263675730}
   - {fileID: 4295866797133638}
@@ -564,19 +564,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65339183785551096
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625455591398482}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6439352, y: 2.2766366, z: 2.0664053}
-  m_Center: {x: -0.005067189, y: 1.1274973, z: -0.07553438}
 --- !u!114 &114895216943280312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,13 +582,27 @@ MonoBehaviour:
   health: 0
   moveRate: 0
   isAggressive: 0
-  isACoward: 0
+  isACoward: 1
   player: {fileID: 0}
   level: 1
   typeMonster: 
   amtGold: 0
   attDistance: 0
   hasAttacked: 0
+  correcSpeed: 0.3
+--- !u!65 &49726152424726833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625455591398482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.3650837, z: 2.275983}
+  m_Center: {x: 0, y: 1.1587095, z: 0.020465255}
 --- !u!1 &1732944746396674
 GameObject:
   m_ObjectHideFlags: 0

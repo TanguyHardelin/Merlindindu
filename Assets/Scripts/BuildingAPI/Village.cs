@@ -47,7 +47,7 @@ public class Village : MonoBehaviour {
 
     public void addRessources(RessourceType r)
     {
-        ressources.gold += r.gold;
+        ressources.gold = r.gold;
         ressources.stone += r.stone;
         ressources.wood += r.wood;
         //ressources.setToMax(maxRessources);
@@ -55,8 +55,10 @@ public class Village : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+		ressources.gold = GameObject.Find("Player").GetComponent<Player>().getRessources().gold;
+        ressources.stone = 500;
+        ressources.wood = 500;
+    }
 	
 	// Update is called once per frame
 	void Update () {
