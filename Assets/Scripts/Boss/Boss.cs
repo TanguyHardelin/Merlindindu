@@ -48,18 +48,22 @@ public class Boss : MonoBehaviour
     void updateActions() {
         if (Vector3.Distance(player.transform.position, this.transform.position) < 4) {
             animator.SetBool("attacking", true);
+            Debug.Log("attacking");
         }
         if (Vector3.Distance(player.transform.position, this.transform.position) < 10 && !hasBlasted) {
             
             animator.SetBool("blasting", true);
+            Debug.Log("blasting");
             canMove = false;
         }
-        else if (Vector3.Distance(player.transform.position, this.transform.position) < 100 && canMove) {
+        else if (Vector3.Distance(player.transform.position, this.transform.position) < 20 && canMove) {
             
             animator.SetBool("isMoving", true);
+            Debug.Log("moving");
             transform.position += transform.forward * moveRate * Time.deltaTime;
         }
         else {
+            Debug.Log("idling");
             animator.SetBool("isIdle", true);
         }
     }

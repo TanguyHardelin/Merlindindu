@@ -54,8 +54,7 @@ public class CastLauncher : MonoBehaviour
 
     void OnParticleCollision(GameObject other) {
         GameObject.Find("Player").GetComponent<PlayerController>().setHealth(GameObject.Find("Player").GetComponent<PlayerController>().getHealth() - dmgMeteor);
-        GameObject test = Instantiate(prefab, bossCast.transform.position, Quaternion.identity, parent.transform);
-        Debug.Log(test);
+        Instantiate(prefab, bossCast.transform.position, Quaternion.identity, parent.transform);
         Destroy(bossCast);
     }
 
