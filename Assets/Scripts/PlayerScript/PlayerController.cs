@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private Vector3 villageCenter;
+    private int countRegen = 0;
 
     void Start()
     {
@@ -38,6 +39,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        countRegen++;
+        if (countRegen >= 200)
+        {
+            setHealth(health + 1);
+            countRegen = 0;
+        }
         if (_environnementGeneratoInitialised==false)
         {
             _environnementGeneratoInitialised = true;
@@ -62,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0) { 
                 animator.SetBool("isDead", true);
+                countRegen = -300;
             }
         }
     }
@@ -111,6 +119,10 @@ public class PlayerController : MonoBehaviour
         else if (hlt <= 0) health = 0;
         else health = hlt;
     }
+    public void setCountRegen(int count)
+    {
+        countRegen = count;
+    }
 
     public int getATK()
     {
@@ -124,4 +136,9 @@ public class PlayerController : MonoBehaviour
     {
         return health;
     }
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
 }
+
