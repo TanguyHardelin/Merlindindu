@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_ressources.gold = 500;
+		_ressources.gold = 3;
 
         //Instantiate(prefab, new, Quaternion.identity);
     }
@@ -41,6 +42,10 @@ public class Player : MonoBehaviour {
             {
                 _ressources.gold --;
                 spdCount = 0;
+            if(_ressources.gold <= 0)
+                {
+                    SceneManager.LoadScene("Loose");
+                }
             }
         //}
 	}
