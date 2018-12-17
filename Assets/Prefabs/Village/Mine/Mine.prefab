@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Mine
-  _description: "R\xE9colte de la pierre automatiquement"
+  _description: Produit de la pierre regulierement.
   _building_tag: ressources
   _building_icon: {fileID: 2800000, guid: c50786c4e9ca6ed4fad85c0764b5c44c, type: 3}
   constructionTime: 5
@@ -90,6 +90,14 @@ MonoBehaviour:
     cold: 0
     citizen: 0
   ressourcesBonus:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourceMax:
     food: 0
     wood: 0
     stone: 0

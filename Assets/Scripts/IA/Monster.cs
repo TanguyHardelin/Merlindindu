@@ -22,6 +22,7 @@ public class Monster : MonoBehaviour {
 
     private bool isAttacking = false;
     private bool isFleeing = false;
+    private bool isAttacked = false;
     private bool isDead = false;
     private Vector3 direction;
     private float angle;
@@ -309,14 +310,15 @@ public class Monster : MonoBehaviour {
         // Si le player est en range
         if (Vector3.Distance(player.transform.position, this.transform.position) < 11 && Mathf.Abs(angle) < 140) {
             
+
             // Si le monstre est agressif, il attaque
-            if (isAggressive && !isDead) {
+            if ((isAggressive && !isDead) || (isAttacked && !isDead)) {
                 isAttacking = true;
                 player.setCountRegen(-250);
             }
 
             // S'il est coward ou low life, il fuit
-            if ((health <= 0.2 * healthMax || isACoward) && !isDead) {
+            if (health <= 0.2 * healthMax && isACoward && !isDead) {
                 isAttacking = false;
                 isFleeing = true;
             }
@@ -326,6 +328,7 @@ public class Monster : MonoBehaviour {
         if (Vector3.Distance(player.transform.position, this.transform.position) > 15)
         {
             isAttacking = false;
+            isAttacked = false;
             isFleeing = false;
         }
     }
@@ -389,6 +392,7 @@ public class Monster : MonoBehaviour {
     {
         level = lvl;
     }
+    public void setIsAttacked(bool b) { isAttacked = b; }
 
 
       /*************/

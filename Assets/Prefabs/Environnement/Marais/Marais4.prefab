@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5305729711727563124
+--- !u!114 &7715648746969964354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8403623874726763796}
+  m_GameObject: {fileID: 8403076703394880994}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2b28eded474cf541949a703e36f1f8d, type: 3}
@@ -229,23 +229,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146147369072680, guid: 9552152fc98c16d40a511398729388ab, type: 3}
       propertyPath: m_Name
-      value: SmallRock
+      value: GG
       objectReference: {fileID: 0}
     - target: {fileID: 1146147369072680, guid: 9552152fc98c16d40a511398729388ab, type: 3}
       propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689625033308382, guid: 9552152fc98c16d40a511398729388ab, type: 3}
+      propertyPath: m_TagString
       value: Collect_stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689625033308382, guid: 9552152fc98c16d40a511398729388ab, type: 3}
+      propertyPath: m_Name
+      value: SmallRock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9552152fc98c16d40a511398729388ab, type: 3}
---- !u!1 &8403623874726763796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1146147369072680, guid: 9552152fc98c16d40a511398729388ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 8402512982354928956}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8400439089538577388 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4472614871307984, guid: 9552152fc98c16d40a511398729388ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 8402512982354928956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8403076703394880994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1689625033308382, guid: 9552152fc98c16d40a511398729388ab,
     type: 3}
   m_PrefabInstance: {fileID: 8402512982354928956}
   m_PrefabAsset: {fileID: 0}
