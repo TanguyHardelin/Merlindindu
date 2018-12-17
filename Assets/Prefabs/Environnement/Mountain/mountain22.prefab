@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 23436353564417832}
   - component: {fileID: 64836631428996850}
   - component: {fileID: 1775044209784540549}
+  - component: {fileID: 6965521179029790001}
   m_Layer: 0
   m_Name: Stone_17 (6)
   m_TagString: Untagged
@@ -139,3 +140,16 @@ MonoBehaviour:
   spawnRate: 25
   respawnTime: 2000
   instance: {fileID: 4997185310517982, guid: 86809f8d1a27ec746bc6762279b4fef6, type: 3}
+--- !u!135 &6965521179029790001
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826301616347944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 38.4
+  m_Center: {x: 0.00000008940697, y: 0.26725006, z: -0.000000014901161}
