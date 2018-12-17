@@ -18,7 +18,17 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public Text textName;
     public Text textDescription;
 
+    protected float current_time = 2;
 
+    private void Update()
+    {
+        current_time += Time.deltaTime;
+        if (current_time > 1)
+        {
+            actualizeText();
+            current_time = 0;
+        }
+    }
 
     [SerializeField]
     protected GameObject _popup;
@@ -83,6 +93,15 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
         }
 
         orText.text = ressourcesNeeded.gold.ToString();
+
+        Text citizenText = GameObject.Find("PopupCitizenText").GetComponent<Text>();
+        if (currentRessources.citizen < ressourcesNeeded.citizen)
+        {
+            citizenText.color = Color.red;
+            citizenText.fontStyle = FontStyle.Bold;
+        }
+
+        citizenText.text = ressourcesNeeded.citizen.ToString();
     }
     public void OnPointerExit(PointerEventData eventData)
     {
