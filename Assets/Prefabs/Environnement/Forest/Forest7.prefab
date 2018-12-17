@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 64059305791139982}
   - component: {fileID: 114066142341669422}
   - component: {fileID: 135471749380627642}
+  - component: {fileID: 6096259160191699692}
   m_Layer: 0
   m_Name: Mesh1_Group1_Model
   m_TagString: Untagged
@@ -310,6 +311,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: -0.496579, y: 0.385, z: -0.5733962}
+--- !u!114 &6096259160191699692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856159058050060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8f5039de5089547be9b45fd6cb5ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 23
+  respawnTime: 2000
+  instance: {fileID: 4662231486598032, guid: 03a8b50cc7c7c824b85942cc80a309b9, type: 3}
 --- !u!1 &1990916649727996
 GameObject:
   m_ObjectHideFlags: 0

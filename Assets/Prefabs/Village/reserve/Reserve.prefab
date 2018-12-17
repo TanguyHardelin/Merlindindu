@@ -70,13 +70,13 @@ MonoBehaviour:
     cold: 0
     citizen: 0
   ressourcesProduction:
-    food: 250
-    wood: 800
-    stone: 600
+    food: 0
+    wood: 0
+    stone: 0
     gold: 0
     silver: 0
     cold: 0
-    citizen: 2
+    citizen: 0
   ressourcesProductionOneShot:
     food: 0
     wood: 0
@@ -93,4 +93,15 @@ MonoBehaviour:
     silver: 0
     cold: 0
     citizen: 0
+  ressourceMax:
+    food: 0
+    wood: 800
+    stone: 600
+    gold: 250
+    silver: 0
+    cold: 0
+    citizen: 0
   parent: {fileID: 0}
+  ATQ: 0
+  DEF: 0
+  PV: 0

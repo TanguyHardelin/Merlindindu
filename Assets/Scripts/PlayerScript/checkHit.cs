@@ -18,6 +18,7 @@ public class checkHit : MonoBehaviour {
 			Monster carac = other.gameObject.GetComponent<Monster>();
 			carac.setHealth(carac.getHealth() - player.GetComponent<PlayerController>().ATK);
             showFloatTxtRessources("-"+player.GetComponent<PlayerController>().ATK, new Color32(205, 5, 5, 255));
+            carac.setIsAttacked(true);
         }
 	}
 
