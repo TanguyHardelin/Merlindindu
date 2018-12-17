@@ -37,6 +37,8 @@ public class BuildingCameraSpawner : MonoBehaviour
                     if (hit.transform != null)
                     {
                         Vector3 position = hit.point;
+                        //19.12 est la hauteur du terrain
+                        position.y = 19.12f;
                         addBuildingToScene(position);
                     }
                 }
@@ -54,6 +56,8 @@ public class BuildingCameraSpawner : MonoBehaviour
                 if (hit.transform != null)
                 {
                     Vector3 position = hit.point;
+                    //19.12 est la hauteur du terrain
+                    position.y = 19.12f;
                     addGhostBuildingToScene(position);
                 }
             }
@@ -69,6 +73,8 @@ public class BuildingCameraSpawner : MonoBehaviour
                 if (hit.transform != null)
                 {
                     Vector3 position = hit.point;
+                    //19.12 est la hauteur du terrain
+                    position.y = 19.12f;
                     addGhostBuildingToScene(position);
                 }
             }

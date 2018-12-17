@@ -16,7 +16,7 @@ public class ButtonController : MonoBehaviour {
 	}
 
 	void playOnClick(){
-		changeScene("Main");
+		changeScene("MainBackup");
 	}
 
 	void exitOnClick(){

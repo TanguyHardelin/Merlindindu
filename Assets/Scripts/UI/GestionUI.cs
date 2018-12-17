@@ -59,7 +59,7 @@ public class GestionUI : MonoBehaviour {
 
         _width = Screen.width;
         _height = Screen.height + 80;
-        _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 13.5f, 0);
+        _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 12.7f, 0);
 
         Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
         UIExploration.enabled = false;

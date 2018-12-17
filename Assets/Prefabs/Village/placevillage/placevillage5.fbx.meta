@@ -97,6 +97,23 @@ ModelImporter:
     4300028: grass_dense_23
     4300030: floor_square_24
     4300032: grass_dense_25
+    6400000: cylinder_full_10
+    6400002: cylinder_hollow_11
+    6400004: cylinder_hollow_12
+    6400006: cylinder_hollow_13
+    6400008: cylinder_hollow_15
+    6400010: cylinder_hollow_9
+    6400012: detail_flagPoint%_2
+    6400014: floor_square_1
+    6400016: floor_square_24
+    6400018: flower_beige1_16
+    6400020: flower_blue3_20
+    6400022: flower_red3_17
+    6400024: grass_dense_18
+    6400026: grass_dense_21
+    6400028: grass_dense_22
+    6400030: grass_dense_23
+    6400032: grass_dense_25
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -130,7 +147,8 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -155,6 +173,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

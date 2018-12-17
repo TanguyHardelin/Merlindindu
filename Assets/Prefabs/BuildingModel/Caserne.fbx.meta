@@ -323,6 +323,69 @@ ModelImporter:
     4300120: cylinder_hollow_353
     4300122: block_default_354
     4300124: block_default_355
+    6400000: battlement_cornerDiagonal_313
+    6400002: battlement_cornerRound%_328
+    6400004: battlement_straight_314
+    6400006: battlement_straight_315
+    6400008: battlement_straight_316
+    6400010: battlement_straight_319
+    6400012: battlement_straight_323
+    6400014: battlement_straight_324
+    6400016: battlement_straight_325
+    6400018: battlement_straight_335
+    6400020: battlement_straight_339
+    6400022: battlement_straight_340
+    6400024: battlement_straight_341
+    6400026: battlement_straight_342
+    6400028: battlement_straight_343
+    6400030: battlement_straight_344
+    6400032: battlement_straight_345
+    6400034: battlement_straight_346
+    6400036: battlement_straight_347
+    6400038: battlement_straight_348
+    6400040: battlement_straight_349
+    6400042: battlement_straightGallery%_320
+    6400044: battlement_straightGallery%_334
+    6400046: block_default_354
+    6400048: block_default_355
+    6400050: cylinder_hollow_353
+    6400052: debris_bricks_306
+    6400054: debris_bricks_307
+    6400056: floor_curve%_327
+    6400058: floor_square_337
+    6400060: floor_square_350
+    6400062: floor_squareGallery%_282
+    6400064: floor_squareGallery%_292
+    6400066: roof_straight_352
+    6400068: structure_pole_308
+    6400070: structure_pole_309
+    6400072: structure_pole_310
+    6400074: structure_pole_311
+    6400076: structure_pole_312
+    6400078: structure_poles_351
+    6400080: wall_archway_260
+    6400082: wall_archway_261
+    6400084: wall_corner_295
+    6400086: wall_corner_296
+    6400088: wall_cornerDiagonal_259
+    6400090: wall_doorwayRound_268
+    6400092: wall_half_277
+    6400094: wall_half_278
+    6400096: wall_half_283
+    6400098: wall_half_287
+    6400100: wall_half_288
+    6400102: wall_half_331
+    6400104: wall_half_333
+    6400106: wall_slit_297
+    6400108: wall_straight_262
+    6400110: wall_straight_269
+    6400112: wall_straight_285
+    6400114: wall_straight_293
+    6400116: wall_straight_298
+    6400118: wall_straight_300
+    6400120: wall_straight_302
+    6400122: wall_straightGallerySlit%_280
+    6400124: wall_straightGallerySlit%_291
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -356,7 +419,8 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.15
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -381,6 +445,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

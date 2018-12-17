@@ -186,6 +186,8 @@ public class BuidingAPI : MonoBehaviour {
         //Position taille ect ...
         Vector3 building_position = new Vector3(environnementGenerator.getIndexFromCoordinate(position[0]), position[1], environnementGenerator.getIndexFromCoordinate(position[2]));
         Building new_building = all3DObjectsScript.getCurrentObject();
+
+        
         if (new_building)
         {
             Vector2 building_size = new_building.getSize();
@@ -213,7 +215,7 @@ public class BuidingAPI : MonoBehaviour {
             building_position = caseToCoordonnate(building_position);
             new_building.setParent(buildingParents);
             if (ghostObject)
-            {
+            {  
                 ghostObject = Instantiate(ghostObject, building_position, Quaternion.identity, buildingParents);
                 ghostObject.transform.rotation = currentRotation;
                 //On change le material de l'object avec le valid pour dire que c'est bon:

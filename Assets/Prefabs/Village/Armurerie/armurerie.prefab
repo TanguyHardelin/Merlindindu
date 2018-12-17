@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018608435327752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.9596, y: 51.267017, z: -66.66769}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
     gold: 320
     silver: 0
     cold: 0
-    citizen: 40
+    citizen: 0
   ressourcesProduction:
     food: 0
     wood: 0
@@ -92,3 +92,6 @@ MonoBehaviour:
     cold: 0
     citizen: 0
   parent: {fileID: 0}
+  ATQ: 0
+  DEF: 0
+  PV: 0
