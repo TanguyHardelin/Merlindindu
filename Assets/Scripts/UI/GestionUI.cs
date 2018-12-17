@@ -59,7 +59,7 @@ public class GestionUI : MonoBehaviour {
 
         _width = Screen.width;
         _height = Screen.height;
-        _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 13f, 0);
+        _starting_position = new Vector3(_width / 100 * 5.0f, _height / 100 * 13.5f, 0);
 
         Canvas UIExploration = GameObject.Find("UIExploration").GetComponent<Canvas>();
         UIExploration.enabled = false;
@@ -195,7 +195,7 @@ public class GestionUI : MonoBehaviour {
             p.nom = l[i].getName();
             p.description = l[i].getDescription();
             p.ressourcesNeeded = l[i].getRessourcesNeeded();
-            p.curentRessources = _village.getRessources();
+            p.currentRessources = _village.getRessources();
 
             _instantied_prefab.Add(obj);
         }
@@ -208,7 +208,8 @@ public class GestionUI : MonoBehaviour {
 
         Player player = GameObject.Find("Player").GetComponent<Player>();
         Village village = GameObject.Find("Village").GetComponent<Village>();
-        player.updateGold(village.getRessources().gold);
+        Debug.Log(village.getRessources().gold);
+        //player.updateGold(village.getRessources().gold);
 
         Canvas UIGestion = GameObject.Find("UIGestion").GetComponent<Canvas>();
         UIGestion.enabled = false;
