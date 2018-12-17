@@ -61,12 +61,12 @@ MonoBehaviour:
   size: {x: 2, y: 2}
   ressourcesNeeded:
     food: 0
-    wood: 100
-    stone: 0
-    gold: 0
+    wood: 340
+    stone: 260
+    gold: 350
     silver: 0
     cold: 0
-    citizen: 0
+    citizen: 60
   ressourcesProduction:
     food: 0
     wood: 0
@@ -75,4 +75,23 @@ MonoBehaviour:
     silver: 0
     cold: 0
     citizen: 0
+  ressourcesProductionOneShot:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
+  ressourcesBonus:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+    silver: 0
+    cold: 0
+    citizen: 0
   parent: {fileID: 0}
+  ATQ: 0
+  DEF: 0
+  PV: 100

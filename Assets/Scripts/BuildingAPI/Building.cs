@@ -51,7 +51,11 @@ public class Building : MonoBehaviour {
     [SerializeField]
     protected RessourceType ressourcesBonus;
 
-    
+    [Header("Augmentation du nombre max de ressource")]
+    [SerializeField]
+    protected RessourceType ressourceMax;
+
+
 
     [Header("Parent dans le jeu")]
     [SerializeField]
@@ -198,6 +202,10 @@ public class Building : MonoBehaviour {
     public RessourceType getRessourcesBonus()
     {
         return ressourcesBonus;
+    }
+    public RessourceType getRessourcesLimit()
+    {
+        return ressourceMax;
     }
 
     public Vector2 getSize()

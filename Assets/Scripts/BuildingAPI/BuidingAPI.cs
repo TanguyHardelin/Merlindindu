@@ -155,6 +155,7 @@ public class BuidingAPI : MonoBehaviour {
 
                     //On update les ressources
                     villageReference.setRessources(villageReference.getRessources() - new_building.getRessourcesNeeded());
+                    villageReference.setRessourcesLimit(villageReference.getRessourcesLimit() + new_building.getRessourcesLimit());
                     Messenger.Broadcast(GameEvent.BuildingSpawn);
 
 
