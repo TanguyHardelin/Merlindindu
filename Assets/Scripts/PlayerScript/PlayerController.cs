@@ -54,11 +54,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //Nécéssaire au raffraichissement des chunks:
+            //Nécéssaire au raffraichissement des chunks:
+            if (_environnmentGenerator != null)
+            {
                 int x = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.x);
                 int z = _environnmentGenerator.getIndexFromCoordinate(this.transform.position.z);
-
                 _environnmentGenerator.GenerateAroundPlayer(x, z);
+            }
             }
 
             if (mainCamera.enabled == true) {
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator Death()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         GameObject respawnPoint = GameObject.FindGameObjectWithTag("respawn");
         gameObject.transform.position = respawnPoint.transform.position;
         animator.SetBool("isDead", false);

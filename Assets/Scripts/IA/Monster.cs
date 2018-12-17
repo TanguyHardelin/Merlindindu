@@ -213,7 +213,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 5f * correcSpeed; ;
                 amtGold = 122;
-                attDistance = 1f;
+                attDistance = 1.5f;
                 break;
             case "Skeleton3":
                 damageAmount = 10;
@@ -223,7 +223,7 @@ public class Monster : MonoBehaviour {
                 isACoward = false;
                 moveRate = 5f * correcSpeed;
                 amtGold = 35;
-                attDistance = 1f;
+                attDistance = 2f;
                 break;
             case "Knight":
                 damageAmount = 15;

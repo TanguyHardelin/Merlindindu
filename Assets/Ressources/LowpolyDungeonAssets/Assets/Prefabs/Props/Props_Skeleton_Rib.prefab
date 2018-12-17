@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4839397882755874}
   - component: {fileID: 33105472416689448}
   - component: {fileID: 23108094817555092}
+  - component: {fileID: 8917768480287138004}
+  - component: {fileID: 9096086123478344392}
   m_Layer: 0
   m_Name: Props_Skeleton_Rib
   m_TagString: Untagged
@@ -77,3 +79,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8917768480287138004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676496197657016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8f5039de5089547be9b45fd6cb5ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 25
+  respawnTime: 2000
+  instance: {fileID: 4360279937998616, guid: 754e4289c439ee144ae58cb85ea65421, type: 3}
+--- !u!135 &9096086123478344392
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676496197657016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.67
+  m_Center: {x: 0, y: 0.08722356, z: 0}
