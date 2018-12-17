@@ -8,6 +8,7 @@ public class ButtonController : MonoBehaviour {
 
 	public Button play;
 	public Button exit;
+    public string sceneNane;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class ButtonController : MonoBehaviour {
 	}
 
 	void playOnClick(){
-		changeScene("MainBackup");
+		changeScene(sceneNane);
 	}
 
 	void exitOnClick(){
