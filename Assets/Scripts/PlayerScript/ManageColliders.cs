@@ -5,6 +5,12 @@ using UnityEngine;
 public class ManageColliders : MonoBehaviour {
     [SerializeField]
     protected ExplorationUI _explorationUI;
+
+    [SerializeField]
+    protected GameObject _buttonSwitchMode;
+
+    protected string mode = "gestion";
+
     bool hasPicked = false;
 	
 	// Update is called once per frame
@@ -13,6 +19,30 @@ public class ManageColliders : MonoBehaviour {
             hasPicked = false;
         }
 	}
+
+    private void Awake()
+    {
+        Messenger.AddListener(GameEvent.SwitchToExplorationMode, goToExplorationMode);
+        Messenger.AddListener(GameEvent.SwitchToGestionMode, goToGestionMode);
+    }
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.SwitchToExplorationMode, goToExplorationMode);
+        Messenger.RemoveListener(GameEvent.SwitchToGestionMode, goToGestionMode);
+    }
+
+
+    public void goToExplorationMode()
+    {
+        mode = "exploration";
+        _buttonSwitchMode.SetActive(true);
+    }
+
+    public void goToGestionMode()
+    {
+        mode = "gestion";
+        _buttonSwitchMode.SetActive(false);
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -36,6 +66,10 @@ public class ManageColliders : MonoBehaviour {
                 hasPicked = true;
                 Debug.Log("pickingRessources");
             }
+        }
+        else if (other.tag == "village" && mode == "exploration")
+        {
+            _buttonSwitchMode.SetActive(true);
         }
     }
 
@@ -64,9 +98,9 @@ public class ManageColliders : MonoBehaviour {
         {
             _explorationUI.setInfoPanelVisibility(false);
         }
-        else if (other.tag == "village")
+        else if (other.tag == "village" && mode == "exploration")
         {
-            _explorationUI.setInfoPanelVisibility(false);
+            _buttonSwitchMode.SetActive(false);
         }
     }
 }
