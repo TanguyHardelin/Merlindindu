@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 3f * correcSpeed;
                 amtGold = 10;
-                attDistance = 1f;
+                attDistance = 1.5f;
                 break;
             case "Rabbit2":
                 damageAmount = 8;
@@ -63,7 +63,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 3f * correcSpeed;
                 amtGold = 16;
-                attDistance = 0.9f;
+                attDistance = 1.1f;
                 break;
             case "Rabbit3":
                 damageAmount = 12;
@@ -73,7 +73,7 @@ public class Monster : MonoBehaviour {
                 isACoward = true;
                 moveRate = 4f * correcSpeed;
                 amtGold = 24;
-                attDistance = 1f;
+                attDistance = 1.5f;
                 break;
             case "Bat1":
                 damageAmount = 6;
@@ -232,6 +232,7 @@ public class Monster : MonoBehaviour {
                 isAggressive = false;
                 isACoward = false;
                 moveRate = 5f * correcSpeed;
+                attDistance = 2f;
                 amtGold = 50;
                 isKnight = true;
                 break;
