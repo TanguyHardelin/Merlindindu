@@ -97,8 +97,8 @@ public class BuildingCameraSpawner : MonoBehaviour
             float sens = Input.GetAxis("Mouse ScrollWheel");
             Vector3 newPosition = this.transform.position + sens * direction * scrollSpeed;
             Vector3 CameraPositionToTheGround = Vector3.zero;
-            CameraPositionToTheGround.x = newPosition.x;
-            CameraPositionToTheGround.z = newPosition.z;
+            //CameraPositionToTheGround.x = newPosition.x;
+            //CameraPositionToTheGround.z = newPosition.z;
             float DistanceToTheGround = Vector3.Distance(newPosition, CameraPositionToTheGround);
             if (DistanceToTheGround > distanceMin && DistanceToTheGround < distanceMax) {
                 this.transform.position = newPosition;

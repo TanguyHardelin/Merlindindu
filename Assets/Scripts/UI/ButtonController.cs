@@ -8,7 +8,7 @@ public class ButtonController : MonoBehaviour {
 
 	public Button play;
 	public Button exit;
-    public string sceneNane;
+    public string sceneNane="FinalScene";
 
 	// Use this for initialization
 	void Start () {
