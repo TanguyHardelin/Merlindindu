@@ -87,8 +87,8 @@ public class BuildingCameraSpawner : MonoBehaviour
 
         //Gestion orientation:
         if (Input.GetAxis("Horizontal") !=0 || Input.GetAxis("Vertical") != 0) {
-            Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            this.transform.Translate(direction * speed, Space.World);
+            //Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //this.transform.Translate(direction * speed, Space.World);
         }
 
         //Gestion zoom / dezoom
@@ -97,8 +97,8 @@ public class BuildingCameraSpawner : MonoBehaviour
             float sens = Input.GetAxis("Mouse ScrollWheel");
             Vector3 newPosition = this.transform.position + sens * direction * scrollSpeed;
             Vector3 CameraPositionToTheGround = Vector3.zero;
-            //CameraPositionToTheGround.x = newPosition.x;
-            //CameraPositionToTheGround.z = newPosition.z;
+            CameraPositionToTheGround.x = newPosition.x;
+            CameraPositionToTheGround.z = newPosition.z;
             float DistanceToTheGround = Vector3.Distance(newPosition, CameraPositionToTheGround);
             if (DistanceToTheGround > distanceMin && DistanceToTheGround < distanceMax) {
                 this.transform.position = newPosition;

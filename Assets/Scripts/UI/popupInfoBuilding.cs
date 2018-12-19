@@ -22,12 +22,14 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void Update()
     {
+        /*
         current_time += Time.deltaTime;
         if (current_time > 1)
         {
             actualizeText();
             current_time = 0;
         }
+        */
     }
 
     [SerializeField]
@@ -40,6 +42,8 @@ public class popupInfoBuilding : MonoBehaviour, IPointerEnterHandler, IPointerEx
         _instantied_obj = Instantiate(_popup, position, Quaternion.identity, parent) as GameObject;
         actualizeText();
     }
+
+    
     private void Awake()
     {
         Messenger.AddListener(GameEvent.BuildingSpawn, actualizeRessources);
