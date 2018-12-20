@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 1115437867987674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.1804745, y: 28.331, z: 5.3170586}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 4990279808922626}
   - {fileID: 4932894403979922}
@@ -1551,6 +1551,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4034696468317936}
     m_Modifications:
+    - target: {fileID: 1640291117006546900, guid: 63186e8e2c98c604bae55ab684b7d308,
+        type: 3}
+      propertyPath: m_Name
+      value: UIMonster
+      objectReference: {fileID: 0}
     - target: {fileID: 7931062213260533943, guid: 63186e8e2c98c604bae55ab684b7d308,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1655,11 +1660,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1640291117006546900, guid: 63186e8e2c98c604bae55ab684b7d308,
-        type: 3}
-      propertyPath: m_Name
-      value: UIMonster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63186e8e2c98c604bae55ab684b7d308, type: 3}

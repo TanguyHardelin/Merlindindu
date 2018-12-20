@@ -15,13 +15,11 @@ public class CastLauncher : MonoBehaviour
     public bool isCasted = false;
     public float dmgMeteor = 60f;
     public GameObject prefab;
-    public GameObject parent;
 
     void Start()
     {
         rArm = GameObject.Find("CATRigRArmPalm");
         boss = GameObject.Find("Boss");
-        parent = GameObject.Find("Plane");
     }
 
     // Update is called once per frame
@@ -42,7 +40,7 @@ public class CastLauncher : MonoBehaviour
         }
         else {
             if (Vector3.Distance(bossCast.transform.position, targetPosition) < 1.001f) {
-                GameObject test = Instantiate(prefab, bossCast.transform.position, Quaternion.identity, parent.transform);
+                GameObject test = Instantiate(prefab, bossCast.transform.position, Quaternion.identity);
                 Debug.Log(test);
                 Destroy(bossCast);
             }
@@ -54,7 +52,7 @@ public class CastLauncher : MonoBehaviour
 
     void OnParticleCollision(GameObject other) {
         GameObject.Find("Player").GetComponent<PlayerController>().setHealth(GameObject.Find("Player").GetComponent<PlayerController>().getHealth() - dmgMeteor);
-        Instantiate(prefab, bossCast.transform.position, Quaternion.identity, parent.transform);
+        Instantiate(prefab, bossCast.transform.position, Quaternion.identity);
         Destroy(bossCast);
     }
 

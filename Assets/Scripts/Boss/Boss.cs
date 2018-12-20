@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {   
     public GameObject player;
     public Animator animator;
+    public Image uiMonster;
     bool isDead;
     bool isAttacking;
     bool isMoving;
-    float health = 200f;
+    public float health = 200f;
+    public float healthMax = 200f;
     Vector3 direction = Vector3.zero;
     public float moveRate;
     public bool hasBlasted = false;
@@ -43,6 +46,8 @@ public class Boss : MonoBehaviour
         direction.y = 0;
 
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
+
+        updateLifeBar();
     }
 
     void updateActions() {
@@ -66,5 +71,26 @@ public class Boss : MonoBehaviour
             Debug.Log("idling");
             animator.SetBool("isIdle", true);
         }
+    }
+
+    void updateLifeBar()
+    {
+        float ratio2 = health / healthMax;
+        uiMonster.rectTransform.localScale = new Vector3(ratio2, 1, 1);
+    }
+
+    public void setHealth(float hlth)
+    {
+        if (hlth <= 0) {
+            isDead = true;
+            health = 0;
+        }
+        else if (hlth >= healthMax) health = healthMax;
+        else health = hlth;
+    }
+
+    public float getHealth()
+    {
+        return health;
     }
 }

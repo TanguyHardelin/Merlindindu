@@ -20,6 +20,13 @@ public class checkHit : MonoBehaviour {
             showFloatTxtRessources("-"+player.GetComponent<PlayerController>().ATK, new Color32(205, 5, 5, 255));
             carac.setIsAttacked(true);
         }
+        else if (other.gameObject.GetComponent<Boss>() && player.GetBool("isAttacking") && !player.GetComponent<PlayerController>().hasAttacked) {
+            Debug.Log("here");
+            player.GetComponent<PlayerController>().hasAttacked = true;
+			Boss carac = other.gameObject.GetComponent<Boss>();
+			carac.setHealth(carac.getHealth() - player.GetComponent<PlayerController>().ATK);
+            showFloatTxtRessources("-"+player.GetComponent<PlayerController>().ATK, new Color32(205, 5, 5, 255));
+        }
 	}
 
     private void showFloatTxtRessources(string txt, Color color)
